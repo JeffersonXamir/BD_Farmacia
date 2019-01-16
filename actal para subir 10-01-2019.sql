@@ -1750,6 +1750,14 @@ FROM cabecera_nota_pedidos cnp
 JOIN proveedor p ON p.id_proveedor = cnp.id_proveedor
 JOIN proveedor_clase pc ON pc.id_proclase = p.id_proveedor_clase;
 end if;
+IF op=3 THEN
+SELECT cnp.id_cabecera_nota_pedidos,cnp.id_proveedor ,p.entidad AS proveedor,p.correo,p.id_proveedor_clase,pc.clase
+,p.direccion,p.cedula_ruc,p.representante,p.telefono,cnp.fecha_creacion,cnp.estado,cnp.iva,cnp.descuento,cnp.total,cnp.`plazo`
+FROM cabecera_nota_pedidos cnp
+JOIN proveedor p ON p.id_proveedor = cnp.id_proveedor
+JOIN proveedor_clase pc ON pc.id_proclase = p.id_proveedor_clase
+WHERE cnp.estado= "SI";
+END IF;
 END */$$
 DELIMITER ;
 
