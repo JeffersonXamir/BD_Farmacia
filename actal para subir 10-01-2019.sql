@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.5-10.1.33-MariaDB : Database - moduloprueba
+MySQL - 5.5.5-10.1.37-MariaDB : Database - moduloprueba
 *********************************************************************
 */
 
@@ -417,6 +417,8 @@ CREATE TABLE `stock` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `stock` */
+
+insert  into `stock`(`id_producto`,`cantidad`) values (23,45);
 
 /*Table structure for table `sucursal` */
 
@@ -1011,6 +1013,22 @@ BEGIN
     END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `insertaBitacoraFaltantes` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `insertaBitacoraFaltantes` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertaBitacoraFaltantes`(IN id_detalle_faltantes1 BIGINT(20), 
+IN fecha_registro1 DATETIME,
+IN cantidad1 INT
+)
+BEGIN
+INSERT INTO `bitacora_faltantes` (`id_detalle_faltantes`,`fecha_registro`,`cantidad`)
+	VALUES(id_detalle_faltantes1,fecha_registro1,cantidad1);
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `getNombreComboProducto` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `getNombreComboProducto` */;
@@ -1086,20 +1104,31 @@ BEGIN
     END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `insertaBitacoraFaltantes` */
+/* Procedure structure for procedure `ingresoDePrecios` */
 
-/*!50003 DROP PROCEDURE IF EXISTS  `insertaBitacoraFaltantes` */;
+/*!50003 DROP PROCEDURE IF EXISTS  `ingresoDePrecios` */;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertaBitacoraFaltantes`(IN id_detalle_faltantes1 BIGINT(20), 
-IN fecha_registro1 DATETIME,
-IN cantidad1 INT
-)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ingresoDePrecios`(IN op BIGINT, id_producto1 BIGINT,IN precio_compra2 DOUBLE(5,2),IN precio_venta3 DOUBLE(5,2),
+    IN fecha_registro6 TEXT,IN id_usuario7 BIGINT,OUT valor1 TEXT)
 BEGIN
-INSERT INTO `bitacora_faltantes` (`id_detalle_faltantes`,`fecha_registro`,`cantidad`)
-	VALUES(id_detalle_faltantes1,fecha_registro1,cantidad1);
-END */$$
+	DECLARE id_pre INT;
+	IF (op=1)THEN
+	UPDATE `precios` SET `estado`='A',`fecha_registro`=fecha_registro6,`id_usuario`=id_usuario7
+	WHERE `id_producto`= id_producto1 AND `precio_compra`=precio_compra2 AND `precio_venta`=precio_venta3;
+                
+        SET id_pre =(SELECT `id_precio` FROM `precios` WHERE `precio_compra`=precio_compra2 AND `precio_venta`=precio_venta3 AND 
+        `fecha_registro`= fecha_registro6);
+        
+        -- UPDATE `precios` SET `estado`='I' WHERE `id_producto`= id_producto1 AND`id_precio` < id_pre;   
+        UPDATE `precios` SET estado='I' WHERE `id_precio` NOT IN (id_pre) AND `id_producto`=id_producto1;
+        SET valor1='precio ingresado';
+        
+        INSERT INTO `bitacora_precios`(`id_producto`,`precio_compra`,`precio_venta`,`fecha_registro`,`id_usuario`)
+        VALUES(id_producto1,precio_compra2,precio_venta3,fecha_registro6,id_usuario7);
+        END IF;
+    END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `insertarCabeceraNotaPedido` */
@@ -1145,33 +1174,6 @@ select count(Cedula) into valor from Clientes where Cedula=cedula;
 VALUES (cedula, nombre, apellido, direccion, fecha_reg, 'A', telefono, correo);
 set msg = 'Cliente guardado con éxito!!';
 END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `ingresoDePrecios` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `ingresoDePrecios` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ingresoDePrecios`(IN op BIGINT, id_producto1 BIGINT,IN precio_compra2 DOUBLE(5,2),IN precio_venta3 DOUBLE(5,2),
-    IN fecha_registro6 TEXT,IN id_usuario7 BIGINT,OUT valor1 TEXT)
-BEGIN
-	DECLARE id_pre INT;
-	IF (op=1)THEN
-	UPDATE `precios` SET `estado`='A',`fecha_registro`=fecha_registro6,`id_usuario`=id_usuario7
-	WHERE `id_producto`= id_producto1 AND `precio_compra`=precio_compra2 AND `precio_venta`=precio_venta3;
-                
-        SET id_pre =(SELECT `id_precio` FROM `precios` WHERE `precio_compra`=precio_compra2 AND `precio_venta`=precio_venta3 AND 
-        `fecha_registro`= fecha_registro6);
-        
-        -- UPDATE `precios` SET `estado`='I' WHERE `id_producto`= id_producto1 AND`id_precio` < id_pre;   
-        UPDATE `precios` SET estado='I' WHERE `id_precio` NOT IN (id_pre) AND `id_producto`=id_producto1;
-        SET valor1='precio ingresado';
-        
-        INSERT INTO `bitacora_precios`(`id_producto`,`precio_compra`,`precio_venta`,`fecha_registro`,`id_usuario`)
-        VALUES(id_producto1,precio_compra2,precio_venta3,fecha_registro6,id_usuario7);
-        END IF;
-    END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `insertarCorreo` */
@@ -1519,45 +1521,6 @@ end if ;
 END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `listarfaltantesEnNota` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `listarfaltantesEnNota` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarfaltantesEnNota`(IN op INT)
-BEGIN
-IF op= 1 THEN
-SELECT df.id_detalle_faltantes,pr.id_precio,df.id_producto,p.nombre AS producto,m.id_marcas,m.nombre AS marca
-,p.id_envase,en.nombre AS envase,p.id_medidas,me.nombre_medida AS medida
-,t.id_tipo,t.nombre AS tipo ,df.cantidad,df.estado,pr.precio_compra AS precio,p.iva AS IVA
-FROM detalle_faltantes df
-JOIN productos p ON  p.id_productos= df.id_producto
-JOIN tipo t ON t.id_tipo=p.id_tipo
-JOIN marcas m ON m.id_marcas=p.id_marcas
-JOIN envase en ON en.id_envase = p.id_envase
-JOIN medidas me ON me.id_medidas = p.id_medidas
-JOIN precios pr ON pr.id_producto = p.id_productos
-WHERE df.estado= 'NO' AND pr.`estado`="A"
-ORDER BY df.id_detalle_faltantes;
-END IF ;
-IF op= 2 THEN
-SELECT df.id_detalle_faltantes,pr.id_precio,df.id_producto,p.nombre AS producto,m.id_marcas,m.nombre AS marca
-,p.id_envase,en.nombre AS envase,p.id_medidas,me.nombre_medida AS medida
-,t.id_tipo,t.nombre AS tipo ,df.cantidad,df.estado,pr.precio_compra AS precio,p.iva AS IVA
-FROM detalle_faltantes df
-JOIN productos p ON  p.id_productos= df.id_producto
-JOIN tipo t ON t.id_tipo=p.id_tipo
-JOIN marcas m ON m.id_marcas=p.id_marcas
-JOIN envase en ON en.id_envase = p.id_envase
-JOIN medidas me ON me.id_medidas = p.id_medidas
-JOIN precios pr ON pr.id_producto = p.id_productos
-WHERE df.estado= 'OK' AND pr.`estado`="A"
-ORDER BY df.id_detalle_faltantes;
-END IF ;
-END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `listarJoinProductos` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `listarJoinProductos` */;
@@ -1654,15 +1617,42 @@ BEGIN
     END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `Tipo_Producto` */
+/* Procedure structure for procedure `listarfaltantesEnNota` */
 
-/*!50003 DROP PROCEDURE IF EXISTS  `Tipo_Producto` */;
+/*!50003 DROP PROCEDURE IF EXISTS  `listarfaltantesEnNota` */;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Tipo_Producto`()
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarfaltantesEnNota`(IN op INT)
 BEGIN
-select tipo.id_tipo, tipo.nombre from moduloprueba.tipo where estado = 'A' order by tipo.id_tipo;
+IF op= 1 THEN
+SELECT df.id_detalle_faltantes,pr.id_precio,df.id_producto,p.nombre AS producto,m.id_marcas,m.nombre AS marca
+,p.id_envase,en.nombre AS envase,p.id_medidas,me.nombre_medida AS medida
+,t.id_tipo,t.nombre AS tipo ,df.cantidad,df.estado,pr.precio_compra AS precio,p.iva AS IVA
+FROM detalle_faltantes df
+JOIN productos p ON  p.id_productos= df.id_producto
+JOIN tipo t ON t.id_tipo=p.id_tipo
+JOIN marcas m ON m.id_marcas=p.id_marcas
+JOIN envase en ON en.id_envase = p.id_envase
+JOIN medidas me ON me.id_medidas = p.id_medidas
+JOIN precios pr ON pr.id_producto = p.id_productos
+WHERE df.estado= 'NO' AND pr.`estado`="A"
+ORDER BY df.id_detalle_faltantes;
+END IF ;
+IF op= 2 THEN
+SELECT df.id_detalle_faltantes,pr.id_precio,df.id_producto,p.nombre AS producto,m.id_marcas,m.nombre AS marca
+,p.id_envase,en.nombre AS envase,p.id_medidas,me.nombre_medida AS medida
+,t.id_tipo,t.nombre AS tipo ,df.cantidad,df.estado,pr.precio_compra AS precio,p.iva AS IVA
+FROM detalle_faltantes df
+JOIN productos p ON  p.id_productos= df.id_producto
+JOIN tipo t ON t.id_tipo=p.id_tipo
+JOIN marcas m ON m.id_marcas=p.id_marcas
+JOIN envase en ON en.id_envase = p.id_envase
+JOIN medidas me ON me.id_medidas = p.id_medidas
+JOIN precios pr ON pr.id_producto = p.id_productos
+WHERE df.estado= 'OK' AND pr.`estado`="A"
+ORDER BY df.id_detalle_faltantes;
+END IF ;
 END */$$
 DELIMITER ;
 
@@ -1748,6 +1738,18 @@ from cabecera_nota_pedidos cnp
 join proveedor p on p.id_proveedor = cnp.id_proveedor
 where estado ='NO';
 end if;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `Tipo_Producto` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Tipo_Producto` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Tipo_Producto`()
+BEGIN
+select tipo.id_tipo, tipo.nombre from moduloprueba.tipo where estado = 'A' order by tipo.id_tipo;
 END */$$
 DELIMITER ;
 
