@@ -45,11 +45,11 @@ CREATE TABLE `bitacora_precios` (
   `fecha_registro` datetime NOT NULL,
   `id_usuario` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id_bitacora_precio`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 /*Data for the table `bitacora_precios` */
 
-insert  into `bitacora_precios`(`id_bitacora_precio`,`id_producto`,`precio_compra`,`precio_venta`,`fecha_registro`,`id_usuario`) values (1,30,15.60,32.60,'2018-12-18 03:27:01',2),(2,28,0.63,0.64,'0000-00-00 00:00:00',2),(3,28,0.89,0.92,'0000-00-00 00:00:00',2),(4,28,0.96,0.97,'0000-00-00 00:00:00',2),(5,28,0.89,0.92,'0000-00-00 00:00:00',2),(6,28,0.89,0.92,'0000-00-00 00:00:00',2),(7,28,0.89,0.92,'2018-12-19 23:39:46',2),(8,28,0.63,0.92,'2018-12-19 23:41:55',2),(9,28,0.89,0.92,'2018-12-19 00:01:25',2),(10,28,0.63,1.24,'2018-12-20 00:45:54',2),(11,28,0.96,0.97,'2018-12-20 00:49:40',2),(12,27,1.62,1.96,'2018-12-20 01:22:29',2),(13,23,1.92,2.20,'2018-12-20 01:25:44',2),(14,31,0.65,0.90,'2018-12-20 13:05:03',2),(15,24,0.26,0.30,'2018-12-21 01:03:22',2),(16,24,0.56,0.57,'2018-12-21 01:15:00',2),(17,28,0.90,0.96,'2018-12-21 01:39:54',2),(18,31,0.65,0.65,'2018-12-21 03:13:21',2),(19,32,2.60,2.80,'2018-12-21 11:10:45',2),(20,31,0.67,0.65,'2018-12-21 11:55:28',2),(21,31,0.63,0.79,'2018-12-21 12:27:19',2),(22,31,0.68,0.69,'2019-01-02 15:23:05',2),(23,31,0.65,0.90,'2019-01-02 15:24:23',2),(24,27,1.42,1.78,'2019-01-02 16:01:12',2),(25,27,1.56,1.57,'2019-01-02 16:02:10',2),(26,28,0.63,1.24,'2019-01-03 02:12:54',2),(27,27,1.56,1.57,'2019-01-03 17:10:12',2),(28,27,1.42,1.78,'2019-01-03 17:10:29',2),(29,27,1.62,1.96,'2019-01-03 17:10:41',2),(30,31,0.63,0.79,'2019-01-03 17:11:01',2),(31,31,0.65,0.90,'2019-01-03 17:11:06',2),(32,31,0.65,0.90,'2019-01-16 03:53:26',2);
+insert  into `bitacora_precios`(`id_bitacora_precio`,`id_producto`,`precio_compra`,`precio_venta`,`fecha_registro`,`id_usuario`) values (1,30,15.60,32.60,'2018-12-18 03:27:01',2),(2,28,0.63,0.64,'0000-00-00 00:00:00',2),(3,28,0.89,0.92,'0000-00-00 00:00:00',2),(4,28,0.96,0.97,'0000-00-00 00:00:00',2),(5,28,0.89,0.92,'0000-00-00 00:00:00',2),(6,28,0.89,0.92,'0000-00-00 00:00:00',2),(7,28,0.89,0.92,'2018-12-19 23:39:46',2),(8,28,0.63,0.92,'2018-12-19 23:41:55',2),(9,28,0.89,0.92,'2018-12-19 00:01:25',2),(10,28,0.63,1.24,'2018-12-20 00:45:54',2),(11,28,0.96,0.97,'2018-12-20 00:49:40',2),(12,27,1.62,1.96,'2018-12-20 01:22:29',2),(13,23,1.92,2.20,'2018-12-20 01:25:44',2),(14,31,0.65,0.90,'2018-12-20 13:05:03',2),(15,24,0.26,0.30,'2018-12-21 01:03:22',2),(16,24,0.56,0.57,'2018-12-21 01:15:00',2),(17,28,0.90,0.96,'2018-12-21 01:39:54',2),(18,31,0.65,0.65,'2018-12-21 03:13:21',2),(19,32,2.60,2.80,'2018-12-21 11:10:45',2),(20,31,0.67,0.65,'2018-12-21 11:55:28',2),(21,31,0.63,0.79,'2018-12-21 12:27:19',2),(22,31,0.68,0.69,'2019-01-02 15:23:05',2),(23,31,0.65,0.90,'2019-01-02 15:24:23',2),(24,27,1.42,1.78,'2019-01-02 16:01:12',2),(25,27,1.56,1.57,'2019-01-02 16:02:10',2),(26,28,0.63,1.24,'2019-01-03 02:12:54',2),(27,27,1.56,1.57,'2019-01-03 17:10:12',2),(28,27,1.42,1.78,'2019-01-03 17:10:29',2),(29,27,1.62,1.96,'2019-01-03 17:10:41',2),(30,31,0.63,0.79,'2019-01-03 17:11:01',2),(31,31,0.65,0.90,'2019-01-03 17:11:06',2);
 
 /*Table structure for table `cabecera_compra` */
 
@@ -95,11 +95,11 @@ CREATE TABLE `cabecera_nota_pedidos` (
   KEY `fk_cabecera_nota_pedidos_proveedor_idx` (`id_proveedor`),
   KEY `fk_cabecera_nota_pedidos_usuario_idx` (`id_usuario`),
   CONSTRAINT `fk_cabecera_nota_pedidos_proveedor` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 /*Data for the table `cabecera_nota_pedidos` */
 
-insert  into `cabecera_nota_pedidos`(`id_cabecera_nota_pedidos`,`id_proveedor`,`id_usuario`,`fecha_creacion`,`estado`,`plazo`,`forma_pago`,`iva`,`descuento`,`total`) values (3,6,1,'2018-10-10 00:00:00','Ok','24Meses','Credito',0,0,0),(4,5,2,'2018-11-20 00:00:00','NO','12Meses','Credito',0,0,0),(5,8,2,'2019-01-09 01:51:12','SI','Inmediato','Credito',0,0,135),(6,11,2,'2019-09-01 04:40:22','SI','Inmediato','Contado',190.26,0,1775.7599999999998),(7,8,2,'2019-09-01 04:49:54','SI','Inmediato','Contado',5.8968,2.457,52.5798),(8,8,2,'2019-09-01 04:51:21','SI','Inmediato','Contado',197.7768,84.51299999999999,1761.4037999999998),(9,9,2,'2019-09-01 05:17:56','SI','Inmediato','Contado',74.88,31.2,667.68),(10,7,2,'2019-09-01 05:21:01','SI','Inmediato','Contado',68.04,85.05,549.99),(11,10,2,'2019-09-01 05:22:34','SI','Inmediato','Contado',52.74,14.18,478.06),(12,8,2,'2019-09-01 05:24:00','SI','Inmediato','Contado',6.8,2.84,60.67),(13,7,2,'2019-09-01 05:28:04','SI','Inmediato','Contado',286.85,119.52,2557.73),(14,8,2,'2019-09-01 05:29:23','SI','Inmediato','Contado',28.08,11.7,250.38);
+insert  into `cabecera_nota_pedidos`(`id_cabecera_nota_pedidos`,`id_proveedor`,`id_usuario`,`fecha_creacion`,`estado`,`plazo`,`forma_pago`,`iva`,`descuento`,`total`) values (3,6,1,'2018-10-10 00:00:00','Ok','24Meses','Credito',0,0,0),(4,5,2,'2018-11-20 00:00:00','NO','12Meses','Credito',0,0,0),(5,8,2,'2019-01-09 01:51:12','SI','Inmediato','Credito',0,0,135),(6,11,2,'2019-09-01 04:40:22','SI','Inmediato','Contado',190.26,0,1775.7599999999998),(7,8,2,'2019-09-01 04:49:54','SI','Inmediato','Contado',5.8968,2.457,52.5798),(8,8,2,'2019-09-01 04:51:21','SI','Inmediato','Contado',197.7768,84.51299999999999,1761.4037999999998),(9,9,2,'2019-09-01 05:17:56','SI','Inmediato','Contado',74.88,31.2,667.68),(10,7,2,'2019-09-01 05:21:01','SI','Inmediato','Contado',68.04,85.05,549.99),(11,10,2,'2019-09-01 05:22:34','SI','Inmediato','Contado',52.74,14.18,478.06),(12,8,2,'2019-09-01 05:24:00','SI','Inmediato','Contado',6.8,2.84,60.67),(13,7,2,'2019-09-01 05:28:04','SI','Inmediato','Contado',286.85,119.52,2557.73),(14,8,2,'2019-09-01 05:29:23','SI','Inmediato','Contado',28.08,11.7,250.38),(15,10,2,'2019-01-14 16:19:45','SI','Inmediato','Contado',0,0,0),(16,10,2,'2019-01-14 16:20:50','SI','Inmediato','Contado',0,4.05,76.95),(17,10,2,'2019-01-14 16:21:48','SI','Inmediato','Contado',0,15.39,138.51),(18,10,2,'2019-01-14 16:23:07','SI','Inmediato','Contado',0,0.33,2.92),(19,5,2,'2019-01-14 17:18:16','SI','Inmediato','Contado',0,7.29,138.51),(20,8,2,'2019-01-14 17:20:00','SI','Inmediato','Contado',0,2.09,39.76),(21,10,2,'2019-01-14 17:21:28','SI','Inmediato','Contado',0,0,53.85),(22,7,2,'2019-01-15 23:16:55','SI','Inmediato','Contado',0,2.34,56.16);
 
 /*Table structure for table `clientes` */
 
@@ -171,11 +171,11 @@ CREATE TABLE `detalle_faltantes` (
   PRIMARY KEY (`id_detalle_faltantes`),
   KEY `id_producto` (`id_producto`),
   CONSTRAINT `fk_pro_detfal` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_productos`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 /*Data for the table `detalle_faltantes` */
 
-insert  into `detalle_faltantes`(`id_detalle_faltantes`,`id_producto`,`id_usuario`,`fecha_registro`,`cantidad`,`estado`) values (2,21,NULL,'2018-12-13 16:29:18',100,'OK'),(3,22,NULL,'2018-12-13 16:29:18',200,'OK'),(4,23,NULL,'2018-12-13 16:29:18',300,'OK'),(5,25,NULL,'2018-12-13 16:29:18',500,'OK'),(6,24,NULL,'2018-12-13 16:29:18',400,'OK'),(10,27,NULL,'2018-12-13 16:29:18',600,'OK');
+insert  into `detalle_faltantes`(`id_detalle_faltantes`,`id_producto`,`id_usuario`,`fecha_registro`,`cantidad`,`estado`) values (2,21,NULL,'2018-12-13 16:29:18',100,'OK'),(3,22,NULL,'2018-12-13 16:29:18',200,'OK'),(4,23,NULL,'2018-12-13 16:29:18',300,'OK'),(5,25,NULL,'2018-12-13 16:29:18',500,'OK'),(6,24,NULL,'2018-12-13 16:29:18',400,'OK'),(10,27,NULL,'2018-12-13 16:29:18',600,'OK'),(11,32,NULL,'2019-01-14 00:00:00',10,'OK'),(12,31,2,'2019-01-14 00:00:00',10,'OK');
 
 /*Table structure for table `detalle_nota_pedidos` */
 
@@ -193,11 +193,11 @@ CREATE TABLE `detalle_nota_pedidos` (
   KEY `fk_detalle_nota_pedidos_precio_idx` (`id_precio`),
   CONSTRAINT `fk_detalle_nota_pedidos_cabecera` FOREIGN KEY (`id_cabecera_nota_pedidos`) REFERENCES `cabecera_nota_pedidos` (`id_cabecera_nota_pedidos`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_detalle_nota_pedidos_precio` FOREIGN KEY (`id_precio`) REFERENCES `precios` (`id_precio`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 /*Data for the table `detalle_nota_pedidos` */
 
-insert  into `detalle_nota_pedidos`(`id_detalle_nota_pedidos`,`id_precio`,`id_cabecera_nota_pedidos`,`cantidad`,`total`,`iva`) values (1,26,6,90,63.50,6.80),(2,13,7,78,52.58,5.90),(3,13,8,78,52.58,5.90),(4,26,8,98,1635.82,183.46),(5,35,8,45,73.01,8.42),(6,13,9,40,667.68,74.88),(7,13,10,900,549.99,68.04),(8,13,11,450,303.34,34.02),(9,26,11,10,174.72,18.72),(10,13,12,90,60.67,6.80),(11,13,14,150,250.38,28.08);
+insert  into `detalle_nota_pedidos`(`id_detalle_nota_pedidos`,`id_precio`,`id_cabecera_nota_pedidos`,`cantidad`,`total`,`iva`) values (1,26,6,90,63.50,6.80),(2,13,7,78,52.58,5.90),(3,13,8,78,52.58,5.90),(4,26,8,98,1635.82,183.46),(5,35,8,45,73.01,8.42),(6,13,9,40,667.68,74.88),(7,13,10,900,549.99,68.04),(8,13,11,450,303.34,34.02),(9,26,11,10,174.72,18.72),(10,13,12,90,60.67,6.80),(11,13,14,150,250.38,28.08),(12,13,16,50,76.95,0.00),(13,13,17,95,138.51,0.00),(14,13,18,5,2.92,0.00),(15,13,19,90,138.51,0.00),(16,13,20,15,39.76,0.00),(17,13,21,10,16.20,0.00),(18,26,21,15,9.75,0.00),(19,35,21,10,27.90,0.00),(20,40,22,90,56.16,0.00);
 
 /*Table structure for table `envase` */
 
@@ -350,11 +350,11 @@ CREATE TABLE `proveedor` (
   PRIMARY KEY (`id_proveedor`),
   KEY `fk_1` (`id_proveedor_clase`),
   CONSTRAINT `fk_clase_proveedor` FOREIGN KEY (`id_proveedor_clase`) REFERENCES `proveedor_clase` (`id_proclase`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 /*Data for the table `proveedor` */
 
-insert  into `proveedor`(`id_proveedor`,`id_proveedor_clase`,`cedula_ruc`,`entidad`,`representante`,`direccion`,`fecha_registro`,`estado`,`telefono`,`correo`) values (5,2,'0924878605616','inkatonsa','URSULA','coop.el tunel','2018-11-14','A','0981839603 INSTITUCIONAL','jefferson@gmail.ocm INSTITUCIONAL'),(6,1,'092458566522','NESTLE SA..','ABIGAIL TORRES','COOP.EL CONDOR','2018-12-19','A','0953926261 INSTITUCIONAL','ambar@gmail.com INSTITUCIONAL'),(7,2,'1300696364','cocalola','JUAN TORRES','coop.el mirador','2018-12-05','A','2260392 INSTITUCIONAL','elaine@gmail.com INSTITUCIONAL'),(8,1,'0924876014','URSULA.','COLOMBIA','COOP.FLORIDA NORTE','2018-12-05','A','0986334186 PERSONAL','ursula@gmail.com PERSONAL'),(9,1,'1524896522','JULIO','ORTIZ','ENTRADA DE LA 8','2018-12-06','I','4554165165158 INSTITUCIONAL','cknc PERSONAL'),(10,1,'1515151516','CATOLICA','AMBATO','PORTIIKX','2018-12-06','A','',''),(11,1,'0925487562','PROVEMARX','EDWAR','COOP.PUEBLO LINDO','2018-12-06','I','0924876262 PERSONAL','jose@gmail.com PERSONAL'),(12,1,'0924656151514','MUEBLESPALITO','JOSE TERAN ','COOP BRISAS DEL MAR','2018-12-06','I','1221513255 INSTITUCIONAL','0112sds@gmail.com INSTITUCIONAL');
+insert  into `proveedor`(`id_proveedor`,`id_proveedor_clase`,`cedula_ruc`,`entidad`,`representante`,`direccion`,`fecha_registro`,`estado`,`telefono`,`correo`) values (5,2,'0924878605616','inkatonsa','URSULA','coop.el tunel','2018-11-14','A','0981839603 INSTITUCIONAL','jefferson@gmail.ocm INSTITUCIONAL'),(6,1,'092458566522','NESTLE SA..','ABIGAIL TORRES','COOP.EL CONDOR','2018-12-19','A','0953926261 INSTITUCIONAL','ambar@gmail.com INSTITUCIONAL'),(7,2,'1300696364','cocalola','KARE PAGE ','coop.el mirador','2018-12-05','A','2260392 INSTITUCIONAL','elaine@gmail.com INSTITUCIONAL'),(8,1,'0924876014','URSULA.','COLOMBIA','COOP.FLORIDA NORTE','2018-12-05','A','0986334186 PERSONAL','ursula@gmail.com PERSONAL'),(9,1,'1524896522','JULIO','MATT','ENTRADA DE LA 8','2018-12-06','I','4554165165158 INSTITUCIONAL','cknc PERSONAL'),(10,1,'1515151516','CATOLICA','AMBATO','PORTIIKX','2018-12-06','A','',''),(11,1,'0925487562','PROVEMARX','EDWAR','COOP.PUEBLO LINDO','2018-12-06','I','0924876262 PERSONAL','jose@gmail.com PERSONAL'),(12,1,'0924656151514','MUEBLESPALITO','JOSE TERAN ','COOP BRISAS DEL MAR','2018-12-06','I','1221513255 INSTITUCIONAL','0112sds@gmail.com INSTITUCIONAL'),(13,2,'09123456567','COCA COLA','FOGGY ','Floresta 1','2019-01-14','A','132654687489PERSONAL','MAT@gmail.com PERSONAL');
 
 /*Table structure for table `proveedor_clase` */
 
@@ -418,8 +418,6 @@ CREATE TABLE `stock` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `stock` */
-
-insert  into `stock`(`id_producto`,`cantidad`) values (23,45);
 
 /*Table structure for table `sucursal` */
 
@@ -1079,7 +1077,7 @@ BEGIN
 	WHERE p.id_producto =id AND p.`estado`='A';
 	END IF;
 	IF op=8 THEN
-	SELECT DISTINCT (p.estado1) into valor
+	SELECT DISTINCT (p.estado1) INTO valor
 	FROM `precios` p
 	WHERE p.id_producto =id AND estado='A';
 	END IF;
@@ -1552,31 +1550,6 @@ end if;
 END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `listarJoinProductosFaltantes` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `listarJoinProductosFaltantes` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarJoinProductosFaltantes`(in op int)
-BEGIN
-if op >0 then
-SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre as MARCA,
-p.id_productos,p.nombre,p.descripcion
-FROM productos p
-JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
-join marcas m ON m.id_marcas=p.id_marcas
-where df.estado = 'NO';
-else
-SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre AS MARCA,
-p.id_productos,p.nombre,p.descripcion
-FROM productos p
-JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
-join marcas m ON m.id_marcas=p.id_marcas;
-end if;
-END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `listarLaboratorio` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `listarLaboratorio` */;
@@ -1623,6 +1596,18 @@ BEGIN
     END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `Tipo_Producto` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Tipo_Producto` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Tipo_Producto`()
+BEGIN
+select tipo.id_tipo, tipo.nombre from moduloprueba.tipo where estado = 'A' order by tipo.id_tipo;
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `listarfaltantesEnNota` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `listarfaltantesEnNota` */;
@@ -1642,7 +1627,7 @@ JOIN marcas m ON m.id_marcas=p.id_marcas
 JOIN envase en ON en.id_envase = p.id_envase
 JOIN medidas me ON me.id_medidas = p.id_medidas
 JOIN precios pr ON pr.id_producto = p.id_productos
-WHERE df.estado= 'NO' AND pr.`estado`="A"
+WHERE df.estado= 'OK'AND pr.estado='A' 
 ORDER BY df.id_detalle_faltantes;
 END IF ;
 IF op= 2 THEN
@@ -1656,9 +1641,33 @@ JOIN marcas m ON m.id_marcas=p.id_marcas
 JOIN envase en ON en.id_envase = p.id_envase
 JOIN medidas me ON me.id_medidas = p.id_medidas
 JOIN precios pr ON pr.id_producto = p.id_productos
-WHERE df.estado= 'OK' AND pr.`estado`="A"
 ORDER BY df.id_detalle_faltantes;
 END IF ;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `listarJoinProductosFaltantes` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `listarJoinProductosFaltantes` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarJoinProductosFaltantes`(in op int)
+BEGIN
+if op >0 then
+SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre as MARCA,
+p.id_productos,p.nombre,p.descripcion
+FROM productos p
+JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
+join marcas m ON m.id_marcas=p.id_marcas
+where df.estado = 'NO'AND pr.estado='A';
+else
+SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre AS MARCA,
+p.id_productos,p.nombre,p.descripcion
+FROM productos p
+JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
+join marcas m ON m.id_marcas=p.id_marcas;
+end if;
 END */$$
 DELIMITER ;
 
@@ -1727,35 +1736,20 @@ DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ListarRegistroDeNotas`(in op int)
 BEGIN
 if op=1 then
-select cnp.id_cabecera_nota_pedidos,cnp.numero_nota,cnp.id_proveedor as codigo,p.nombre ,p.representante,cnp.fecha_creacion,cnp.hora,cnp.estado
-from cabecera_nota_pedidos cnp
-join proveedor p on p.id_proveedor = cnp.id_proveedor
-order by cnp.id_cabecera_nota_pedidos;
+SELECT cnp.id_cabecera_nota_pedidos,cnp.id_proveedor ,p.entidad AS proveedor,p.correo,p.id_proveedor_clase,pc.clase
+,p.direccion,p.cedula_ruc,p.representante,p.telefono,cnp.fecha_creacion,cnp.estado,cnp.iva,cnp.descuento,cnp.total
+FROM cabecera_nota_pedidos cnp
+JOIN proveedor p ON p.id_proveedor = cnp.id_proveedor
+JOIN proveedor_clase pc ON pc.id_proclase = p.id_proveedor_clase
+WHERE cnp.estado= "SI";
 end if;
 if op=2 then
-select cnp.id_cabecera_nota_pedidos,cnp.numero_nota,cnp.id_proveedor as codigo,p.nombre ,p.representante,cnp.fecha_creacion,cnp.hora,cnp.estado
-from cabecera_nota_pedidos cnp
-join proveedor p on p.id_proveedor = cnp.id_proveedor
-where estado ='OK';
+SELECT cnp.id_cabecera_nota_pedidos,cnp.id_proveedor ,p.entidad AS proveedor,p.correo,p.id_proveedor_clase,pc.clase
+,p.direccion,p.cedula_ruc,p.representante,p.telefono,cnp.fecha_creacion,cnp.estado,cnp.iva,cnp.descuento,cnp.total
+FROM cabecera_nota_pedidos cnp
+JOIN proveedor p ON p.id_proveedor = cnp.id_proveedor
+JOIN proveedor_clase pc ON pc.id_proclase = p.id_proveedor_clase;
 end if;
-if op=3 then
-select cnp.id_cabecera_nota_pedidos,cnp.numero_nota,cnp.id_proveedor as codigo,p.nombre ,p.representante,cnp.fecha_creacion,cnp.hora,cnp.estado
-from cabecera_nota_pedidos cnp
-join proveedor p on p.id_proveedor = cnp.id_proveedor
-where estado ='NO';
-end if;
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `Tipo_Producto` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `Tipo_Producto` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Tipo_Producto`()
-BEGIN
-select tipo.id_tipo, tipo.nombre from moduloprueba.tipo where estado = 'A' order by tipo.id_tipo;
 END */$$
 DELIMITER ;
 
