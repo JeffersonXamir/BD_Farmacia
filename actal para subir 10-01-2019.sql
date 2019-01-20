@@ -443,7 +443,6 @@ CREATE TABLE `precios` (
   `precio_compra` double(5,2) DEFAULT NULL,
   `precio_venta` double(5,2) DEFAULT NULL,
   `estado` varchar(1) DEFAULT NULL,
-  `estado1` varchar(1) DEFAULT NULL,
   `fecha_registro` datetime DEFAULT NULL,
   `id_usuario` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id_precio`),
@@ -452,7 +451,7 @@ CREATE TABLE `precios` (
 
 /*Data for the table `precios` */
 
-insert  into `precios`(`id_precio`,`id_producto`,`precio_compra`,`precio_venta`,`estado`,`estado1`,`fecha_registro`,`id_usuario`) values (1,22,0.55,0.60,'I','I','0000-00-00 00:00:00',NULL),(2,22,0.70,0.80,'I','I','0000-00-00 00:00:00',NULL),(8,22,0.63,0.90,'I','A','2018-12-20 17:56:59',NULL),(13,22,0.65,0.95,'A','I','2018-12-20 19:24:12',2),(14,22,0.45,0.35,'I','I','2018-12-20 19:24:12',5),(16,22,0.59,0.97,'I','I','2018-12-14 00:57:18',2),(17,22,0.73,0.96,'I','I','2018-12-14 08:28:31',2),(18,30,15.60,32.60,'A','A','2018-12-18 03:27:01',2),(19,22,0.44,0.61,NULL,NULL,NULL,NULL),(20,28,0.63,1.24,'A','A','2019-01-03 02:12:54',2),(21,28,0.89,0.92,'I','I','2018-12-19 00:01:25',2),(22,28,0.96,0.97,'I','I','2018-12-20 00:49:40',2),(23,27,1.56,1.57,'I','I','2019-01-03 17:10:12',2),(24,27,1.42,1.78,'I','I','2019-01-03 17:10:29',2),(25,27,1.62,1.96,'A','A','2019-01-03 17:10:41',2),(26,23,1.92,2.20,'A','A','2018-12-20 01:25:44',2),(27,31,0.65,0.90,'A','A','2019-01-16 03:53:26',2),(28,31,0.90,0.96,'I','A',NULL,NULL),(29,31,0.63,0.79,'I','I','2019-01-03 17:11:01',2),(30,28,0.86,0.98,'I','I',NULL,NULL),(31,24,0.26,0.30,'I','I','2018-12-21 01:03:22',2),(32,24,0.60,0.61,'I','I',NULL,NULL),(33,24,0.56,0.57,'I','I','2018-12-21 01:15:00',2),(34,24,58.60,59.60,'I','I',NULL,NULL),(35,24,0.67,0.97,'A','A',NULL,NULL),(36,28,0.90,0.96,'I','I','2018-12-21 01:39:54',2),(37,31,0.67,0.65,'I','I','2018-12-21 11:55:28',2),(38,31,0.68,0.69,'I','I','2019-01-02 15:23:05',2),(39,32,2.79,2.87,'A','A','2018-12-21 11:10:45',2);
+insert  into `precios`(`id_precio`,`id_producto`,`precio_compra`,`precio_venta`,`estado`,`fecha_registro`,`id_usuario`) values (1,22,0.55,0.60,'I','0000-00-00 00:00:00',NULL),(2,22,0.70,0.80,'I','0000-00-00 00:00:00',NULL),(8,22,0.63,0.90,'I','2018-12-20 17:56:59',NULL),(13,22,0.65,0.95,'A','2018-12-20 19:24:12',2),(14,22,0.45,0.35,'I','2018-12-20 19:24:12',5),(16,22,0.59,0.97,'I','2018-12-14 00:57:18',2),(17,22,0.73,0.96,'I','2018-12-14 08:28:31',2),(18,30,15.60,32.60,'A','2018-12-18 03:27:01',2),(19,22,0.44,0.61,NULL,NULL,NULL),(20,28,0.63,1.24,'A','2019-01-03 02:12:54',2),(21,28,0.89,0.92,'I','2018-12-19 00:01:25',2),(22,28,0.96,0.97,'I','2018-12-20 00:49:40',2),(23,27,1.56,1.57,'I','2019-01-03 17:10:12',2),(24,27,1.42,1.78,'I','2019-01-03 17:10:29',2),(25,27,1.62,1.96,'A','2019-01-03 17:10:41',2),(26,23,1.92,2.20,'A','2018-12-20 01:25:44',2),(27,31,0.65,0.90,'A','2019-01-16 03:53:26',2),(28,31,0.90,0.96,'I',NULL,NULL),(29,31,0.63,0.79,'I','2019-01-03 17:11:01',2),(30,28,0.86,0.98,'I',NULL,NULL),(31,24,0.26,0.30,'I','2018-12-21 01:03:22',2),(32,24,0.60,0.61,'I',NULL,NULL),(33,24,0.56,0.57,'I','2018-12-21 01:15:00',2),(34,24,58.60,59.60,'I',NULL,NULL),(35,24,0.67,0.97,'A',NULL,NULL),(36,28,0.90,0.96,'I','2018-12-21 01:39:54',2),(37,31,0.67,0.65,'I','2018-12-21 11:55:28',2),(38,31,0.68,0.69,'I','2019-01-02 15:23:05',2),(39,32,2.79,2.87,'A','2018-12-21 11:10:45',2);
 
 /*Table structure for table `productos` */
 
@@ -1518,14 +1517,14 @@ DELIMITER ;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarProveedor`(in id_proveedor_clase1 bigint,IN cedula2 varchar(15),
-IN entidad3 varchar(100), IN representante4 varchar(70), IN direccion5 varchar(100),IN fecha6 DATE,in telefono7 varchar(70),in correo8 varchar(70), OUT valor TEXT)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarProveedor`(IN id_proveedor_clase1 BIGINT,IN cedula2 VARCHAR(15),
+IN entidad3 VARCHAR(100), IN representante4 VARCHAR(70), IN direccion5 VARCHAR(100),IN fecha6 DATE,IN telefono7 VARCHAR(70),IN correo8 VARCHAR(70),IN imagen TEXT, OUT valor TEXT)
 BEGIN
 DECLARE cons INT;
 SELECT COUNT(cedula_ruc) INTO cons FROM proveedor WHERE cedula_ruc = cedula2;
 IF(cons = 0 ) THEN
-INSERT INTO proveedor(`id_proveedor_clase`,`cedula_ruc`,`entidad`,`representante`,`direccion`,`fecha_registro`,`estado`,`telefono`,`correo`)VALUES(id_proveedor_clase1,cedula2
-,entidad3,representante4,direccion5,fecha6,'A',telefono7,correo8);
+INSERT INTO proveedor(`id_proveedor_clase`,`cedula_ruc`,`entidad`,`representante`,`direccion`,`fecha_registro`,`estado`,`telefono`,`correo`,`direccionImagen`)VALUES(id_proveedor_clase1,cedula2
+,entidad3,representante4,direccion5,fecha6,'A',telefono7,correo8,imagen);
 SET valor = 'Proveedor guardado con exito';
 ELSE 
 SET valor = NULL;
@@ -1955,14 +1954,14 @@ DELIMITER $$
 BEGIN
 IF (op=1)THEN
 SELECT p.`id_proveedor`,p.`id_proveedor_clase`,pc.`clase`,p.`cedula_ruc`,p.`entidad`,p.`representante`,p.`direccion`,p.`fecha_registro`,p.`estado`,
-p.`telefono`,p.`correo`
+p.`telefono`,p.`correo`,p.`direccionImagen`
 FROM proveedor p 
 JOIN `proveedor_clase` pc ON pc.`id_proclase`=p.`id_proveedor_clase`
 WHERE p.`estado` = 'A';
 END IF;
 IF (op=2)THEN
 SELECT p.`id_proveedor`,p.`id_proveedor_clase`,pc.`clase`,p.`cedula_ruc`,p.`entidad`,p.`representante`,p.`direccion`,p.`fecha_registro`,p.`estado`,
-p.`telefono`,p.`correo`
+p.`telefono`,p.`correo`,p.`direccionImagen`
 FROM proveedor p 
 JOIN `proveedor_clase` pc ON pc.`id_proclase`=p.`id_proveedor_clase`
 WHERE p.`estado` = 'I';
