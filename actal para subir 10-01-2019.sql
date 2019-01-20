@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.5-10.1.34-MariaDB : Database - moduloprueba
+MySQL - 5.5.5-10.1.37-MariaDB : Database - moduloprueba
 *********************************************************************
 */
 
@@ -31,11 +31,7 @@ CREATE TABLE `bitacora_faltantes` (
 
 /*Data for the table `bitacora_faltantes` */
 
-LOCK TABLES `bitacora_faltantes` WRITE;
-
 insert  into `bitacora_faltantes`(`id_bitacora_faltantes`,`id_producto`,`id_usuario`,`fecha_registro`,`cantidad`) values (1,21,NULL,'2018-12-11 23:58:25',15),(2,21,NULL,'2018-12-12 00:12:23',12),(3,22,NULL,'2018-12-13 16:29:18',200),(4,21,NULL,'2018-12-13 16:29:18',100),(5,23,NULL,'2018-12-13 16:29:18',300),(6,24,NULL,'2018-12-13 16:29:18',400),(7,25,NULL,'2018-12-13 16:29:18',500),(8,27,NULL,'2018-12-13 16:29:18',600);
-
-UNLOCK TABLES;
 
 /*Table structure for table `bitacora_precios` */
 
@@ -53,11 +49,7 @@ CREATE TABLE `bitacora_precios` (
 
 /*Data for the table `bitacora_precios` */
 
-LOCK TABLES `bitacora_precios` WRITE;
-
 insert  into `bitacora_precios`(`id_bitacora_precio`,`id_producto`,`precio_compra`,`precio_venta`,`fecha_registro`,`id_usuario`) values (1,30,15.60,32.60,'2018-12-18 03:27:01',2),(2,28,0.63,0.64,'0000-00-00 00:00:00',2),(3,28,0.89,0.92,'0000-00-00 00:00:00',2),(4,28,0.96,0.97,'0000-00-00 00:00:00',2),(5,28,0.89,0.92,'0000-00-00 00:00:00',2),(6,28,0.89,0.92,'0000-00-00 00:00:00',2),(7,28,0.89,0.92,'2018-12-19 23:39:46',2),(8,28,0.63,0.92,'2018-12-19 23:41:55',2),(9,28,0.89,0.92,'2018-12-19 00:01:25',2),(10,28,0.63,1.24,'2018-12-20 00:45:54',2),(11,28,0.96,0.97,'2018-12-20 00:49:40',2),(12,27,1.62,1.96,'2018-12-20 01:22:29',2),(13,23,1.92,2.20,'2018-12-20 01:25:44',2),(14,31,0.65,0.90,'2018-12-20 13:05:03',2),(15,24,0.26,0.30,'2018-12-21 01:03:22',2),(16,24,0.56,0.57,'2018-12-21 01:15:00',2),(17,28,0.90,0.96,'2018-12-21 01:39:54',2),(18,31,0.65,0.65,'2018-12-21 03:13:21',2),(19,32,2.60,2.80,'2018-12-21 11:10:45',2),(20,31,0.67,0.65,'2018-12-21 11:55:28',2),(21,31,0.63,0.79,'2018-12-21 12:27:19',2),(22,31,0.68,0.69,'2019-01-02 15:23:05',2),(23,31,0.65,0.90,'2019-01-02 15:24:23',2),(24,27,1.42,1.78,'2019-01-02 16:01:12',2),(25,27,1.56,1.57,'2019-01-02 16:02:10',2),(26,28,0.63,1.24,'2019-01-03 02:12:54',2),(27,27,1.56,1.57,'2019-01-03 17:10:12',2),(28,27,1.42,1.78,'2019-01-03 17:10:29',2),(29,27,1.62,1.96,'2019-01-03 17:10:41',2),(30,31,0.63,0.79,'2019-01-03 17:11:01',2),(31,31,0.65,0.90,'2019-01-03 17:11:06',2);
-
-UNLOCK TABLES;
 
 /*Table structure for table `cabecera_compra` */
 
@@ -82,11 +74,7 @@ CREATE TABLE `cabecera_compra` (
 
 /*Data for the table `cabecera_compra` */
 
-LOCK TABLES `cabecera_compra` WRITE;
-
 insert  into `cabecera_compra`(`id_cabecera_compra`,`id_proveedor`,`numero_compra`,`fecha_creacion`,`id_sucursal`,`id_tipoPago`,`estado`) values (4,8,1,'2018-12-18 18:19:36',NULL,1,'I'),(5,7,2,'2018-12-11 09:36:02',NULL,1,'I'),(6,8,3,'2018-12-11 09:42:55',NULL,1,'I'),(7,9,4,'2018-12-11 09:46:35',NULL,1,'A'),(8,8,5,'2018-12-11 10:35:55',NULL,1,'A');
-
-UNLOCK TABLES;
 
 /*Table structure for table `cabecera_nota_pedidos` */
 
@@ -111,11 +99,7 @@ CREATE TABLE `cabecera_nota_pedidos` (
 
 /*Data for the table `cabecera_nota_pedidos` */
 
-LOCK TABLES `cabecera_nota_pedidos` WRITE;
-
 insert  into `cabecera_nota_pedidos`(`id_cabecera_nota_pedidos`,`id_proveedor`,`id_usuario`,`fecha_creacion`,`estado`,`plazo`,`forma_pago`,`iva`,`descuento`,`total`) values (3,6,1,'2018-10-10 00:00:00','Ok','24Meses','Credito',0,0,0),(4,5,2,'2018-11-20 00:00:00','NO','12Meses','Credito',0,0,0),(5,8,2,'2019-01-09 01:51:12','SI','Inmediato','Credito',0,0,135),(6,11,2,'2019-09-01 04:40:22','SI','Inmediato','Contado',190.26,0,1775.7599999999998),(7,8,2,'2019-09-01 04:49:54','SI','Inmediato','Contado',5.8968,2.457,52.5798),(8,8,2,'2019-09-01 04:51:21','SI','Inmediato','Contado',197.7768,84.51299999999999,1761.4037999999998),(9,9,2,'2019-09-01 05:17:56','SI','Inmediato','Contado',74.88,31.2,667.68),(10,7,2,'2019-09-01 05:21:01','SI','Inmediato','Contado',68.04,85.05,549.99),(11,10,2,'2019-09-01 05:22:34','SI','Inmediato','Contado',52.74,14.18,478.06),(12,8,2,'2019-09-01 05:24:00','SI','Inmediato','Contado',6.8,2.84,60.67),(13,7,2,'2019-09-01 05:28:04','SI','Inmediato','Contado',286.85,119.52,2557.73),(14,8,2,'2019-09-01 05:29:23','SI','Inmediato','Contado',28.08,11.7,250.38),(15,10,2,'2019-01-14 16:19:45','SI','Inmediato','Contado',0,0,0),(16,10,2,'2019-01-14 16:20:50','SI','Inmediato','Contado',0,4.05,76.95),(17,10,2,'2019-01-14 16:21:48','SI','Inmediato','Contado',0,15.39,138.51),(18,10,2,'2019-01-14 16:23:07','SI','Inmediato','Contado',0,0.33,2.92),(19,5,2,'2019-01-14 17:18:16','SI','Inmediato','Contado',0,7.29,138.51),(20,8,2,'2019-01-14 17:20:00','SI','Inmediato','Contado',0,2.09,39.76),(21,10,2,'2019-01-14 17:21:28','SI','Inmediato','Contado',0,0,53.85),(22,7,2,'2019-01-15 23:16:55','SI','Inmediato','Contado',0,2.34,56.16);
-
-UNLOCK TABLES;
 
 /*Table structure for table `clientes` */
 
@@ -136,11 +120,7 @@ CREATE TABLE `clientes` (
 
 /*Data for the table `clientes` */
 
-LOCK TABLES `clientes` WRITE;
-
 insert  into `clientes`(`id_Clientes`,`Cedula`,`Nombre`,`Apellido`,`Direccion`,`Fecha_reg`,`Estado`,`str_telefono`,`str_correo`) values (1,'0952364855','KELLY','MERCADO','GUAYAQUIL','2018-12-04','I','',''),(2,'0932067010','JOSE FRANCISCO','LOPEZ MACIAS','GUAYAQUIL','2019-01-02','A','0985849256 CONVENCIONAL','gmail'),(3,'0924876015','JUAN','TOMALA','COOP FLORIDA NORET','2018-12-10','A','0999999999 CONVENCIONAL','jeff@gmail.com'),(4,'0924876251','LAURA  MARIA','TOMALA','VALERIO ESTACIO','2018-12-21','A','2154151521356 CONVENCIONAL','jdsb@gmail.com'),(5,'0944037977','ALEX','MARIN','SEDALANA Y LA 10MA','2018-12-10','A','0993387081 CELULAR','am3377944@gmail.com'),(6,'0912232525','FIORELLA','SABANDO','PORTETE ','2018-12-10','I','0991232552 CELULAR','fiosaban2@gmail.com'),(7,'0991251252','JAIRO','SANTA FE','GUAYAQUIL','2018-12-10','A','0994521252 CELULAR ','sua@hotmail.es'),(8,'0931978365','ARISTIDES','BAJAÑA','GUASMO NORTE','2018-12-11','A','0962959794 CELULAR ','wbm.andres@gmail.com');
-
-UNLOCK TABLES;
 
 /*Table structure for table `correo` */
 
@@ -155,11 +135,7 @@ CREATE TABLE `correo` (
 
 /*Data for the table `correo` */
 
-LOCK TABLES `correo` WRITE;
-
 insert  into `correo`(`id_Correo`,`Correo`,`Cedula`) values (1,'marin.hotmail.com',''),(3,'123.gmail',''),(4,'aaa.gmail',''),(5,'gmail','3333333333'),(6,'hotmail','0932067010'),(7,'hotmail','5555555555'),(8,'hhhhh','0932067010'),(9,'gmail','0932067010'),(10,'hotmail.es','5555555555'),(11,'jeff@gmail.com','0924876015'),(12,'jdsb@gmail.com','0924876251'),(13,'am3377944@gmail.com','0944037977'),(14,'fiosaban2@gmail.com','0912232525'),(15,'sua@hotmail.es','0991251252'),(16,'wbm.andres@gmail.com','0931978365');
-
-UNLOCK TABLES;
 
 /*Table structure for table `detalle_compra` */
 
@@ -179,11 +155,7 @@ CREATE TABLE `detalle_compra` (
 
 /*Data for the table `detalle_compra` */
 
-LOCK TABLES `detalle_compra` WRITE;
-
 insert  into `detalle_compra`(`id_detalle_compra`,`id_cabecera_compra`,`cantidad`,`id_producto`) values (1,8,16,25),(2,8,80,22);
-
-UNLOCK TABLES;
 
 /*Table structure for table `detalle_faltantes` */
 
@@ -203,11 +175,7 @@ CREATE TABLE `detalle_faltantes` (
 
 /*Data for the table `detalle_faltantes` */
 
-LOCK TABLES `detalle_faltantes` WRITE;
-
 insert  into `detalle_faltantes`(`id_detalle_faltantes`,`id_producto`,`id_usuario`,`fecha_registro`,`cantidad`,`estado`) values (2,21,NULL,'2018-12-13 16:29:18',100,'OK'),(3,22,NULL,'2018-12-13 16:29:18',200,'OK'),(4,23,NULL,'2018-12-13 16:29:18',300,'OK'),(5,25,NULL,'2018-12-13 16:29:18',500,'OK'),(6,24,NULL,'2018-12-13 16:29:18',400,'OK'),(10,27,NULL,'2018-12-13 16:29:18',600,'OK'),(11,32,NULL,'2019-01-14 00:00:00',10,'OK'),(12,31,2,'2019-01-14 00:00:00',10,'OK');
-
-UNLOCK TABLES;
 
 /*Table structure for table `detalle_nota_pedidos` */
 
@@ -231,11 +199,7 @@ CREATE TABLE `detalle_nota_pedidos` (
 
 /*Data for the table `detalle_nota_pedidos` */
 
-LOCK TABLES `detalle_nota_pedidos` WRITE;
-
 insert  into `detalle_nota_pedidos`(`id_detalle_nota_pedidos`,`id_precio`,`id_cabecera_nota_pedidos`,`cantidad`,`precio`,`descuento`,`iva`,`total`) values (1,26,6,90,0.00,0.00,6.80,63.50),(2,13,7,78,0.00,0.00,5.90,52.58),(3,13,8,78,0.00,0.00,5.90,52.58),(4,26,8,98,0.00,0.00,183.46,1635.82),(5,35,8,45,0.00,0.00,8.42,73.01),(6,13,9,40,0.00,0.00,74.88,667.68),(7,13,10,900,0.00,0.00,68.04,549.99),(8,13,11,450,0.00,0.00,34.02,303.34),(9,26,11,10,0.00,0.00,18.72,174.72),(10,13,12,90,0.00,0.00,6.80,60.67),(11,13,14,150,0.00,0.00,28.08,250.38),(12,13,16,50,0.00,0.00,0.00,76.95),(13,13,17,95,0.00,0.00,0.00,138.51),(14,13,18,5,0.00,0.00,0.00,2.92),(15,13,19,90,0.00,0.00,0.00,138.51),(16,13,20,15,0.00,0.00,0.00,39.76),(17,13,21,10,0.00,0.00,0.00,16.20),(18,26,21,15,0.00,0.00,0.00,9.75),(19,35,21,10,0.00,0.00,0.00,27.90),(20,40,22,90,0.00,0.00,0.00,56.16),(21,13,28,80,0.00,0.00,0.00,147.46),(22,13,29,90,0.00,0.00,0.00,145.80),(23,26,29,90,0.00,0.00,0.00,238.55),(24,13,30,90,0.65,2.92,0.00,55.58),(25,26,30,50,0.65,0.00,0.00,32.50);
-
-UNLOCK TABLES;
 
 /*Table structure for table `envase` */
 
@@ -250,11 +214,7 @@ CREATE TABLE `envase` (
 
 /*Data for the table `envase` */
 
-LOCK TABLES `envase` WRITE;
-
 insert  into `envase`(`id_envase`,`nombre`,`estado`) values (1,'frasco','A'),(2,'caja','A'),(3,'funda','A');
-
-UNLOCK TABLES;
 
 /*Table structure for table `fc_bitacora_autentificacion` */
 
@@ -267,10 +227,6 @@ CREATE TABLE `fc_bitacora_autentificacion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `fc_bitacora_autentificacion` */
-
-LOCK TABLES `fc_bitacora_autentificacion` WRITE;
-
-UNLOCK TABLES;
 
 /*Table structure for table `fc_bitacora_seguridad` */
 
@@ -291,11 +247,7 @@ CREATE TABLE `fc_bitacora_seguridad` (
 
 /*Data for the table `fc_bitacora_seguridad` */
 
-LOCK TABLES `fc_bitacora_seguridad` WRITE;
-
 insert  into `fc_bitacora_seguridad`(`id_bitacora_seguridad`,`user`,`password`,`ip_equipo`,`ip_publico`,`usuario_equipo`,`fecha_login`,`dir_ip_completa`,`Verficacion`) values (1,'yyyyyy','yyyyyyy','127.0.0.1','100000000','carlos-PC','2019-01-11 17:53:03','localhost/127.0.0.1/carlos-PC/127.0.0.1',NULL),(2,'yyyyy','qwertt','127.0.0.1','100000000','carlos-PC','2019-01-11 18:04:04','localhost/127.0.0.1/carlos-PC/127.0.0.1','I'),(3,'ddgbvdgb','gvgvtgvrfc   tbv','127.0.0.1','100000000','carlos-PC','2019-01-11 18:05:49','localhost/127.0.0.1/carlos-PC/127.0.0.1','I'),(4,'erver','sdcef','127.0.0.1','100000000','carlos-PC','2019-01-11 18:07:43','localhost/127.0.0.1/carlos-PC/127.0.0.1','I'),(5,'ece','ercfe','127.0.0.1','100000000','carlos-PC','2019-01-11 18:11:53','localhost/127.0.0.1/carlos-PC/127.0.0.1','I'),(6,'rtbgrt','dfvr','127.0.0.1','100000000','carlos-PC','2019-01-11 18:12:58','localhost/127.0.0.1/carlos-PC/127.0.0.1','I'),(7,'@gmail.com','c123','127.0.0.1','100000000','carlos-PC','2019-01-11 18:13:47','localhost/127.0.0.1/carlos-PC/127.0.0.1','C'),(8,'@gmail.com','c123','127.0.0.1','100000000','carlos-PC','2019-01-11 18:14:53','localhost/127.0.0.1/carlos-PC/127.0.0.1','C'),(9,'fsgfdg','ecer','127.0.0.1','100000000','carlos-PC','2019-01-11 18:15:58','localhost/127.0.0.1/carlos-PC/127.0.0.1','I'),(10,'fffff','ggggg','127.0.0.1','100000000','carlos-PC','2019-01-11 18:18:22','localhost/127.0.0.1/carlos-PC/127.0.0.1','I'),(11,'jzhxkzcxhk','ssdsd','127.0.0.1','100000000','carlos-PC','2019-01-11 18:20:08','localhost/127.0.0.1/carlos-PC/127.0.0.1','I'),(12,'@gmail.com.ec','c123','127.0.0.1','100000000','carlos-PC','2019-01-11 18:20:25','localhost/127.0.0.1/carlos-PC/127.0.0.1','I'),(13,'@gmail.com','c123','127.0.0.1','100000000','carlos-PC','2019-01-11 18:20:39','localhost/127.0.0.1/carlos-PC/127.0.0.1','C'),(14,'holas','1234','127.0.0.1','100000000','carlos-PC','2019-01-11 20:09:51','localhost/127.0.0.1/carlos-PC/127.0.0.1','I'),(15,'@gmail.com','c123','127.0.0.1','100000000','carlos-PC','2019-01-11 20:10:24','localhost/127.0.0.1/carlos-PC/127.0.0.1','C'),(16,'@gmail.com','c123','192.168.100.10','100000000','carlos-PC','2019-01-12 16:03:24','localhost/127.0.0.1/carlos-PC/192.168.100.10','C'),(17,'@gmail.com','c123','192.168.100.10','100000000','carlos-PC','2019-01-12 13:49:56','localhost/127.0.0.1/carlos-PC/192.168.100.10','C'),(18,'jazmiliana','161012','127.0.0.1','100000000','carlos-PC','2019-01-12 22:46:09','localhost/127.0.0.1/carlos-PC/127.0.0.1','I'),(19,'@gmail.com','c123','127.0.0.1','100000000','carlos-PC','2019-01-12 22:46:33','localhost/127.0.0.1/carlos-PC/127.0.0.1','C'),(20,'@gmail.com','123','127.0.0.1','100000000','carlos-PC','2019-01-14 18:54:56','localhost/127.0.0.1/carlos-PC/127.0.0.1','I'),(21,'@gmail.com','12345','127.0.0.1','100000000','carlos-PC','2019-01-14 18:55:07','localhost/127.0.0.1/carlos-PC/127.0.0.1','I'),(22,'@gmail.com','12345','10.227.223.160','100000000','carlos-PC','2019-01-14 19:38:06','localhost/127.0.0.1/carlos-PC/10.227.223.160','I'),(23,'ana cargosa','12345','10.227.223.160','100000000','carlos-PC','2019-01-14 19:39:46','localhost/127.0.0.1/carlos-PC/10.227.223.160','I');
-
-UNLOCK TABLES;
 
 /*Table structure for table `fc_localidad_guayas` */
 
@@ -309,11 +261,7 @@ CREATE TABLE `fc_localidad_guayas` (
 
 /*Data for the table `fc_localidad_guayas` */
 
-LOCK TABLES `fc_localidad_guayas` WRITE;
-
 insert  into `fc_localidad_guayas`(`id_localidad_guayas`,`localidad`) values (1,'Guayaquil'),(2,'Duran'),(3,'Samborondon'),(4,'Balzar'),(5,'El Empalme'),(6,'Alfredo Baquerizo Moreno'),(7,'Balao'),(8,'Colimes'),(9,'El Triunfo'),(10,'Daule\r\n'),(11,'General Antonio Elizalde\r\n'),(12,'Isidro Ayora'),(13,'Lomas de Sargentillo'),(14,'Marcelino Maridueña'),(15,'Milagro'),(16,'Naranjal'),(17,'Naranjito'),(18,'Nobol'),(19,'Palestina'),(20,'Pedro Carbo'),(21,'Playas'),(22,'Salitre'),(23,'Santa Lucía'),(24,'Simón Bolívar'),(25,'Yaguachi');
-
-UNLOCK TABLES;
 
 /*Table structure for table `fc_punto_venta` */
 
@@ -334,11 +282,7 @@ CREATE TABLE `fc_punto_venta` (
 
 /*Data for the table `fc_punto_venta` */
 
-LOCK TABLES `fc_punto_venta` WRITE;
-
 insert  into `fc_punto_venta`(`id_punto_venta`,`id_localidad_guayas`,`nombre`,`direccion`,`ip_publica`,`observacion`,`estado`) values (1,1,NULL,' Vergeles','100000','observacion1','A'),(2,1,'Carlos.in','bastion','localhost/127.0.0.1/carlos-PC/127.0.0.1','','A'),(3,3,'abcd','puntilla','localhost/127.0.0.1/carlos-PC/127.0.0.1','','A'),(4,NULL,'hghchc','jfcctrc','localhost/127.0.0.1/carlos-PC/127.0.0.1','','A'),(5,8,'yugubh','hhgvjhbj','localhost/127.0.0.1/carlos-PC/127.0.0.1','','A'),(6,6,'trddvv','dxvtreyvt','localhost/127.0.0.1/carlos-PC/127.0.0.1','','A'),(7,6,'fzszfszf','zsfzf','localhost/127.0.0.1/carlos-PC/127.0.0.1','','A'),(8,18,'farmacia abc','nobol','localhost/127.0.0.1/carlos-PC/10.227.223.160','','A'),(9,4,'farmacia prueba','balzar','localhost/127.0.0.1/carlos-PC/127.0.0.1','','A'),(10,6,'local Muñoz','coop.florida norte','localhost/127.0.0.1/carlos-PC/127.0.0.1','','A'),(11,4,'loca perra','coop. los pinos','localhost/127.0.0.1/carlos-PC/127.0.0.1','','A'),(12,8,'farmacia','colimes','localhost/127.0.0.1/carlos-PC/192.168.100.6','','A');
-
-UNLOCK TABLES;
 
 /*Table structure for table `fc_rol` */
 
@@ -354,11 +298,7 @@ CREATE TABLE `fc_rol` (
 
 /*Data for the table `fc_rol` */
 
-LOCK TABLES `fc_rol` WRITE;
-
 insert  into `fc_rol`(`id_rol`,`nombre`,`descripcion`,`estado`) values (0,'Supervisor','Administra local farmaceutico',''),(1,'Administrador','Tiene el control de todo el sistema','A'),(2,'Vendedor','Maneja el area de vantas del sistema','A');
-
-UNLOCK TABLES;
 
 /*Table structure for table `fc_session` */
 
@@ -378,11 +318,7 @@ CREATE TABLE `fc_session` (
 
 /*Data for the table `fc_session` */
 
-LOCK TABLES `fc_session` WRITE;
-
 insert  into `fc_session`(`id_session`,`id_usuario`,`ip_equipo`,`ip_publico`,`usuario_equipo`,`fecha_login`) values (1,1,'1000000','1111111','2222222','2018-12-20 16:20:20'),(2,1,'127.0.0.1','100000','admin1-All-Series','2019-01-03 18:01:17'),(3,1,'127.0.0.1','100000','admin1-All-Series','2019-01-03 18:03:55'),(4,1,'127.0.0.1','100000','admin1-All-Series','2019-01-03 18:05:45'),(5,1,'127.0.0.1','100000','admin1-All-Series','2019-01-03 18:07:25'),(6,1,'127.0.0.1','100000','admin1-All-Series','2019-01-03 18:09:33'),(7,1,'127.0.0.1','100000','admin1-All-Series','2019-01-03 18:12:40'),(8,3,'127.0.0.1','100000','admin1-All-Series','2019-01-09 16:48:16'),(9,3,'127.0.0.1','100000','carlos-PC','2019-01-10 16:29:01'),(10,3,'127.0.0.1','100000','carlos-PC','2019-01-10 16:32:34'),(11,3,'127.0.0.1','100000','carlos-PC','2019-01-10 16:56:03'),(12,3,'127.0.0.1','100000','carlos-PC','2019-01-11 18:13:46'),(13,3,'127.0.0.1','100000','carlos-PC','2019-01-11 18:14:52'),(14,3,'127.0.0.1','100000','carlos-PC','2019-01-11 18:20:38'),(15,3,'127.0.0.1','100000','carlos-PC','2019-01-11 20:10:24'),(16,3,'192.168.100.10','100000','carlos-PC','2019-01-12 16:03:24'),(17,3,'192.168.100.10','100000','carlos-PC','2019-01-12 13:49:56'),(18,3,'127.0.0.1','100000','carlos-PC','2019-01-12 22:46:33');
-
-UNLOCK TABLES;
 
 /*Table structure for table `fc_usuario` */
 
@@ -414,11 +350,7 @@ CREATE TABLE `fc_usuario` (
 
 /*Data for the table `fc_usuario` */
 
-LOCK TABLES `fc_usuario` WRITE;
-
 insert  into `fc_usuario`(`id_usuario`,`id_rol`,`cedula`,`nombre`,`apellido`,`telefono`,`correo`,`password`,`ruta_imagen`,`fecha_registro`,`id_usuario_registro`,`estado`,`ip_equipo`,`ip_publica`,`usuario_equipo`,`dir_ip_completa`) values (1,1,'0987654321','Andres','Bajaña','0912345678','wbm.andres@gmail.com','todobien','','2018-12-01',1,'A','9271414','102820726262','hola','23457676236.3435'),(2,2,'0987654421','Angel','maquilon','091624421','@hotmail.com','123','gggg','2019-01-09',1,'A','2323','1111','121112','211212'),(3,1,'0535435403','carlos','cordova','0912345678','@gmail.com','c123','jkjkjb','2019-01-09',1,'A','2136435','24725','25742','52425'),(4,2,'0982625111','Ernesto','Perez','0917251122','ffff@hotmail.com','perez1223','escritorioperezernesto.jpg','2019-01-11',1,'A','1000000000','200000000','PC perez','100000000 Pc perez 20000000');
-
-UNLOCK TABLES;
 
 /*Table structure for table `fc_usuario_punto_venta` */
 
@@ -436,10 +368,6 @@ CREATE TABLE `fc_usuario_punto_venta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `fc_usuario_punto_venta` */
-
-LOCK TABLES `fc_usuario_punto_venta` WRITE;
-
-UNLOCK TABLES;
 
 /*Table structure for table `laboratorio` */
 
@@ -459,11 +387,7 @@ CREATE TABLE `laboratorio` (
 
 /*Data for the table `laboratorio` */
 
-LOCK TABLES `laboratorio` WRITE;
-
 insert  into `laboratorio`(`id_Laboratorio`,`RUC`,`Nombre`,`Direccion`,`Telefono`,`Fecha`,`Imagen`,`Correo`) values (2,'5555555555555','KTGTT','ELLY','77777','2018-07-05','//home//ineval//Escritorio//P-FARMACIA UBUNTU//sin-imagen.png','kelly@gmai.con'),(3,'06660060000','ALEDUD','SDSSFFF','8888','2018-11-05','//home//ineval//Escritorio//P-FARMACIA UBUNTU//sin-imagen.png','aaa@gmail.com'),(4,'0000000000000','ALEX','GUAYAQUIL','0993387089','2018-11-13','//home//ineval//Escritorio//P-FARMACIA UBUNTU//sin-imagen.png','alex@gmail.com'),(5,'555554888888','HHH','RRRF','313215','2018-12-12','com.farmacia.icono/sinimagen1.jpeg','jjjj.@hotmail.coim');
-
-UNLOCK TABLES;
 
 /*Table structure for table `marcas` */
 
@@ -478,11 +402,7 @@ CREATE TABLE `marcas` (
 
 /*Data for the table `marcas` */
 
-LOCK TABLES `marcas` WRITE;
-
 insert  into `marcas`(`id_marcas`,`nombre`,`estado`) values (1,'bayer','A'),(2,'pelikan','A');
-
-UNLOCK TABLES;
 
 /*Table structure for table `medidas` */
 
@@ -497,11 +417,7 @@ CREATE TABLE `medidas` (
 
 /*Data for the table `medidas` */
 
-LOCK TABLES `medidas` WRITE;
-
 insert  into `medidas`(`id_medidas`,`nombre_medida`,`estado`) values (1,'ml','A'),(2,'lt','A'),(3,'mml','A'),(4,'unidades','A'),(5,'tabletas','A'),(6,'GR','A'),(7,'PRUEBA1','A'),(8,'PRUEBA2','A'),(9,'PRUEBA3','A'),(10,'PRUEBA4','A'),(11,'PRUEBA5','A');
-
-UNLOCK TABLES;
 
 /*Table structure for table `pagos` */
 
@@ -515,11 +431,7 @@ CREATE TABLE `pagos` (
 
 /*Data for the table `pagos` */
 
-LOCK TABLES `pagos` WRITE;
-
 insert  into `pagos`(`id_pagos`,`nombre`) values (1,'CONTADO'),(2,'CREDITO');
-
-UNLOCK TABLES;
 
 /*Table structure for table `precios` */
 
@@ -540,11 +452,7 @@ CREATE TABLE `precios` (
 
 /*Data for the table `precios` */
 
-LOCK TABLES `precios` WRITE;
-
 insert  into `precios`(`id_precio`,`id_producto`,`precio_compra`,`precio_venta`,`estado`,`estado1`,`fecha_registro`,`id_usuario`) values (1,22,0.55,0.60,'I','I','0000-00-00 00:00:00',NULL),(2,22,0.70,0.80,'I','I','0000-00-00 00:00:00',NULL),(8,22,0.63,0.90,'I','A','2018-12-20 17:56:59',NULL),(13,22,0.65,0.95,'A','I','2018-12-20 19:24:12',2),(14,22,0.45,0.35,'I','I','2018-12-20 19:24:12',5),(16,22,0.59,0.97,'I','I','2018-12-14 00:57:18',2),(17,22,0.73,0.96,'I','I','2018-12-14 08:28:31',2),(18,30,15.60,32.60,'A','A','2018-12-18 03:27:01',2),(19,22,0.44,0.61,NULL,NULL,NULL,NULL),(20,28,0.63,1.24,'A','A','2019-01-03 02:12:54',2),(21,28,0.89,0.92,'I','I','2018-12-19 00:01:25',2),(22,28,0.96,0.97,'I','I','2018-12-20 00:49:40',2),(23,27,1.56,1.57,'I','I','2019-01-03 17:10:12',2),(24,27,1.42,1.78,'I','I','2019-01-03 17:10:29',2),(25,27,1.62,1.96,'A','A','2019-01-03 17:10:41',2),(26,23,1.92,2.20,'A','A','2018-12-20 01:25:44',2),(27,31,0.65,0.90,'A','A','2019-01-16 03:53:26',2),(28,31,0.90,0.96,'I','A',NULL,NULL),(29,31,0.63,0.79,'I','I','2019-01-03 17:11:01',2),(30,28,0.86,0.98,'I','I',NULL,NULL),(31,24,0.26,0.30,'I','I','2018-12-21 01:03:22',2),(32,24,0.60,0.61,'I','I',NULL,NULL),(33,24,0.56,0.57,'I','I','2018-12-21 01:15:00',2),(34,24,58.60,59.60,'I','I',NULL,NULL),(35,24,0.67,0.97,'A','A',NULL,NULL),(36,28,0.90,0.96,'I','I','2018-12-21 01:39:54',2),(37,31,0.67,0.65,'I','I','2018-12-21 11:55:28',2),(38,31,0.68,0.69,'I','I','2019-01-02 15:23:05',2),(39,32,2.79,2.87,'A','A','2018-12-21 11:10:45',2);
-
-UNLOCK TABLES;
 
 /*Table structure for table `productos` */
 
@@ -577,11 +485,7 @@ CREATE TABLE `productos` (
 
 /*Data for the table `productos` */
 
-LOCK TABLES `productos` WRITE;
-
 insert  into `productos`(`id_productos`,`nombre`,`descripcion`,`fecha_registro`,`peso`,`id_tipo`,`id_medidas`,`id_envase`,`id_marcas`,`estado`,`id_usuario`,`iva`,`cantidad_minima`) values (21,'ASPIRINA','dolores de cabeza','2018-11-16',15.50,5,4,2,1,'A',1,'NO',15),(22,'AMOXICILINA','INFECCION','2018-11-16',10.20,5,5,2,2,'A',2,'NO',24),(23,'MEBOCAINA','MEBOCAINA','2018-11-21',1.26,6,1,1,1,'A',3,'NO',14),(24,'IBUPROFENO ','DOLORES DE CABEZA,ESTOMAGO,FIEBRE','2018-11-22',0.50,11,5,2,1,'A',7,'NO',7),(25,'LEMONFLU2','RESFRIADOS ','2018-11-30',10.00,7,5,2,1,'A',2,'NO',29),(27,'tucol','jarabe para la toz','2018-12-12',15.60,2,3,1,1,'A',3,'NO',14),(28,'GAMALATE','CONCENTRACION','2018-12-13',2.60,7,1,2,1,'A',2,'NO',15),(29,'ZALEPLA','RELAJACION','2018-12-13',2.60,11,1,1,1,'I',3,'NO',14),(30,'AFRIN','PARA DESCONGESTIONAR LA NARIZ','2018-12-18',2.36,7,3,1,1,'A',5,'NO',19),(31,'VITAMINA C','VITAMINAS','2018-12-20',0.63,5,2,3,1,'A',2,'NO',15),(32,'OMEPRASOL','INFECCIONES','2018-12-21',2.30,5,6,2,2,'A',2,'NO',45);
-
-UNLOCK TABLES;
 
 /*Table structure for table `proveedor` */
 
@@ -598,6 +502,7 @@ CREATE TABLE `proveedor` (
   `estado` varchar(1) NOT NULL,
   `telefono` varchar(70) NOT NULL,
   `correo` varchar(70) NOT NULL,
+  `direccionImagen` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_proveedor`),
   KEY `fk_1` (`id_proveedor_clase`),
   CONSTRAINT `fk_clase_proveedor` FOREIGN KEY (`id_proveedor_clase`) REFERENCES `proveedor_clase` (`id_proclase`)
@@ -605,11 +510,7 @@ CREATE TABLE `proveedor` (
 
 /*Data for the table `proveedor` */
 
-LOCK TABLES `proveedor` WRITE;
-
-insert  into `proveedor`(`id_proveedor`,`id_proveedor_clase`,`cedula_ruc`,`entidad`,`representante`,`direccion`,`fecha_registro`,`estado`,`telefono`,`correo`) values (5,2,'0924878605616','inkatonsa','URSULA','coop.el tunel','2018-11-14','A','0981839603 INSTITUCIONAL','jefferson@gmail.ocm INSTITUCIONAL'),(6,1,'092458566522','NESTLE SA..','ABIGAIL TORRES','COOP.EL CONDOR','2018-12-19','A','0953926261 INSTITUCIONAL','ambar@gmail.com INSTITUCIONAL'),(7,2,'1300696364','cocalola','KARE PAGE ','coop.el mirador','2018-12-05','A','2260392 INSTITUCIONAL','elaine@gmail.com INSTITUCIONAL'),(8,1,'0924876014','URSULA.','COLOMBIA','COOP.FLORIDA NORTE','2018-12-05','A','0986334186 PERSONAL','ursula@gmail.com PERSONAL'),(9,1,'1524896522','JULIO','MATT','ENTRADA DE LA 8','2018-12-06','I','4554165165158 INSTITUCIONAL','cknc PERSONAL'),(10,1,'1515151516','CATOLICA','AMBATO','PORTIIKX','2018-12-06','A','',''),(11,1,'0925487562','PROVEMARX','EDWAR','COOP.PUEBLO LINDO','2018-12-06','I','0924876262 PERSONAL','jose@gmail.com PERSONAL'),(12,1,'0924656151514','MUEBLESPALITO','JOSE TERAN ','COOP BRISAS DEL MAR','2018-12-06','I','1221513255 INSTITUCIONAL','0112sds@gmail.com INSTITUCIONAL'),(13,2,'09123456567','COCA COLA','FOGGY ','Floresta 1','2019-01-14','A','132654687489PERSONAL','MAT@gmail.com PERSONAL');
-
-UNLOCK TABLES;
+insert  into `proveedor`(`id_proveedor`,`id_proveedor_clase`,`cedula_ruc`,`entidad`,`representante`,`direccion`,`fecha_registro`,`estado`,`telefono`,`correo`,`direccionImagen`) values (5,2,'0924878605616','inkatonsa','URSULA','coop.el tunel','2018-11-14','A','0981839603 INSTITUCIONAL','jefferson@gmail.ocm INSTITUCIONAL',NULL),(6,1,'092458566522','NESTLE SA..','ABIGAIL TORRES','COOP.EL CONDOR','2018-12-19','A','0953926261 INSTITUCIONAL','ambar@gmail.com INSTITUCIONAL',NULL),(7,2,'1300696364','cocalola','KARE PAGE ','coop.el mirador','2018-12-05','A','2260392 INSTITUCIONAL','elaine@gmail.com INSTITUCIONAL',NULL),(8,1,'0924876014','URSULA.','COLOMBIA','COOP.FLORIDA NORTE','2018-12-05','A','0986334186 PERSONAL','ursula@gmail.com PERSONAL',NULL),(9,1,'1524896522','JULIO','MATT','ENTRADA DE LA 8','2018-12-06','I','4554165165158 INSTITUCIONAL','cknc PERSONAL',NULL),(10,1,'1515151516','CATOLICA','AMBATO','PORTIIKX','2018-12-06','A','','',NULL),(11,1,'0925487562','PROVEMARX','EDWAR','COOP.PUEBLO LINDO','2018-12-06','I','0924876262 PERSONAL','jose@gmail.com PERSONAL',NULL),(12,1,'0924656151514','MUEBLESPALITO','JOSE TERAN ','COOP BRISAS DEL MAR','2018-12-06','I','1221513255 INSTITUCIONAL','0112sds@gmail.com INSTITUCIONAL',NULL),(13,2,'09123456567','COCA COLA','FOGGY ','Floresta 1','2019-01-14','A','132654687489PERSONAL','MAT@gmail.com PERSONAL',NULL);
 
 /*Table structure for table `proveedor_clase` */
 
@@ -623,11 +524,7 @@ CREATE TABLE `proveedor_clase` (
 
 /*Data for the table `proveedor_clase` */
 
-LOCK TABLES `proveedor_clase` WRITE;
-
 insert  into `proveedor_clase`(`id_proclase`,`clase`) values (1,'laboratorio'),(2,'distribuidor');
-
-UNLOCK TABLES;
 
 /*Table structure for table `proveedor_mail` */
 
@@ -645,11 +542,7 @@ CREATE TABLE `proveedor_mail` (
 
 /*Data for the table `proveedor_mail` */
 
-LOCK TABLES `proveedor_mail` WRITE;
-
 insert  into `proveedor_mail`(`id_promail`,`id_tipo_correo`,`mail`,`cedula_ruc`) values (1,1,'jefferson@gmail.ocm','0924878605616'),(2,1,'ambar@gmail.com','092458566522'),(3,1,'elaine@gmail.com','1300696364'),(5,2,'cknc','1524896522'),(6,1,'ambar@gmil','1524896522'),(7,1,'0112sds@gmail.com','0924656151514'),(8,1,'JEFSS@GAMIL.COM','0925487562'),(9,2,'jose@gmail.com','0925487562'),(10,2,'ursula@gmail.com','0924876014');
-
-UNLOCK TABLES;
 
 /*Table structure for table `proveedor_telefono` */
 
@@ -667,11 +560,7 @@ CREATE TABLE `proveedor_telefono` (
 
 /*Data for the table `proveedor_telefono` */
 
-LOCK TABLES `proveedor_telefono` WRITE;
-
 insert  into `proveedor_telefono`(`id_protelefono`,`id_tipo_telefono`,`telefono`,`cedula_ruc`) values (1,1,'0981839603','0924878605616'),(2,1,'0953926261','092458566522'),(3,1,'2260392','1300696364'),(10,2,'0924876262','0925487562'),(11,2,'0256522655','0924656151514'),(12,1,'1221513255','0924656151514'),(13,2,'5615224522152','0925487562'),(14,1,'4554165165158','1524896522'),(15,2,'0986334186','0924876014');
-
-UNLOCK TABLES;
 
 /*Table structure for table `stock` */
 
@@ -685,10 +574,6 @@ CREATE TABLE `stock` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `stock` */
-
-LOCK TABLES `stock` WRITE;
-
-UNLOCK TABLES;
 
 /*Table structure for table `sucursal` */
 
@@ -707,10 +592,6 @@ CREATE TABLE `sucursal` (
 
 /*Data for the table `sucursal` */
 
-LOCK TABLES `sucursal` WRITE;
-
-UNLOCK TABLES;
-
 /*Table structure for table `telefono` */
 
 DROP TABLE IF EXISTS `telefono`;
@@ -725,11 +606,7 @@ CREATE TABLE `telefono` (
 
 /*Data for the table `telefono` */
 
-LOCK TABLES `telefono` WRITE;
-
 insert  into `telefono`(`id_Telefono`,`id_Tipo_Telefono`,`Numero`,`Cedula`) values (1,1,'0997854655','4444444444'),(2,1,'5555555555555','4444444444'),(3,1,'4444444444444','4444444444'),(4,1,'5555555555555','3333333333'),(5,1,'0997857654','0932067010'),(6,1,'5555555555','5555555555'),(7,1,'0000000000','0932067010'),(8,1,'0985849256','0932067010'),(9,1,'0999999999','0924876015'),(10,1,'2154151521356','0924876251'),(11,2,'0993387081','0944037977'),(12,2,'0991232552','0912232525'),(13,2,'0994521252','0991251252'),(14,2,'0962959794','0931978365');
-
-UNLOCK TABLES;
 
 /*Table structure for table `tipo` */
 
@@ -745,11 +622,7 @@ CREATE TABLE `tipo` (
 
 /*Data for the table `tipo` */
 
-LOCK TABLES `tipo` WRITE;
-
 insert  into `tipo`(`id_tipo`,`nombre`,`estado`) values (2,'jarabe para la toz','A'),(4,'pastilla para dolores de cabez','A'),(5,'Antibiótico','A'),(6,'analgesico','A'),(7,'Antialérgicos','A'),(8,'AntiInflamatorios ','A'),(9,'PELOTAS','A'),(10,'VIVERES','A'),(11,'ANTIPIRÉTICOS','A');
-
-UNLOCK TABLES;
 
 /*Table structure for table `tipo_correo` */
 
@@ -763,11 +636,7 @@ CREATE TABLE `tipo_correo` (
 
 /*Data for the table `tipo_correo` */
 
-LOCK TABLES `tipo_correo` WRITE;
-
 insert  into `tipo_correo`(`id_tipo_correo`,`nombre`) values (1,'INTITUCIONAL'),(2,'PERSONAL'),(3,'OTRO');
-
-UNLOCK TABLES;
 
 /*Table structure for table `tipo_telefono` */
 
@@ -781,11 +650,7 @@ CREATE TABLE `tipo_telefono` (
 
 /*Data for the table `tipo_telefono` */
 
-LOCK TABLES `tipo_telefono` WRITE;
-
 insert  into `tipo_telefono`(`id_tipo_telefono`,`nombre`) values (1,'INSTITUCIONAL'),(2,'PERSONAL'),(3,'OTRO');
-
-UNLOCK TABLES;
 
 /*Table structure for table `tipo_telefono_cliente` */
 
@@ -799,11 +664,7 @@ CREATE TABLE `tipo_telefono_cliente` (
 
 /*Data for the table `tipo_telefono_cliente` */
 
-LOCK TABLES `tipo_telefono_cliente` WRITE;
-
 insert  into `tipo_telefono_cliente`(`id_Tipo_Telefono`,`Tipo`) values (1,'Convencional'),(2,'Celular'),(3,'Trabajo');
-
-UNLOCK TABLES;
 
 /* Function  structure for function  `EncontrarID` */
 
@@ -1401,6 +1262,57 @@ BEGIN
     END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `ingresarProducto` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `ingresarProducto` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ingresarProducto`(IN nombre1 VARCHAR(45),IN descripcion1 VARCHAR(80),IN fecha_registro1 DATE,IN peso1 DOUBLE(7,2),IN id_tipo1 BIGINT(20),
+	IN id_medidas1 BIGINT(20),IN id_envase1 BIGINT(20),IN id_marcas1 BIGINT(20),IN id_usuario1 BIGINT,IN iva1 VARCHAR(2),IN cantidad_minima1 BIGINT, OUT valor1 TEXT)
+BEGIN
+	DECLARE nr INT;
+	DECLARE id_pro INT;
+	IF (nombre1='' OR descripcion1=''OR fecha_registro1='' OR peso1='' OR id_tipo1='' OR id_medidas1='' OR id_envase1='' OR id_marcas1='') THEN
+	SET valor1 ='campos invalidos';
+	ELSE
+	INSERT INTO `productos` (`nombre`,`descripcion`,`fecha_registro`,`peso`,`id_tipo`,
+	`id_medidas`,`id_envase`,`id_marcas`,`estado`,`id_usuario`,`iva`,`cantidad_minima`)
+	VALUES(nombre1,descripcion1,fecha_registro1,peso1,id_tipo1,id_medidas1,id_envase1,id_marcas1,'A',id_usuario1,iva1,cantidad_minima1);
+	SET id_pro = (SELECT EncontrarID (nombre1,id_marcas1,id_medidas1,id_tipo1));
+	INSERT INTO `detalle_faltantes`(`id_producto`,`fecha_registro`,`cantidad`,`estado`) VALUES (id_pro,fecha_registro1,0,'NO');
+	SET valor1 ='exito';
+	END IF;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `ingresoDePrecios` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `ingresoDePrecios` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ingresoDePrecios`(IN op BIGINT, id_producto1 BIGINT,IN precio_compra2 DOUBLE(5,2),IN precio_venta3 DOUBLE(5,2),
+    IN fecha_registro6 TEXT,IN id_usuario7 BIGINT,OUT valor1 TEXT)
+BEGIN
+	DECLARE id_pre INT;
+	IF (op=1)THEN
+	UPDATE `precios` SET `estado`='A',`fecha_registro`=fecha_registro6,`id_usuario`=id_usuario7
+	WHERE `id_producto`= id_producto1 AND `precio_compra`=precio_compra2 AND `precio_venta`=precio_venta3;
+                
+        SET id_pre =(SELECT `id_precio` FROM `precios` WHERE `precio_compra`=precio_compra2 AND `precio_venta`=precio_venta3 AND 
+        `fecha_registro`= fecha_registro6);
+        
+        -- UPDATE `precios` SET `estado`='I' WHERE `id_producto`= id_producto1 AND`id_precio` < id_pre;   
+        UPDATE `precios` SET estado='I' WHERE `id_precio` NOT IN (id_pre) AND `id_producto`=id_producto1;
+        SET valor1='precio ingresado';
+        
+        INSERT INTO `bitacora_precios`(`id_producto`,`precio_compra`,`precio_venta`,`fecha_registro`,`id_usuario`)
+        VALUES(id_producto1,precio_compra2,precio_venta3,fecha_registro6,id_usuario7);
+        END IF;
+    END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `iniciar_sesion` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `iniciar_sesion` */;
@@ -1457,57 +1369,6 @@ BEGIN
 	SET valor =(SELECT `id_cabecera_nota_pedidos` FROM `cabecera_nota_pedidos` WHERE `id_proveedor`=id_proveedor1 AND `id_usuario`=id_usuario2 AND
 	`fecha_creacion`=fecha_creacion3 AND `estado`='SI' AND `plazo`= plazo5 AND `forma_pago`=forma_pago6 AND `iva`=iva7 AND 
 	`descuento`=descuento8 AND `total`= total9);
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `ingresarProducto` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `ingresarProducto` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ingresarProducto`(IN nombre1 VARCHAR(45),IN descripcion1 VARCHAR(80),IN fecha_registro1 DATE,IN peso1 DOUBLE(7,2),IN id_tipo1 BIGINT(20),
-	IN id_medidas1 BIGINT(20),IN id_envase1 BIGINT(20),IN id_marcas1 BIGINT(20),IN id_usuario1 BIGINT,IN iva1 VARCHAR(2),IN cantidad_minima1 BIGINT, OUT valor1 TEXT)
-BEGIN
-	DECLARE nr INT;
-	DECLARE id_pro INT;
-	IF (nombre1='' OR descripcion1=''OR fecha_registro1='' OR peso1='' OR id_tipo1='' OR id_medidas1='' OR id_envase1='' OR id_marcas1='') THEN
-	SET valor1 ='campos invalidos';
-	ELSE
-	INSERT INTO `productos` (`nombre`,`descripcion`,`fecha_registro`,`peso`,`id_tipo`,
-	`id_medidas`,`id_envase`,`id_marcas`,`estado`,`id_usuario`,`iva`,`cantidad_minima`)
-	VALUES(nombre1,descripcion1,fecha_registro1,peso1,id_tipo1,id_medidas1,id_envase1,id_marcas1,'A',id_usuario1,iva1,cantidad_minima1);
-	SET id_pro = (SELECT EncontrarID (nombre1,id_marcas1,id_medidas1,id_tipo1));
-	INSERT INTO `detalle_faltantes`(`id_producto`,`fecha_registro`,`cantidad`,`estado`) VALUES (id_pro,fecha_registro1,0,'NO');
-	SET valor1 ='exito';
-	END IF;
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `ingresoDePrecios` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `ingresoDePrecios` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ingresoDePrecios`(IN op BIGINT, id_producto1 BIGINT,IN precio_compra2 DOUBLE(5,2),IN precio_venta3 DOUBLE(5,2),
-    IN fecha_registro6 TEXT,IN id_usuario7 BIGINT,OUT valor1 TEXT)
-BEGIN
-	DECLARE id_pre INT;
-	IF (op=1)THEN
-	UPDATE `precios` SET `estado`='A',`fecha_registro`=fecha_registro6,`id_usuario`=id_usuario7
-	WHERE `id_producto`= id_producto1 AND `precio_compra`=precio_compra2 AND `precio_venta`=precio_venta3;
-                
-        SET id_pre =(SELECT `id_precio` FROM `precios` WHERE `precio_compra`=precio_compra2 AND `precio_venta`=precio_venta3 AND 
-        `fecha_registro`= fecha_registro6);
-        
-        -- UPDATE `precios` SET `estado`='I' WHERE `id_producto`= id_producto1 AND`id_precio` < id_pre;   
-        UPDATE `precios` SET estado='I' WHERE `id_precio` NOT IN (id_pre) AND `id_producto`=id_producto1;
-        SET valor1='precio ingresado';
-        
-        INSERT INTO `bitacora_precios`(`id_producto`,`precio_compra`,`precio_venta`,`fecha_registro`,`id_usuario`)
-        VALUES(id_producto1,precio_compra2,precio_venta3,fecha_registro6,id_usuario7);
-        END IF;
     END */$$
 DELIMITER ;
 
@@ -1866,6 +1727,31 @@ select * from Correo where Cedula = cedula1;
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `listarJoinProductos` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `listarJoinProductos` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarJoinProductos`(in op int)
+BEGIN
+if op >0 then
+SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre as MARCA,
+p.id_productos,p.nombre,p.descripcion
+FROM productos p
+JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
+join marcas m ON m.id_marcas=p.id_marcas
+where df.estado = 'NO';
+else
+SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre AS MARCA,
+p.id_productos,p.nombre,p.descripcion
+FROM productos p
+JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
+join marcas m ON m.id_marcas=p.id_marcas;
+end if;
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `listarFaltantes` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `listarFaltantes` */;
@@ -1933,13 +1819,13 @@ END IF ;
 END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `listarJoinProductos` */
+/* Procedure structure for procedure `listarJoinProductosFaltantes` */
 
-/*!50003 DROP PROCEDURE IF EXISTS  `listarJoinProductos` */;
+/*!50003 DROP PROCEDURE IF EXISTS  `listarJoinProductosFaltantes` */;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarJoinProductos`(in op int)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarJoinProductosFaltantes`(in op int)
 BEGIN
 if op >0 then
 SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre as MARCA,
@@ -1947,7 +1833,7 @@ p.id_productos,p.nombre,p.descripcion
 FROM productos p
 JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
 join marcas m ON m.id_marcas=p.id_marcas
-where df.estado = 'NO';
+where df.estado = 'NO'AND pr.estado='A';
 else
 SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre AS MARCA,
 p.id_productos,p.nombre,p.descripcion
@@ -1968,6 +1854,37 @@ DELIMITER $$
 BEGIN
 select * from laboratorio order by Nombre;
 END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `listarPoductosCompras` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `listarPoductosCompras` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarPoductosCompras`(IN op INT)
+BEGIN
+    IF op=1 THEN
+      SELECT p.`id_productos`,p.`nombre`,p.`descripcion`,p.`fecha_registro`,p.`peso`,p.`id_tipo`,t.`nombre`AS tipo,p.`id_medidas`,m.`nombre_medida` AS medida,
+      p.`id_envase`,e.`nombre`AS envase ,p.`id_marcas`,ma.`nombre` AS marca, p.id_usuario, p.iva , p.cantidad_minima
+      FROM `productos` p
+      JOIN `tipo` t ON t.`id_tipo`= p.`id_tipo` 
+      JOIN `medidas` m ON m.`id_medidas`= p.`id_medidas`
+      JOIN `envase` e ON e.`id_envase`= p.`id_envase`
+      JOIN `marcas` ma ON ma.`id_marcas`= p.`id_marcas`
+      WHERE p.`estado`='A';
+      END IF;
+     IF op=2 THEN
+        SELECT p.`id_productos`,p.`nombre`,p.`descripcion`,p.`fecha_registro`,p.`peso`,p.`id_tipo`,t.`nombre`AS tipo,p.`id_medidas`,m.`nombre_medida` AS medida,
+      p.`id_envase`,e.`nombre`AS envase ,p.`id_marcas`,ma.`nombre` AS marca, p.id_usuario, p.iva , p.cantidad_minima
+      FROM `productos` p
+      JOIN `tipo` t ON t.`id_tipo`= p.`id_tipo` 
+      JOIN `medidas` m ON m.`id_medidas`= p.`id_medidas`
+      JOIN `envase` e ON e.`id_envase`= p.`id_envase`
+      JOIN `marcas` ma ON ma.`id_marcas`= p.`id_marcas`
+      WHERE p.`estado`='I';
+      END IF;
+    END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `listarPuntoVenta` */
@@ -2016,60 +1933,16 @@ BEGIN
     END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `listarJoinProductosFaltantes` */
+/* Procedure structure for procedure `Tipo_Producto` */
 
-/*!50003 DROP PROCEDURE IF EXISTS  `listarJoinProductosFaltantes` */;
+/*!50003 DROP PROCEDURE IF EXISTS  `Tipo_Producto` */;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarJoinProductosFaltantes`(in op int)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Tipo_Producto`()
 BEGIN
-if op >0 then
-SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre as MARCA,
-p.id_productos,p.nombre,p.descripcion
-FROM productos p
-JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
-join marcas m ON m.id_marcas=p.id_marcas
-where df.estado = 'NO'AND pr.estado='A';
-else
-SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre AS MARCA,
-p.id_productos,p.nombre,p.descripcion
-FROM productos p
-JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
-join marcas m ON m.id_marcas=p.id_marcas;
-end if;
+select tipo.id_tipo, tipo.nombre from moduloprueba.tipo where estado = 'A' order by tipo.id_tipo;
 END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `listarPoductosCompras` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `listarPoductosCompras` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarPoductosCompras`(IN op INT)
-BEGIN
-    IF op=1 THEN
-      SELECT p.`id_productos`,p.`nombre`,p.`descripcion`,p.`fecha_registro`,p.`peso`,p.`id_tipo`,t.`nombre`AS tipo,p.`id_medidas`,m.`nombre_medida` AS medida,
-      p.`id_envase`,e.`nombre`AS envase ,p.`id_marcas`,ma.`nombre` AS marca, p.id_usuario, p.iva , p.cantidad_minima
-      FROM `productos` p
-      JOIN `tipo` t ON t.`id_tipo`= p.`id_tipo` 
-      JOIN `medidas` m ON m.`id_medidas`= p.`id_medidas`
-      JOIN `envase` e ON e.`id_envase`= p.`id_envase`
-      JOIN `marcas` ma ON ma.`id_marcas`= p.`id_marcas`
-      WHERE p.`estado`='A';
-      END IF;
-     IF op=2 THEN
-        SELECT p.`id_productos`,p.`nombre`,p.`descripcion`,p.`fecha_registro`,p.`peso`,p.`id_tipo`,t.`nombre`AS tipo,p.`id_medidas`,m.`nombre_medida` AS medida,
-      p.`id_envase`,e.`nombre`AS envase ,p.`id_marcas`,ma.`nombre` AS marca, p.id_usuario, p.iva , p.cantidad_minima
-      FROM `productos` p
-      JOIN `tipo` t ON t.`id_tipo`= p.`id_tipo` 
-      JOIN `medidas` m ON m.`id_medidas`= p.`id_medidas`
-      JOIN `envase` e ON e.`id_envase`= p.`id_envase`
-      JOIN `marcas` ma ON ma.`id_marcas`= p.`id_marcas`
-      WHERE p.`estado`='I';
-      END IF;
-    END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `ListarProveedor` */
@@ -2151,18 +2024,6 @@ INSERT INTO fc_punto_venta(id_localidad_guayas,nombre,  direccion, ip_publica,ob
 SET salida='Nuevo punto de venta ingresado';
 ELSE SET salida='El punto de venta ya existe';
 END IF;
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `Tipo_Producto` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `Tipo_Producto` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Tipo_Producto`()
-BEGIN
-select tipo.id_tipo, tipo.nombre from moduloprueba.tipo where estado = 'A' order by tipo.id_tipo;
 END */$$
 DELIMITER ;
 
