@@ -447,11 +447,11 @@ CREATE TABLE `precios` (
   `id_usuario` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id_precio`),
   KEY `fk_precios_productos` (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
 
 /*Data for the table `precios` */
 
-insert  into `precios`(`id_precio`,`id_producto`,`precio_compra`,`precio_venta`,`estado`,`fecha_registro`,`id_usuario`) values (1,22,0.55,0.60,'I','0000-00-00 00:00:00',NULL),(2,22,0.70,0.80,'I','0000-00-00 00:00:00',NULL),(8,22,0.63,0.90,'I','2018-12-20 17:56:59',NULL),(13,22,0.65,0.95,'A','2018-12-20 19:24:12',2),(14,22,0.45,0.35,'I','2018-12-20 19:24:12',5),(16,22,0.59,0.97,'I','2018-12-14 00:57:18',2),(17,22,0.73,0.96,'I','2018-12-14 08:28:31',2),(18,30,15.60,32.60,'A','2018-12-18 03:27:01',2),(19,22,0.44,0.61,NULL,NULL,NULL),(20,28,0.63,1.24,'A','2019-01-03 02:12:54',2),(21,28,0.89,0.92,'I','2018-12-19 00:01:25',2),(22,28,0.96,0.97,'I','2018-12-20 00:49:40',2),(23,27,1.56,1.57,'I','2019-01-03 17:10:12',2),(24,27,1.42,1.78,'I','2019-01-03 17:10:29',2),(25,27,1.62,1.96,'A','2019-01-03 17:10:41',2),(26,23,1.92,2.20,'A','2018-12-20 01:25:44',2),(27,31,0.65,0.90,'A','2019-01-16 03:53:26',2),(28,31,0.90,0.96,'I',NULL,NULL),(29,31,0.63,0.79,'I','2019-01-03 17:11:01',2),(30,28,0.86,0.98,'I',NULL,NULL),(31,24,0.26,0.30,'I','2018-12-21 01:03:22',2),(32,24,0.60,0.61,'I',NULL,NULL),(33,24,0.56,0.57,'I','2018-12-21 01:15:00',2),(34,24,58.60,59.60,'I',NULL,NULL),(35,24,0.67,0.97,'A',NULL,NULL),(36,28,0.90,0.96,'I','2018-12-21 01:39:54',2),(37,31,0.67,0.65,'I','2018-12-21 11:55:28',2),(38,31,0.68,0.69,'I','2019-01-02 15:23:05',2),(39,32,2.79,2.87,'A','2018-12-21 11:10:45',2);
+insert  into `precios`(`id_precio`,`id_producto`,`precio_compra`,`precio_venta`,`estado`,`fecha_registro`,`id_usuario`) values (1,22,0.55,0.60,'I','0000-00-00 00:00:00',NULL),(2,22,0.70,0.80,'I','0000-00-00 00:00:00',NULL),(8,22,0.63,0.90,'I','2018-12-20 17:56:59',NULL),(13,22,0.65,0.95,'A','2018-12-20 19:24:12',2),(14,22,0.45,0.35,'I','2018-12-20 19:24:12',5),(16,22,0.59,0.97,'I','2018-12-14 00:57:18',2),(17,22,0.73,0.96,'I','2018-12-14 08:28:31',2),(18,30,15.60,32.62,'A','2018-12-18 03:27:01',2),(19,22,0.44,0.61,NULL,NULL,NULL),(20,28,0.63,1.24,'A','2019-01-03 02:12:54',2),(21,28,0.89,0.92,'I','2018-12-19 00:01:25',2),(22,28,0.96,0.97,'I','2018-12-20 00:49:40',2),(23,27,1.56,1.57,'I','2019-01-03 17:10:12',2),(24,27,1.42,1.78,'A','2019-01-03 17:10:29',2),(25,27,1.62,1.96,'A','2019-01-03 17:10:41',2),(26,23,1.92,2.22,'A','2018-12-20 01:25:44',2),(27,31,0.65,0.90,'A','2019-01-16 03:53:26',2),(28,31,0.90,0.96,'I',NULL,NULL),(29,31,0.63,0.79,'I','2019-01-03 17:11:01',2),(30,28,0.86,0.98,'I',NULL,NULL),(31,24,0.26,0.30,'I','2018-12-21 01:03:22',2),(32,24,0.60,0.61,'I',NULL,NULL),(33,24,0.56,0.57,'I','2018-12-21 01:15:00',2),(34,24,58.60,59.60,'I',NULL,NULL),(35,24,0.67,0.97,'A',NULL,NULL),(36,28,0.90,0.96,'I','2018-12-21 01:39:54',2),(37,31,0.67,0.65,'I','2018-12-21 11:55:28',2),(38,31,0.68,0.69,'I','2019-01-02 15:23:05',2),(39,32,2.79,2.87,'A','2018-12-21 11:10:45',2),(40,27,2.34,2.88,'A','2019-01-20 00:00:00',2),(41,27,23.50,24.67,'A','2019-01-20 00:00:00',2),(42,21,4.56,6.76,'A','2019-01-20 00:00:00',2),(43,30,4.67,6.89,'A','2019-01-20 03:46:15',2);
 
 /*Table structure for table `productos` */
 
@@ -819,22 +819,6 @@ select now() into fecha_reg;
 END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `actualizarPrecioCompra` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `actualizarPrecioCompra` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarPrecioCompra`(IN id_producto1 BIGINT,IN precio_compra2 DOUBLE(5,2),IN precio_venta3 DOUBLE(5,2),OUT valor1 TEXT )
-BEGIN
-	DECLARE id_pre INT;
-	INSERT INTO `precios`(`id_producto`,`precio_compra`,`precio_venta`,`estado`) VALUES (id_producto1,precio_compra2,precio_venta3,'A');
-    SET id_pre =(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND`precio_compra`=precio_compra2 AND `precio_venta`= precio_venta3);
-    UPDATE `precios` SET estado='I' WHERE `id_precio` NOT IN (id_pre) AND `id_producto`=id_producto1;
-	SET valor1=(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND `precio_compra`= precio_compra2 AND`precio_venta`=precio_venta3);
-    END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `actualizarPrecioProducto` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `actualizarPrecioProducto` */;
@@ -902,6 +886,23 @@ set nra = (SELECT validarTipoProducto(nombre_f));
 	set salida ='DATO EXISTENTE';
 	end if;
 END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `actualizarPrecioCompra` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `actualizarPrecioCompra` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarPrecioCompra`(IN id_producto1 BIGINT,IN precio_compra2 DOUBLE(5,2),IN precio_venta3 DOUBLE(5,2),in fecha4 datetime,in id_usu bigint,OUT valor1 TEXT )
+BEGIN
+	DECLARE id_pre INT;
+	INSERT INTO `precios`(`id_producto`,`precio_compra`,`precio_venta`,`estado`,`fecha_registro`,`id_usuario`) VALUES (id_producto1,precio_compra2,precio_venta3,'A',fecha4,id_usu);
+	set valor1='PRECIO AGREGADO';
+   -- SET id_pre =(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND`precio_compra`=precio_compra2 AND `precio_venta`= precio_venta3);
+    -- UPDATE `precios` SET estado='I' WHERE `id_precio` NOT IN (id_pre) AND `id_producto`=id_producto1;
+	-- SET valor1=(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND `precio_compra`= precio_compra2 AND`precio_venta`=precio_venta3);
+    END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `bitacora_seguridad` */
@@ -1726,31 +1727,6 @@ select * from Correo where Cedula = cedula1;
 END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `listarJoinProductos` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `listarJoinProductos` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarJoinProductos`(in op int)
-BEGIN
-if op >0 then
-SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre as MARCA,
-p.id_productos,p.nombre,p.descripcion
-FROM productos p
-JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
-join marcas m ON m.id_marcas=p.id_marcas
-where df.estado = 'NO';
-else
-SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre AS MARCA,
-p.id_productos,p.nombre,p.descripcion
-FROM productos p
-JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
-join marcas m ON m.id_marcas=p.id_marcas;
-end if;
-END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `listarFaltantes` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `listarFaltantes` */;
@@ -1815,6 +1791,31 @@ JOIN medidas me ON me.id_medidas = p.id_medidas
 JOIN precios pr ON pr.id_producto = p.id_productos
 ORDER BY df.id_detalle_faltantes;
 END IF ;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `listarJoinProductos` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `listarJoinProductos` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarJoinProductos`(in op int)
+BEGIN
+if op >0 then
+SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre as MARCA,
+p.id_productos,p.nombre,p.descripcion
+FROM productos p
+JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
+join marcas m ON m.id_marcas=p.id_marcas
+where df.estado = 'NO';
+else
+SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre AS MARCA,
+p.id_productos,p.nombre,p.descripcion
+FROM productos p
+JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
+join marcas m ON m.id_marcas=p.id_marcas;
+end if;
 END */$$
 DELIMITER ;
 
@@ -1993,12 +1994,14 @@ JOIN proveedor p ON p.id_proveedor = cnp.id_proveedor
 JOIN proveedor_clase pc ON pc.id_proclase = p.id_proveedor_clase;
 end if;
 IF op=3 THEN
-SELECT cnp.id_cabecera_nota_pedidos,cnp.id_proveedor ,p.entidad AS proveedor,p.correo,p.id_proveedor_clase,pc.clase
+SELECT DISTINCT(cnp.id_cabecera_nota_pedidos),cnp.id_proveedor ,p.entidad AS proveedor,p.correo,p.id_proveedor_clase,cp.clase
 ,p.direccion,p.cedula_ruc,p.representante,p.telefono,cnp.fecha_creacion,cnp.estado,cnp.iva,cnp.descuento,cnp.total,cnp.`plazo`
-FROM cabecera_nota_pedidos cnp
-JOIN proveedor p ON p.id_proveedor = cnp.id_proveedor
-JOIN proveedor_clase pc ON pc.id_proclase = p.id_proveedor_clase
-WHERE cnp.estado= "SI";
+FROM `detalle_nota_pedidos` dnp
+JOIN `cabecera_nota_pedidos` cnp ON cnp.`id_cabecera_nota_pedidos`=dnp.`id_cabecera_nota_pedidos`
+JOIN `proveedor` p ON p.`id_proveedor`=cnp.`id_proveedor`
+JOIN `proveedor_clase` cp ON cp.`id_proclase`=p.`id_proveedor_clase`
+WHERE cnp.estado= "SI"
+ORDER BY cnp.`fecha_creacion`;
 END IF;
 END */$$
 DELIMITER ;
