@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.60-log : Database - moduloprueba
+MySQL - 5.5.5-10.1.37-MariaDB : Database - moduloprueba
 *********************************************************************
 */
 
@@ -151,11 +151,11 @@ CREATE TABLE `correo` (
   `Correo` text NOT NULL,
   `Cedula` text NOT NULL,
   PRIMARY KEY (`id_Correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 /*Data for the table `correo` */
 
-insert  into `correo`(`id_Correo`,`Correo`,`Cedula`) values (1,'marin.hotmail.com',''),(3,'123.gmail',''),(4,'aaa.gmail',''),(5,'gmail','3333333333'),(6,'hotmail','0932067010'),(7,'hotmail','5555555555'),(8,'hhhhh','0932067010'),(9,'gmail','0932067010'),(10,'hotmail.es','5555555555'),(11,'jeff@gmail.com','0924876015'),(12,'jdsb@gmail.com','0924876251'),(13,'am3377944@gmail.com','0944037977'),(14,'fiosaban2@gmail.com','0912232525'),(15,'sua@hotmail.es','0991251252'),(16,'wbm.andres@gmail.com','0931978365');
+insert  into `correo`(`id_Correo`,`Correo`,`Cedula`) values (1,'marin.hotmail.com',''),(3,'123.gmail',''),(4,'aaa.gmail',''),(5,'gmail','3333333333'),(6,'hotmail','0932067010'),(7,'hotmail','5555555555'),(8,'hhhhh','0932067010'),(9,'gmail','0932067010'),(10,'hotmail.es','5555555555'),(11,'jeff@gmail.com','0924876015'),(12,'jdsb@gmail.com','0924876251'),(13,'am3377944@gmail.com','0944037977'),(14,'fiosaban2@gmail.com','0912232525'),(15,'sua@hotmail.es','0991251252'),(16,'wbm.andres@gmail.com','0931978365'),(17,'dfsdf','1');
 
 /*Table structure for table `detalle_compra` */
 
@@ -535,7 +535,7 @@ CREATE TABLE `precios` (
 
 /*Data for the table `precios` */
 
-insert  into `precios`(`id_precio`,`id_producto`,`precio_compra`,`precio_venta`,`estado`,`fecha_registro`,`id_usuario`) values (1,22,0.55,0.60,'I','0000-00-00 00:00:00',NULL),(2,22,0.70,0.80,'I','0000-00-00 00:00:00',NULL),(8,22,0.63,0.90,'I','2018-12-20 17:56:59',NULL),(13,22,0.65,0.95,'A','2018-12-20 19:24:12',2),(14,22,0.45,0.35,'I','2018-12-20 19:24:12',5),(16,22,0.59,0.97,'I','2018-12-14 00:57:18',2),(17,22,0.73,0.96,'I','2018-12-14 08:28:31',2),(18,30,15.60,32.62,'A','2018-12-18 03:27:01',2),(19,22,0.44,0.61,NULL,NULL,NULL),(20,28,0.63,1.24,'A','2019-01-03 02:12:54',2),(21,28,0.89,0.92,'I','2018-12-19 00:01:25',2),(22,28,0.96,0.97,'I','2018-12-20 00:49:40',2),(23,27,1.56,1.57,'I','2019-01-03 17:10:12',2),(24,27,1.42,1.78,'A','2019-01-03 17:10:29',2),(25,27,1.62,1.96,'A','2019-01-03 17:10:41',2),(26,23,1.92,2.22,'A','2018-12-20 01:25:44',2),(27,31,0.65,0.90,'A','2019-01-16 03:53:26',2),(28,31,0.90,0.96,'I',NULL,NULL),(29,31,0.63,0.79,'I','2019-01-03 17:11:01',2),(30,28,0.86,0.98,'I',NULL,NULL),(31,24,0.26,0.30,'I','2018-12-21 01:03:22',2),(32,24,0.60,0.61,'I',NULL,NULL),(33,24,0.56,0.57,'I','2018-12-21 01:15:00',2),(34,24,58.60,59.60,'I',NULL,NULL),(35,24,0.67,0.97,'A',NULL,NULL),(36,28,0.90,0.96,'I','2018-12-21 01:39:54',2),(37,31,0.67,0.65,'I','2018-12-21 11:55:28',2),(38,31,0.68,0.69,'I','2019-01-02 15:23:05',2),(39,32,2.79,2.87,'A','2018-12-21 11:10:45',2),(40,27,2.34,2.88,'A','2019-01-20 00:00:00',2),(41,27,23.50,24.67,'A','2019-01-20 00:00:00',2),(42,21,4.56,6.76,'A','2019-01-20 00:00:00',2),(43,30,4.67,6.89,'A','2019-01-20 03:46:15',2),(44,33,0.75,1.00,'A','2019-01-20 12:38:15',2);
+insert  into `precios`(`id_precio`,`id_producto`,`precio_compra`,`precio_venta`,`estado`,`fecha_registro`,`id_usuario`) values (1,22,0.55,0.60,'I','0000-00-00 00:00:00',NULL),(2,22,0.70,0.80,'I','0000-00-00 00:00:00',NULL),(8,22,0.63,0.90,'I','2018-12-20 17:56:59',NULL),(13,22,0.65,0.95,'A','2018-12-20 19:24:12',2),(14,22,0.45,0.35,'I','2018-12-20 19:24:12',5),(16,22,0.59,0.97,'I','2018-12-14 00:57:18',2),(17,22,0.73,0.96,'I','2018-12-14 08:28:31',2),(18,30,15.60,32.62,'A','2018-12-18 03:27:01',2),(19,22,0.44,0.61,NULL,NULL,NULL),(20,28,0.63,1.24,'A','2019-01-03 02:12:54',2),(21,28,0.89,0.92,'I','2018-12-19 00:01:25',2),(22,28,0.96,0.97,'I','2018-12-20 00:49:40',2),(23,27,1.56,1.57,'I','2019-01-03 17:10:12',2),(24,27,1.42,1.78,'A','2019-01-03 17:10:29',2),(25,27,1.62,1.96,'A','2019-01-03 17:10:41',2),(26,23,1.92,2.24,'A','2018-12-20 01:25:44',2),(27,31,0.65,0.90,'A','2019-01-16 03:53:26',2),(28,31,0.90,0.96,'I',NULL,NULL),(29,31,0.63,0.79,'I','2019-01-03 17:11:01',2),(30,28,0.86,0.98,'I',NULL,NULL),(31,24,0.26,0.30,'I','2018-12-21 01:03:22',2),(32,24,0.60,0.61,'I',NULL,NULL),(33,24,0.56,0.57,'I','2018-12-21 01:15:00',2),(34,24,58.60,59.60,'I',NULL,NULL),(35,24,0.67,0.97,'A',NULL,NULL),(36,28,0.90,0.96,'I','2018-12-21 01:39:54',2),(37,31,0.67,0.65,'I','2018-12-21 11:55:28',2),(38,31,0.68,0.69,'I','2019-01-02 15:23:05',2),(39,32,2.79,2.87,'A','2018-12-21 11:10:45',2),(40,27,2.34,2.88,'A','2019-01-20 00:00:00',2),(41,27,23.50,24.67,'A','2019-01-20 00:00:00',2),(42,21,4.56,6.76,'A','2019-01-20 00:00:00',2),(43,30,4.67,6.89,'A','2019-01-20 03:46:15',2),(44,33,0.75,1.00,'A','2019-01-20 12:38:15',2);
 
 /*Table structure for table `productos` */
 
@@ -589,11 +589,11 @@ CREATE TABLE `proveedor` (
   PRIMARY KEY (`id_proveedor`),
   KEY `fk_1` (`id_proveedor_clase`),
   CONSTRAINT `fk_clase_proveedor` FOREIGN KEY (`id_proveedor_clase`) REFERENCES `proveedor_clase` (`id_proclase`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 /*Data for the table `proveedor` */
 
-insert  into `proveedor`(`id_proveedor`,`id_proveedor_clase`,`cedula_ruc`,`entidad`,`representante`,`direccion`,`fecha_registro`,`estado`,`telefono`,`correo`,`direccionImagen`) values (5,2,'0924878605616','inkatonsa','URSULA','coop.el tunel','2018-11-14','A','0981839603 INSTITUCIONAL','jefferson@gmail.ocm INSTITUCIONAL',NULL),(6,1,'092458566522','NESTLE SA..','ABIGAIL TORRES','COOP.EL CONDOR','2018-12-19','A','0953926261 INSTITUCIONAL','ambar@gmail.com INSTITUCIONAL',NULL),(7,2,'1300696364','cocalola','KARE PAGE ','coop.el mirador','2018-12-05','A','2260392 INSTITUCIONAL','elaine@gmail.com INSTITUCIONAL',NULL),(8,1,'0924876014','URSULA.','COLOMBIA','COOP.FLORIDA NORTE','2018-12-05','A','0986334186 PERSONAL','ursula@gmail.com PERSONAL',NULL),(9,1,'1524896522','JULIO','MATT','ENTRADA DE LA 8','2018-12-06','I','4554165165158 INSTITUCIONAL','cknc PERSONAL',NULL),(10,1,'1515151516','CATOLICA','AMBATO','PORTIIKX','2018-12-06','A','','',NULL),(11,1,'0925487562','PROVEMARX','EDWAR','COOP.PUEBLO LINDO','2018-12-06','I','0924876262 PERSONAL','jose@gmail.com PERSONAL',NULL),(12,1,'0924656151514','MUEBLESPALITO','JOSE TERAN ','COOP BRISAS DEL MAR','2018-12-06','I','1221513255 INSTITUCIONAL','0112sds@gmail.com INSTITUCIONAL',NULL),(13,2,'09123456567','COCA COLA','FOGGY ','Floresta 1','2019-01-14','A','132654687489PERSONAL','MAT@gmail.com PERSONAL',NULL),(14,2,'091327918856','Universal','MATT MURDOCK','HELLS KITCHEN','2019-01-20','A','3098545778','MUT@gmail.com',NULL);
+insert  into `proveedor`(`id_proveedor`,`id_proveedor_clase`,`cedula_ruc`,`entidad`,`representante`,`direccion`,`fecha_registro`,`estado`,`telefono`,`correo`,`direccionImagen`) values (5,2,'0924878605616','inkatonsa','URSULA','coop.el tunel','2018-11-14','A','0981839603 INSTITUCIONAL','jefferson@gmail.ocm INSTITUCIONAL',NULL),(6,1,'092458566522','NESTLE SA..','ABIGAIL TORRES','COOP.EL CONDOR','2018-12-19','A','0953926261 INSTITUCIONAL','ambar@gmail.com INSTITUCIONAL',NULL),(7,2,'1300696364','cocalola','KARE PAGE ','coop.el mirador','2018-12-05','A','2260392 INSTITUCIONAL','elaine@gmail.com INSTITUCIONAL',NULL),(8,1,'0924876014','URSULA.','COLOMBIA','COOP.FLORIDA NORTE','2018-12-05','A','0986334186 PERSONAL','ursula@gmail.com PERSONAL',NULL),(9,1,'1524896522','JULIO','MATT','ENTRADA DE LA 8','2018-12-06','I','4554165165158 INSTITUCIONAL','cknc PERSONAL',NULL),(10,1,'1515151516','CATOLICA','AMBATO','PORTIIKX','2018-12-06','A','5115162625 INSTITUCIONAL','grretgrt INSTITUCIONAL','C:\\Users\\User\\Desktop\\ban.png'),(11,1,'0925487562','PROVEMARX','EDWAR','COOP.PUEBLO LINDO','2018-12-06','I','0924876262 PERSONAL','jose@gmail.com PERSONAL',NULL),(12,1,'0924656151514','MUEBLESPALITO','JOSE TERAN ','COOP BRISAS DEL MAR','2018-12-06','I','1221513255 INSTITUCIONAL','0112sds@gmail.com INSTITUCIONAL',NULL),(13,2,'09123456567','COCA COLA','FOGGY ','Floresta 1','2019-01-14','A','132654687489PERSONAL','MAT@gmail.com PERSONAL',NULL),(14,2,'091327918856','Universal','MATT MURDOCK','HELLS KITCHEN','2019-01-20','A','3098545778','MUT@gmail.com',NULL),(15,1,'0896764354','PRUEBA2','GONZALEZ','fernandezA','2019-01-20','A','2343242342343 INSTITUCIONAL','dfsdf INSTITUCIONAL','C:\\Users\\Roberth\\Downloads\\received_304673870366090.jpeg'),(16,1,'0262662625','EL PINOS','DON PEPE','av el ejercito','2019-01-20','A','5151262620 INSTITUCIONAL','dkmcj INSTITUCIONAL','');
 
 /*Table structure for table `proveedor_clase` */
 
@@ -621,11 +621,11 @@ CREATE TABLE `proveedor_mail` (
   PRIMARY KEY (`id_promail`),
   KEY `fk_tipo_correo` (`id_tipo_correo`),
   CONSTRAINT `fk_tipo_correo` FOREIGN KEY (`id_tipo_correo`) REFERENCES `tipo_correo` (`id_tipo_correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 /*Data for the table `proveedor_mail` */
 
-insert  into `proveedor_mail`(`id_promail`,`id_tipo_correo`,`mail`,`cedula_ruc`) values (1,1,'jefferson@gmail.ocm','0924878605616'),(2,1,'ambar@gmail.com','092458566522'),(3,1,'elaine@gmail.com','1300696364'),(5,2,'cknc','1524896522'),(6,1,'ambar@gmil','1524896522'),(7,1,'0112sds@gmail.com','0924656151514'),(8,1,'JEFSS@GAMIL.COM','0925487562'),(9,2,'jose@gmail.com','0925487562'),(10,2,'ursula@gmail.com','0924876014');
+insert  into `proveedor_mail`(`id_promail`,`id_tipo_correo`,`mail`,`cedula_ruc`) values (1,1,'jefferson@gmail.ocm','0924878605616'),(2,1,'ambar@gmail.com','092458566522'),(3,1,'elaine@gmail.com','1300696364'),(5,2,'cknc','1524896522'),(6,1,'ambar@gmil','1524896522'),(7,1,'0112sds@gmail.com','0924656151514'),(8,1,'JEFSS@GAMIL.COM','0925487562'),(9,2,'jose@gmail.com','0925487562'),(10,2,'ursula@gmail.com','0924876014'),(11,1,'r3f4rf','091327918856'),(12,1,'grretgrt','1515151516'),(13,1,'dkmcj','0262662625'),(14,2,'yugybhj','0262662625');
 
 /*Table structure for table `proveedor_telefono` */
 
@@ -639,11 +639,11 @@ CREATE TABLE `proveedor_telefono` (
   PRIMARY KEY (`id_protelefono`),
   KEY `fk_tipo_telefeono` (`id_tipo_telefono`),
   CONSTRAINT `fk_tipo_telefeono` FOREIGN KEY (`id_tipo_telefono`) REFERENCES `tipo_telefono` (`id_tipo_telefono`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 /*Data for the table `proveedor_telefono` */
 
-insert  into `proveedor_telefono`(`id_protelefono`,`id_tipo_telefono`,`telefono`,`cedula_ruc`) values (1,1,'0981839603','0924878605616'),(2,1,'0953926261','092458566522'),(3,1,'2260392','1300696364'),(10,2,'0924876262','0925487562'),(11,2,'0256522655','0924656151514'),(12,1,'1221513255','0924656151514'),(13,2,'5615224522152','0925487562'),(14,1,'4554165165158','1524896522'),(15,2,'0986334186','0924876014');
+insert  into `proveedor_telefono`(`id_protelefono`,`id_tipo_telefono`,`telefono`,`cedula_ruc`) values (1,1,'0981839603','0924878605616'),(2,1,'0953926261','092458566522'),(3,1,'2260392','1300696364'),(10,2,'0924876262','0925487562'),(11,2,'0256522655','0924656151514'),(12,1,'1221513255','0924656151514'),(13,2,'5615224522152','0925487562'),(14,1,'4554165165158','1524896522'),(15,2,'0986334186','0924876014'),(16,1,'2521552563','091327918856'),(17,1,'5115162625','1515151516'),(18,1,'5151262620','0262662625'),(19,2,'5165252652','0262662625');
 
 /*Table structure for table `stock` */
 
@@ -905,23 +905,6 @@ select now() into fecha_reg;
 END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `actualizarPrecioCompra` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `actualizarPrecioCompra` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarPrecioCompra`(IN id_producto1 BIGINT,IN precio_compra2 DOUBLE(5,2),IN precio_venta3 DOUBLE(5,2),in fecha4 datetime,in id_usu bigint,OUT valor1 TEXT )
-BEGIN
-	DECLARE id_pre INT;
-	INSERT INTO `precios`(`id_producto`,`precio_compra`,`precio_venta`,`estado`,`fecha_registro`,`id_usuario`) VALUES (id_producto1,precio_compra2,precio_venta3,'A',fecha4,id_usu);
-	set valor1='PRECIO AGREGADO';
-   -- SET id_pre =(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND`precio_compra`=precio_compra2 AND `precio_venta`= precio_venta3);
-    -- UPDATE `precios` SET estado='I' WHERE `id_precio` NOT IN (id_pre) AND `id_producto`=id_producto1;
-	-- SET valor1=(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND `precio_compra`= precio_compra2 AND`precio_venta`=precio_venta3);
-    END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `actualizarPrecioProducto` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `actualizarPrecioProducto` */;
@@ -989,6 +972,23 @@ set nra = (SELECT validarTipoProducto(nombre_f));
 	set salida ='DATO EXISTENTE';
 	end if;
 END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `actualizarPrecioCompra` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `actualizarPrecioCompra` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarPrecioCompra`(IN id_producto1 BIGINT,IN precio_compra2 DOUBLE(5,2),IN precio_venta3 DOUBLE(5,2),in fecha4 datetime,in id_usu bigint,OUT valor1 TEXT )
+BEGIN
+	DECLARE id_pre INT;
+	INSERT INTO `precios`(`id_producto`,`precio_compra`,`precio_venta`,`estado`,`fecha_registro`,`id_usuario`) VALUES (id_producto1,precio_compra2,precio_venta3,'A',fecha4,id_usu);
+	set valor1='PRECIO AGREGADO';
+   -- SET id_pre =(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND`precio_compra`=precio_compra2 AND `precio_venta`= precio_venta3);
+    -- UPDATE `precios` SET estado='I' WHERE `id_precio` NOT IN (id_pre) AND `id_producto`=id_producto1;
+	-- SET valor1=(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND `precio_compra`= precio_compra2 AND`precio_venta`=precio_venta3);
+    END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `bitacora_seguridad` */
@@ -1083,10 +1083,10 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `editarProveedor`(IN id_proveedor_clase1 BIGINT, IN entidad3 VARCHAR(100),
-IN representante4 VARCHAR(70),IN direccion5 VARCHAR(100),IN fecha6 DATE,IN estado7 VARCHAR(1),IN telefono8 VARCHAR(70),IN correo9 VARCHAR(70),IN cedula2 VARCHAR(15),OUT valor TEXT)
+IN representante4 VARCHAR(70),IN direccion5 VARCHAR(100),IN fecha6 DATE,IN estado7 VARCHAR(1),IN telefono8 VARCHAR(70),IN correo9 VARCHAR(70),IN cedula2 VARCHAR(15),in imagen text,OUT valor TEXT)
 BEGIN
 UPDATE proveedor SET `id_proveedor_clase`=id_proveedor_clase1,`entidad`=entidad3,`representante`=representante4,`direccion`=direccion5,
-`fecha_registro`=fecha6,`estado`=estado7,`telefono`=telefono8,`correo`=correo9 WHERE cedula_ruc = cedula2;
+`fecha_registro`=fecha6,`estado`=estado7,`telefono`=telefono8,`correo`=correo9 ,`direccionImagen`=imagen WHERE cedula_ruc = cedula2;
 SET valor = 'Proveedor Actualizado'; 
 END */$$
 DELIMITER ;
@@ -1510,14 +1510,13 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarCorreo`( 
-in cedula1 text, 
-in correo text,
-out msg text)
+IN tipo_correo1 INT ,
+IN correo TEXT,
+IN cedula1 TEXT 
+)
 BEGIN
- 
-INSERT INTO Correo ( Correo, Cedula)
-VALUES ( correo, cedula1);
-set msg = 'Correo guardado';
+INSERT INTO proveedor_mail(id_tipo_correo, mail, cedula_ruc)
+VALUES ( tipo_correo1, correo,cedula1);
 END */$$
 DELIMITER ;
 
@@ -1644,14 +1643,12 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarTelefono`(
-in cedula1 text,
 in id_Tipo_Telefono1 int,
 in numero text,
-out msg text)
+in cedula1 text)
 BEGIN
-INSERT INTO Telefono ( id_Tipo_Telefono,Numero, Cedula)
+INSERT INTO proveedor_telefono( id_tipo_telefono,telefono, cedula_ruc)
 VALUES ( id_Tipo_Telefono1, numero, cedula1);
-set msg = 'Telefono guardado!!';
 END */$$
 DELIMITER ;
 
@@ -1960,6 +1957,90 @@ select * from laboratorio order by Nombre;
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `listarPuntoVenta` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `listarPuntoVenta` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarPuntoVenta`()
+BEGIN
+	SELECT pv.id_punto_venta, pv.nombre, lg.localidad, pv.direccion,  pv.observacion FROM fc_localidad_guayas lg, fc_punto_venta pv WHERE lg.id_localidad_guayas= pv.id_localidad_guayas;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `listarTelefono` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `listarTelefono` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarTelefono`(in cedula1 text)
+BEGIN
+select * from Telefono where Cedula = cedula1;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `modificarProductos` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `modificarProductos` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarProductos`(nombre1 VARCHAR(45),IN descripcion1 VARCHAR(80),IN peso1 DOUBLE(7,2),
+    IN id_tipo1 BIGINT(20),IN id_medidas1 BIGINT(20),IN id_envase1 BIGINT(20),IN id_marcas1 BIGINT(20),IN id_productos1 BIGINT(20),
+    IN id_usuario1 BIGINT, IN iva1 VARCHAR(2), IN cantidad_minima1 BIGINT, OUT valor TEXT)
+BEGIN
+    IF (nombre1='' OR descripcion1='' OR peso1='' OR id_tipo1='' OR id_medidas1='' OR id_envase1='' OR id_marcas1=''
+    OR id_usuario1='' OR iva1='' OR cantidad_minima1='')THEN
+    SET valor = 'campos invalidos';
+    ELSE 
+	UPDATE productos SET nombre = nombre1,descripcion = descripcion1,peso=peso1 ,id_tipo= id_tipo1,
+	`id_medidas`= id_medidas1,`id_envase`=id_envase1,`id_marcas`=id_marcas1,`id_usuario`=id_usuario1,
+	`iva`=iva1,`cantidad_minima`=cantidad_minima1 WHERE id_productos =id_productos1;
+    SET valor = 'Producto actualizado';
+    END IF;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `registrar_usuario` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `registrar_usuario` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `registrar_usuario`()
+BEGIN
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `Tipo_Producto` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Tipo_Producto` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Tipo_Producto`()
+BEGIN
+select tipo.id_tipo, tipo.nombre from moduloprueba.tipo where estado = 'A' order by tipo.id_tipo;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `universal_sentences` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `universal_sentences` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `universal_sentences`(IN consu TEXT)
+BEGIN
+    SET @query = CONCAT(consu);
+    PREPARE statement FROM @query;       -- Preparar query.
+    EXECUTE statement;                   -- Ejecutar query.
+    DEALLOCATE PREPARE statement;        -- Eliminar query alojado en memoria.
+    END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `listarPoductosCompras` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `listarPoductosCompras` */;
@@ -2105,18 +2186,6 @@ END IF;
 END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `listarPuntoVenta` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `listarPuntoVenta` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarPuntoVenta`()
-BEGIN
-	SELECT pv.id_punto_venta, pv.nombre, lg.localidad, pv.direccion,  pv.observacion FROM fc_localidad_guayas lg, fc_punto_venta pv WHERE lg.id_localidad_guayas= pv.id_localidad_guayas;
-    END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `ListarRegistroDeNotas` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `ListarRegistroDeNotas` */;
@@ -2196,40 +2265,6 @@ END IF;
 END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `listarTelefono` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `listarTelefono` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarTelefono`(in cedula1 text)
-BEGIN
-select * from Telefono where Cedula = cedula1;
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `modificarProductos` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `modificarProductos` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarProductos`(nombre1 VARCHAR(45),IN descripcion1 VARCHAR(80),IN peso1 DOUBLE(7,2),
-    IN id_tipo1 BIGINT(20),IN id_medidas1 BIGINT(20),IN id_envase1 BIGINT(20),IN id_marcas1 BIGINT(20),IN id_productos1 BIGINT(20),
-    IN id_usuario1 BIGINT, IN iva1 VARCHAR(2), IN cantidad_minima1 BIGINT, OUT valor TEXT)
-BEGIN
-    IF (nombre1='' OR descripcion1='' OR peso1='' OR id_tipo1='' OR id_medidas1='' OR id_envase1='' OR id_marcas1=''
-    OR id_usuario1='' OR iva1='' OR cantidad_minima1='')THEN
-    SET valor = 'campos invalidos';
-    ELSE 
-	UPDATE productos SET nombre = nombre1,descripcion = descripcion1,peso=peso1 ,id_tipo= id_tipo1,
-	`id_medidas`= id_medidas1,`id_envase`=id_envase1,`id_marcas`=id_marcas1,`id_usuario`=id_usuario1,
-	`iva`=iva1,`cantidad_minima`=cantidad_minima1 WHERE id_productos =id_productos1;
-    SET valor = 'Producto actualizado';
-    END IF;
-    END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `mostrar_usuario` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `mostrar_usuario` */;
@@ -2307,44 +2342,6 @@ ELSE
 SET salida='Usuario ya existente';
 END IF;
 END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `registrar_usuario` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `registrar_usuario` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `registrar_usuario`()
-BEGIN
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `Tipo_Producto` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `Tipo_Producto` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Tipo_Producto`()
-BEGIN
-select tipo.id_tipo, tipo.nombre from moduloprueba.tipo where estado = 'A' order by tipo.id_tipo;
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `universal_sentences` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `universal_sentences` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `universal_sentences`(IN consu TEXT)
-BEGIN
-    SET @query = CONCAT(consu);
-    PREPARE statement FROM @query;       -- Preparar query.
-    EXECUTE statement;                   -- Ejecutar query.
-    DEALLOCATE PREPARE statement;        -- Eliminar query alojado en memoria.
-    END */$$
 DELIMITER ;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
