@@ -97,11 +97,11 @@ CREATE TABLE `cabecera_nota_pedidos` (
   KEY `fk_cabecera_nota_pedidos_proveedor_idx` (`id_proveedor`),
   KEY `fk_cabecera_nota_pedidos_usuario_idx` (`id_usuario`),
   CONSTRAINT `fk_cabecera_nota_pedidos_proveedor` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 /*Data for the table `cabecera_nota_pedidos` */
 
-insert  into `cabecera_nota_pedidos`(`id_cabecera_nota_pedidos`,`id_proveedor`,`id_usuario`,`fecha_creacion`,`estado`,`plazo`,`forma_pago`,`iva`,`descuento`,`total`) values (25,6,2,'2019-01-21 11:09:36','SI','6 Meses','Credito',40.84,26.46,2300.38),(26,7,2,'2019-01-21 11:10:09','SI','3 Meses','Credito',0,0,170.36),(27,5,2,'2019-01-21 11:10:58','SI','Inmediato','Contado',8.1,5.4,167.7),(28,14,2,'2019-01-21 11:13:09','SI','Inmediato','Contado',34.88,38.88,2264.2),(29,11,2,'2019-01-21 11:13:46','SI','Inmediato','Contado',34.88,38.88,2346.28),(30,13,2,'2019-01-21 11:16:43','SI','3 Meses','Credito',13.5,5.63,657.27),(31,15,2,'2019-01-23 18:27:21','SI','6 Meses','Contado',0,6.28,1698.24),(32,15,2,'2019-01-24 16:00:41','SI','9 Meses','Contado',20.97,26.8,1973.62),(33,8,2,'2019-01-29 17:20:46','SI','6 Meses','Contado',0,1.65,53.43),(34,5,2,'2019-01-29 17:21:47','SI','3 Meses','Contado',0,0,63.9),(35,11,2,'2019-01-30 00:35:57','SI','6 Meses','Contado',0,0.4,53.78),(36,16,2,'2019-01-30 09:24:24','SI','6 Meses','Contado',12.58,0,117.43);
+insert  into `cabecera_nota_pedidos`(`id_cabecera_nota_pedidos`,`id_proveedor`,`id_usuario`,`fecha_creacion`,`estado`,`plazo`,`forma_pago`,`iva`,`descuento`,`total`) values (25,6,2,'2019-01-21 11:09:36','SI','6 Meses','Credito',40.84,26.46,2300.38),(26,7,2,'2019-01-21 11:10:09','SI','3 Meses','Credito',0,0,170.36),(27,5,2,'2019-01-21 11:10:58','SI','Inmediato','Contado',8.1,5.4,167.7),(28,14,2,'2019-01-21 11:13:09','SI','Inmediato','Contado',34.88,38.88,2264.2),(29,11,2,'2019-01-21 11:13:46','SI','Inmediato','Contado',34.88,38.88,2346.28),(30,13,2,'2019-01-21 11:16:43','SI','3 Meses','Credito',13.5,5.63,657.27),(31,15,2,'2019-01-23 18:27:21','SI','6 Meses','Contado',0,6.28,1698.24),(32,15,2,'2019-01-24 16:00:41','SI','9 Meses','Contado',20.97,26.8,1973.62),(33,8,2,'2019-01-29 17:20:46','SI','6 Meses','Contado',0,1.65,53.43),(34,5,2,'2019-01-29 17:21:47','SI','3 Meses','Contado',0,0,63.9),(35,11,2,'2019-01-30 00:35:57','SI','6 Meses','Contado',0,0.4,53.78),(36,16,2,'2019-01-30 09:24:24','SI','6 Meses','Contado',12.58,0,117.43),(37,16,2,'2019-01-31 15:29:24','SI','Inmediato','Contado',5.84,98.7,1600.84),(38,7,2,'2019-01-31 15:42:05','SI','9 Meses','Contado',1.79,39.48,1293.26);
 
 /*Table structure for table `clientes` */
 
@@ -200,11 +200,11 @@ CREATE TABLE `detalle_nota_pedidos` (
   KEY `fk_detalle_nota_pedidos_precio_idx` (`id_precio`),
   CONSTRAINT `fk_detalle_nota_pedidos_cabecera` FOREIGN KEY (`id_cabecera_nota_pedidos`) REFERENCES `cabecera_nota_pedidos` (`id_cabecera_nota_pedidos`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_detalle_nota_pedidos_precio` FOREIGN KEY (`id_precio`) REFERENCES `precios` (`id_precio`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=latin1;
 
 /*Data for the table `detalle_nota_pedidos` */
 
-insert  into `detalle_nota_pedidos`(`id_detalle_nota_pedidos`,`id_precio`,`id_cabecera_nota_pedidos`,`cantidad`,`precio`,`descuento`,`iva`,`total`,`bono`) values (34,42,25,10,4.56,0.00,0.00,45.60,0),(35,13,25,150,0.75,5.63,13.50,120.37,0),(36,26,25,50,0.65,1.30,3.90,35.10,0),(37,35,25,70,2.79,19.53,23.44,199.21,0),(38,24,25,80,23.50,0.00,0.00,1880.00,0),(39,25,25,30,0.67,0.00,0.00,20.10,0),(40,42,26,48,0.65,0.00,0.00,31.20,0),(41,13,26,98,1.42,0.00,0.00,139.16,0),(42,42,27,150,0.65,0.00,0.00,97.50,0),(43,13,27,90,0.75,5.40,8.10,70.20,0),(44,42,28,150,0.65,0.00,0.00,97.50,0),(45,13,28,90,0.75,5.40,8.10,70.20,0),(46,26,28,80,23.50,0.00,0.00,1880.00,0),(47,35,28,80,2.79,33.48,26.78,216.50,0),(48,42,29,150,0.65,0.00,0.00,97.50,0),(49,13,29,90,0.75,5.40,8.10,70.20,0),(50,26,29,80,23.50,0.00,0.00,1880.00,0),(51,35,29,80,2.79,33.48,26.78,216.50,0),(52,24,29,18,4.56,0.00,0.00,82.08,0),(53,42,30,80,4.56,0.00,0.00,364.80,0),(54,13,30,90,0.65,0.00,0.00,58.50,0),(55,26,30,80,1.42,0.00,0.00,113.60,0),(56,35,30,150,0.75,5.63,13.50,120.37,0),(57,42,31,200,1.42,0.00,0.00,284.00,0),(59,26,31,233,4.56,0.00,0.00,1062.48,0),(60,35,31,322,0.65,6.28,0.00,203.02,0),(61,42,32,123,0.67,0.00,0.00,82.41,0),(62,13,32,344,1.92,19.81,0.00,640.67,0),(63,26,32,233,4.56,0.00,0.00,1062.48,0),(64,35,32,238,0.75,7.14,20.97,192.33,0),(65,44,32,23,0.75,0.00,2.07,19.32,0),(66,42,33,0,34.00,1.62,1.65,0.00,0),(67,42,34,0,45.00,1.42,0.00,0.00,0),(68,42,35,28,1.22,0.00,0.00,34.08,4),(69,13,35,30,0.67,0.40,0.00,19.70,0),(70,42,36,69,0.65,0.00,5.38,50.23,0),(71,13,36,83,0.72,0.00,7.20,67.20,3);
+insert  into `detalle_nota_pedidos`(`id_detalle_nota_pedidos`,`id_precio`,`id_cabecera_nota_pedidos`,`cantidad`,`precio`,`descuento`,`iva`,`total`,`bono`) values (34,42,25,10,4.56,0.00,0.00,45.60,0),(35,13,25,150,0.75,5.63,13.50,120.37,0),(36,26,25,50,0.65,1.30,3.90,35.10,0),(37,35,25,70,2.79,19.53,23.44,199.21,0),(38,24,25,80,23.50,0.00,0.00,1880.00,0),(39,25,25,30,0.67,0.00,0.00,20.10,0),(40,42,26,48,0.65,0.00,0.00,31.20,0),(41,13,26,98,1.42,0.00,0.00,139.16,0),(42,42,27,150,0.65,0.00,0.00,97.50,0),(43,13,27,90,0.75,5.40,8.10,70.20,0),(44,42,28,150,0.65,0.00,0.00,97.50,0),(45,13,28,90,0.75,5.40,8.10,70.20,0),(46,26,28,80,23.50,0.00,0.00,1880.00,0),(47,35,28,80,2.79,33.48,26.78,216.50,0),(48,42,29,150,0.65,0.00,0.00,97.50,0),(49,13,29,90,0.75,5.40,8.10,70.20,0),(50,26,29,80,23.50,0.00,0.00,1880.00,0),(51,35,29,80,2.79,33.48,26.78,216.50,0),(52,24,29,18,4.56,0.00,0.00,82.08,0),(53,42,30,80,4.56,0.00,0.00,364.80,0),(54,13,30,90,0.65,0.00,0.00,58.50,0),(55,26,30,80,1.42,0.00,0.00,113.60,0),(56,35,30,150,0.75,5.63,13.50,120.37,0),(57,42,31,200,1.42,0.00,0.00,284.00,0),(59,26,31,233,4.56,0.00,0.00,1062.48,0),(60,35,31,322,0.65,6.28,0.00,203.02,0),(61,42,32,123,0.67,0.00,0.00,82.41,0),(62,13,32,344,1.92,19.81,0.00,640.67,0),(63,26,32,233,4.56,0.00,0.00,1062.48,0),(64,35,32,238,0.75,7.14,20.97,192.33,0),(65,44,32,23,0.75,0.00,2.07,19.32,0),(66,42,33,0,34.00,1.62,1.65,0.00,0),(67,42,34,0,45.00,1.42,0.00,0.00,0),(68,42,35,28,1.22,0.00,0.00,34.08,4),(69,13,35,30,0.67,0.40,0.00,19.70,0),(70,42,36,69,0.65,0.00,5.38,50.23,0),(71,13,36,83,0.72,0.00,7.20,67.20,3),(72,42,37,23,0.65,0.00,1.79,16.74,0),(73,13,37,49,0.69,0.00,4.05,37.80,4),(74,26,37,70,23.50,98.70,0.00,1546.30,0),(75,42,38,28,0.53,0.00,1.79,16.74,5),(76,13,38,56,23.50,39.48,0.00,1276.52,0);
 
 /*Table structure for table `envase` */
 
@@ -435,11 +435,11 @@ CREATE TABLE `iva` (
   `id_usuario` int(11) DEFAULT NULL,
   `est` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_iva`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 /*Data for the table `iva` */
 
-insert  into `iva`(`id_iva`,`iva`,`fecha`,`id_usuario`,`est`) values (1,12,'2019-01-29',1,'I'),(2,15,NULL,1,'I'),(3,15,'2019-01-29',1,'I'),(4,17,'2019-01-29',1,'I'),(5,18,'2019-01-29',1,'A'),(6,19,'2019-01-29',1,'I'),(7,20,'2019-01-29',1,'I'),(8,10.5,'2019-01-29',1,'I'),(9,10,'2019-01-29',1,'I'),(10,10.5,'2019-01-29',1,'I'),(11,15.2,'2019-01-29',1,'A');
+insert  into `iva`(`id_iva`,`iva`,`fecha`,`id_usuario`,`est`) values (13,0.12,'2019-01-31',1,'A'),(14,0.14,'2019-01-31',1,'I');
 
 /*Table structure for table `laboratorio` */
 
@@ -1843,6 +1843,7 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_iva`(IN iva1 DOUBLE, IN id_usuario1 INT, OUT msg TEXT)
 BEGIN
+	update iva set est = 'I';
 	INSERT INTO iva(iva,fecha,id_usuario,est)VALUES(iva1,NOW(),id_usuario1,'A');
     SET msg = 'Valor Agregado';
 END */$$
@@ -1923,6 +1924,18 @@ DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarComboEnvasePro`()
 BEGIN
 	SELECT `id_envase`,`nombre` FROM`envase` where estado='A' ORDER BY nombre;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `listarComboIva` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `listarComboIva` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarComboIva`()
+BEGIN
+    SELECT `id_iva`,`iva`,`fecha`,`id_usuario`,`est` FROM `iva` WHERE est = 'A';
     END */$$
 DELIMITER ;
 
@@ -2090,18 +2103,6 @@ BEGIN
     END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `listarTelefono` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `listarTelefono` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarTelefono`(in cedula1 text)
-BEGIN
-select * from Telefono where Cedula = cedula1;
-END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `listarJoinProductosFaltantes` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `listarJoinProductosFaltantes` */;
@@ -2259,6 +2260,18 @@ JOIN `envase` en ON en.`id_envase`= pro.`id_envase`
 JOIN `medidas` me ON me.`id_medidas`= pro.`id_medidas`
 ORDER BY dnp.`id_cabecera_nota_pedidos`;
 END IF;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `listarTelefono` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `listarTelefono` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarTelefono`(in cedula1 text)
+BEGIN
+select * from Telefono where Cedula = cedula1;
 END */$$
 DELIMITER ;
 
