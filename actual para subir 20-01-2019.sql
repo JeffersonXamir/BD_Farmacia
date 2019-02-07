@@ -97,11 +97,11 @@ CREATE TABLE `cabecera_nota_pedidos` (
   KEY `fk_cabecera_nota_pedidos_proveedor_idx` (`id_proveedor`),
   KEY `fk_cabecera_nota_pedidos_usuario_idx` (`id_usuario`),
   CONSTRAINT `fk_cabecera_nota_pedidos_proveedor` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
 /*Data for the table `cabecera_nota_pedidos` */
 
-insert  into `cabecera_nota_pedidos`(`id_cabecera_nota_pedidos`,`id_proveedor`,`id_usuario`,`fecha_creacion`,`estado`,`plazo`,`forma_pago`,`iva`,`descuento`,`total`) values (25,6,2,'2019-01-21 11:09:36','SI','6 Meses','Credito',40.84,26.46,2300.38),(26,7,2,'2019-01-21 11:10:09','SI','3 Meses','Credito',0,0,170.36),(27,5,2,'2019-01-21 11:10:58','SI','Inmediato','Contado',8.1,5.4,167.7),(28,14,2,'2019-01-21 11:13:09','SI','Inmediato','Contado',34.88,38.88,2264.2),(29,11,2,'2019-01-21 11:13:46','SI','Inmediato','Contado',34.88,38.88,2346.28),(30,13,2,'2019-01-21 11:16:43','SI','3 Meses','Credito',13.5,5.63,657.27),(31,15,2,'2019-01-23 18:27:21','SI','6 Meses','Contado',0,6.28,1698.24),(32,15,2,'2019-01-24 16:00:41','SI','9 Meses','Contado',20.97,26.8,1973.62),(33,8,2,'2019-01-29 17:20:46','SI','6 Meses','Contado',0,1.65,53.43),(34,5,2,'2019-01-29 17:21:47','SI','3 Meses','Contado',0,0,63.9),(35,11,2,'2019-01-30 00:35:57','SI','6 Meses','Contado',0,0.4,53.78),(36,16,2,'2019-01-30 09:24:24','SI','6 Meses','Contado',12.58,0,117.43),(37,16,2,'2019-01-31 15:29:24','SI','Inmediato','Contado',5.84,98.7,1600.84),(38,7,2,'2019-01-31 15:42:05','SI','9 Meses','Contado',1.79,39.48,1293.26),(39,7,2,'2019-02-05 23:47:00','SI','3 Meses','Contado',0,0,32.66),(40,7,2,'2019-02-06 10:47:03','SI','Inmediato','Contado',0,0,275.58),(41,14,2,'2019-02-06 13:08:19','SI','Inmediato','Contado',4,0.16,113.74),(42,15,2,'2019-02-06 13:45:34','SI','3 Meses','Contado',4,0.16,113.74),(43,15,2,'2019-02-06 13:47:10','SI','Inmediato','Contado',26.48,1.17,275.24),(44,5,2,'2019-02-06 13:51:24','SI','Inmediato','Contado',0,0,48.28),(45,13,2,'2019-02-06 14:24:08','SI','Inmediato','Contado',3.29,0,30.74),(46,6,2,'2019-02-06 14:28:28','SI','Inmediato','Contado',18.78,0,175.29),(47,13,2,'2019-02-06 14:33:01','SI','Inmediato','Contado',3.06,0,851.06),(48,8,2,'2019-02-06 15:04:44','SI','Inmediato','Contado',0,0,62.81),(49,15,2,'2019-02-06 03:11:27','SI','Inmediato','Contado',4.06,0,37.93);
+insert  into `cabecera_nota_pedidos`(`id_cabecera_nota_pedidos`,`id_proveedor`,`id_usuario`,`fecha_creacion`,`estado`,`plazo`,`forma_pago`,`iva`,`descuento`,`total`) values (25,6,2,'2019-01-21 11:09:36','SI','6 Meses','Credito',40.84,26.46,2300.38),(26,7,2,'2019-01-21 11:10:09','SI','3 Meses','Credito',0,0,170.36),(27,5,2,'2019-01-21 11:10:58','SI','Inmediato','Contado',8.1,5.4,167.7),(28,14,2,'2019-01-21 11:13:09','SI','Inmediato','Contado',34.88,38.88,2264.2),(29,11,2,'2019-01-21 11:13:46','SI','Inmediato','Contado',34.88,38.88,2346.28),(30,13,2,'2019-01-21 11:16:43','SI','3 Meses','Credito',13.5,5.63,657.27),(31,15,2,'2019-01-23 18:27:21','SI','6 Meses','Contado',0,6.28,1698.24),(32,15,2,'2019-01-24 16:00:41','SI','9 Meses','Contado',20.97,26.8,1973.62),(33,8,2,'2019-01-29 17:20:46','SI','6 Meses','Contado',0,1.65,53.43),(34,5,2,'2019-01-29 17:21:47','SI','3 Meses','Contado',0,0,63.9),(35,11,2,'2019-01-30 00:35:57','SI','6 Meses','Contado',0,0.4,53.78),(36,16,2,'2019-01-30 09:24:24','SI','6 Meses','Contado',12.58,0,117.43),(37,16,2,'2019-01-31 15:29:24','SI','Inmediato','Contado',5.84,98.7,1600.84),(38,7,2,'2019-01-31 15:42:05','SI','9 Meses','Contado',1.79,39.48,1293.26),(39,7,2,'2019-02-05 23:47:00','SI','3 Meses','Contado',0,0,32.66),(40,7,2,'2019-02-06 10:47:03','SI','Inmediato','Contado',0,0,275.58),(41,14,2,'2019-02-06 13:08:19','SI','Inmediato','Contado',4,0.16,113.74),(42,15,2,'2019-02-06 13:45:34','SI','3 Meses','Contado',4,0.16,113.74),(43,15,2,'2019-02-06 13:47:10','SI','Inmediato','Contado',26.48,1.17,275.24),(44,5,2,'2019-02-06 13:51:24','SI','Inmediato','Contado',0,0,48.28),(45,13,2,'2019-02-06 14:24:08','SI','Inmediato','Contado',3.29,0,30.74),(46,6,2,'2019-02-06 14:28:28','SI','Inmediato','Contado',18.78,0,175.29),(47,13,2,'2019-02-06 14:33:01','SI','Inmediato','Contado',3.06,0,851.06),(48,8,2,'2019-02-06 15:04:44','SI','Inmediato','Contado',0,0,62.81),(49,15,2,'2019-02-06 03:11:27','SI','Inmediato','Contado',4.06,0,37.93),(50,16,2,'2019-02-07 01:20:14','SI','Inmediato','Contado',6.858,0,119.088);
 
 /*Table structure for table `clientes` */
 
@@ -200,11 +200,11 @@ CREATE TABLE `detalle_nota_pedidos` (
   KEY `fk_detalle_nota_pedidos_precio_idx` (`id_precio`),
   CONSTRAINT `fk_detalle_nota_pedidos_cabecera` FOREIGN KEY (`id_cabecera_nota_pedidos`) REFERENCES `cabecera_nota_pedidos` (`id_cabecera_nota_pedidos`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_detalle_nota_pedidos_precio` FOREIGN KEY (`id_precio`) REFERENCES `precios` (`id_precio`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=latin1;
 
 /*Data for the table `detalle_nota_pedidos` */
 
-insert  into `detalle_nota_pedidos`(`id_detalle_nota_pedidos`,`id_precio`,`id_cabecera_nota_pedidos`,`cantidad`,`precio`,`descuento`,`iva`,`total`,`bono`) values (34,42,25,10,0.9999999,0.0000000,0.0000000,0.9999999,0),(35,13,25,150,0.9999999,0.9999999,0.9999999,0.9999999,0),(36,26,25,50,0.9999999,0.9999999,0.9999999,0.9999999,0),(37,35,25,70,0.9999999,0.9999999,0.9999999,0.9999999,0),(38,24,25,80,0.9999999,0.0000000,0.0000000,0.9999999,0),(39,25,25,30,0.9999999,0.0000000,0.0000000,0.9999999,0),(40,42,26,48,0.9999999,0.0000000,0.0000000,0.9999999,0),(41,13,26,98,0.9999999,0.0000000,0.0000000,0.9999999,0),(42,42,27,150,0.9999999,0.0000000,0.0000000,0.9999999,0),(43,13,27,90,0.9999999,0.9999999,0.9999999,0.9999999,0),(44,42,28,150,0.9999999,0.0000000,0.0000000,0.9999999,0),(45,13,28,90,0.9999999,0.9999999,0.9999999,0.9999999,0),(46,26,28,80,0.9999999,0.0000000,0.0000000,0.9999999,0),(47,35,28,80,0.9999999,0.9999999,0.9999999,0.9999999,0),(48,42,29,150,0.9999999,0.0000000,0.0000000,0.9999999,0),(49,13,29,90,0.9999999,0.9999999,0.9999999,0.9999999,0),(50,26,29,80,0.9999999,0.0000000,0.0000000,0.9999999,0),(51,35,29,80,0.9999999,0.9999999,0.9999999,0.9999999,0),(52,24,29,18,0.9999999,0.0000000,0.0000000,0.9999999,0),(53,42,30,80,0.9999999,0.0000000,0.0000000,0.9999999,0),(54,13,30,90,0.9999999,0.0000000,0.0000000,0.9999999,0),(55,26,30,80,0.9999999,0.0000000,0.0000000,0.9999999,0),(56,35,30,150,0.9999999,0.9999999,0.9999999,0.9999999,0),(57,42,31,200,0.9999999,0.0000000,0.0000000,0.9999999,0),(59,26,31,233,0.9999999,0.0000000,0.0000000,0.9999999,0),(60,35,31,322,0.9999999,0.9999999,0.0000000,0.9999999,0),(61,42,32,123,0.9999999,0.0000000,0.0000000,0.9999999,0),(62,13,32,344,0.9999999,0.9999999,0.0000000,0.9999999,0),(63,26,32,233,0.9999999,0.0000000,0.0000000,0.9999999,0),(64,35,32,238,0.9999999,0.9999999,0.9999999,0.9999999,0),(65,44,32,23,0.9999999,0.0000000,0.9999999,0.9999999,0),(66,42,33,0,0.9999999,0.9999999,0.9999999,0.0000000,0),(67,42,34,0,0.9999999,0.9999999,0.0000000,0.0000000,0),(68,42,35,28,0.9999999,0.0000000,0.0000000,0.9999999,4),(69,13,35,30,0.9999999,0.0000000,0.0000000,0.9999999,0),(70,42,36,69,0.9999999,0.0000000,0.9999999,0.9999999,0),(71,13,36,83,0.9999999,0.0000000,0.9999999,0.9999999,3),(72,42,37,23,0.9999999,0.0000000,0.9999999,0.9999999,0),(73,13,37,49,0.9999999,0.0000000,0.9999999,0.9999999,4),(74,26,37,70,0.9999999,0.9999999,0.0000000,0.9999999,0),(75,42,38,28,0.9999999,0.0000000,0.9999999,0.9999999,5),(76,13,38,56,0.9999999,0.9999999,0.0000000,0.9999999,0),(77,42,39,23,0.9999999,0.0000000,0.0000000,0.9999999,0),(78,24,39,45,0.9999999,0.0000000,0.0000000,0.9999999,0),(79,26,39,56,0.9999999,0.0000000,0.0000000,0.9999999,0),(80,42,40,34,0.9999999,0.0000000,0.0000000,0.9999999,0),(81,13,40,34,0.9999999,0.0000000,0.0000000,0.9999999,0),(82,26,40,45,0.9999999,0.0000000,0.0000000,0.9999999,3),(83,42,44,34,0.9999999,0.0000000,0.0000000,0.9999999,3),(85,42,44,34,1.3048649,0.0000000,0.0000000,9.9999999,2),(86,42,44,34,1.3048649,0.0000000,0.0000000,48.2800000,1),(87,42,47,34,0.6891892,0.0000000,3.0600000,28.5600000,3),(89,13,47,35,23.5000000,0.0000000,0.0000000,822.5000000,0),(90,42,48,23,1.3064000,0.0000000,0.0000000,32.6600000,2),(91,13,48,45,0.6700000,0.0000000,0.0000000,30.1500000,0),(92,42,49,34,0.7083333,0.0000000,3.0600000,28.5600000,2),(93,13,49,3,2.7900000,0.0000000,1.0044000,9.3744000,0);
+insert  into `detalle_nota_pedidos`(`id_detalle_nota_pedidos`,`id_precio`,`id_cabecera_nota_pedidos`,`cantidad`,`precio`,`descuento`,`iva`,`total`,`bono`) values (34,42,25,10,0.9999999,0.0000000,0.0000000,0.9999999,0),(35,13,25,150,0.9999999,0.9999999,0.9999999,0.9999999,0),(36,26,25,50,0.9999999,0.9999999,0.9999999,0.9999999,0),(37,35,25,70,0.9999999,0.9999999,0.9999999,0.9999999,0),(38,24,25,80,0.9999999,0.0000000,0.0000000,0.9999999,0),(39,25,25,30,0.9999999,0.0000000,0.0000000,0.9999999,0),(40,42,26,48,0.9999999,0.0000000,0.0000000,0.9999999,0),(41,13,26,98,0.9999999,0.0000000,0.0000000,0.9999999,0),(42,42,27,150,0.9999999,0.0000000,0.0000000,0.9999999,0),(43,13,27,90,0.9999999,0.9999999,0.9999999,0.9999999,0),(44,42,28,150,0.9999999,0.0000000,0.0000000,0.9999999,0),(45,13,28,90,0.9999999,0.9999999,0.9999999,0.9999999,0),(46,26,28,80,0.9999999,0.0000000,0.0000000,0.9999999,0),(47,35,28,80,0.9999999,0.9999999,0.9999999,0.9999999,0),(48,42,29,150,0.9999999,0.0000000,0.0000000,0.9999999,0),(49,13,29,90,0.9999999,0.9999999,0.9999999,0.9999999,0),(50,26,29,80,0.9999999,0.0000000,0.0000000,0.9999999,0),(51,35,29,80,0.9999999,0.9999999,0.9999999,0.9999999,0),(52,24,29,18,0.9999999,0.0000000,0.0000000,0.9999999,0),(53,42,30,80,0.9999999,0.0000000,0.0000000,0.9999999,0),(54,13,30,90,0.9999999,0.0000000,0.0000000,0.9999999,0),(55,26,30,80,0.9999999,0.0000000,0.0000000,0.9999999,0),(56,35,30,150,0.9999999,0.9999999,0.9999999,0.9999999,0),(57,42,31,200,0.9999999,0.0000000,0.0000000,0.9999999,0),(59,26,31,233,0.9999999,0.0000000,0.0000000,0.9999999,0),(60,35,31,322,0.9999999,0.9999999,0.0000000,0.9999999,0),(61,42,32,123,0.9999999,0.0000000,0.0000000,0.9999999,0),(62,13,32,344,0.9999999,0.9999999,0.0000000,0.9999999,0),(63,26,32,233,0.9999999,0.0000000,0.0000000,0.9999999,0),(64,35,32,238,0.9999999,0.9999999,0.9999999,0.9999999,0),(65,44,32,23,0.9999999,0.0000000,0.9999999,0.9999999,0),(66,42,33,0,0.9999999,0.9999999,0.9999999,0.0000000,0),(67,42,34,0,0.9999999,0.9999999,0.0000000,0.0000000,0),(68,42,35,28,0.9999999,0.0000000,0.0000000,0.9999999,4),(69,13,35,30,0.9999999,0.0000000,0.0000000,0.9999999,0),(70,42,36,69,0.9999999,0.0000000,0.9999999,0.9999999,0),(71,13,36,83,0.9999999,0.0000000,0.9999999,0.9999999,3),(72,42,37,23,0.9999999,0.0000000,0.9999999,0.9999999,0),(73,13,37,49,0.9999999,0.0000000,0.9999999,0.9999999,4),(74,26,37,70,0.9999999,0.9999999,0.0000000,0.9999999,0),(75,42,38,28,0.9999999,0.0000000,0.9999999,0.9999999,5),(76,13,38,56,0.9999999,0.9999999,0.0000000,0.9999999,0),(77,42,39,23,0.9999999,0.0000000,0.0000000,0.9999999,0),(78,24,39,45,0.9999999,0.0000000,0.0000000,0.9999999,0),(79,26,39,56,0.9999999,0.0000000,0.0000000,0.9999999,0),(80,42,40,34,0.9999999,0.0000000,0.0000000,0.9999999,0),(81,13,40,34,0.9999999,0.0000000,0.0000000,0.9999999,0),(82,26,40,45,0.9999999,0.0000000,0.0000000,0.9999999,3),(83,42,44,34,0.9999999,0.0000000,0.0000000,0.9999999,3),(85,42,44,34,1.3048649,0.0000000,0.0000000,9.9999999,2),(86,42,44,34,1.3048649,0.0000000,0.0000000,48.2800000,1),(87,42,47,34,0.6891892,0.0000000,3.0600000,28.5600000,3),(89,13,47,35,23.5000000,0.0000000,0.0000000,822.5000000,0),(90,42,48,23,1.3064000,0.0000000,0.0000000,32.6600000,2),(91,13,48,45,0.6700000,0.0000000,0.0000000,30.1500000,0),(92,42,49,34,0.7083333,0.0000000,3.0600000,28.5600000,2),(93,13,49,3,2.7900000,0.0000000,1.0044000,9.3744000,0),(94,42,50,34,1.6200000,0.0000000,0.0000000,55.0800000,0),(95,13,50,36,0.6000000,0.0000000,2.8080000,26.2080000,3),(96,44,50,45,0.7500000,0.0000000,4.0500000,37.8000000,0);
 
 /*Table structure for table `envase` */
 
@@ -868,6 +868,20 @@ set valor = 'Laboratorio actualizado';
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `ActualizarCabeceraNotaPedido` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `ActualizarCabeceraNotaPedido` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarCabeceraNotaPedido`(in plazo1 text, in formapago2 text, in iva3 decimal(10,7),
+in descuento4 decimal(10,7),in total5 decimal(10,7),in idcab6 decimal(10,7),out valor text)
+BEGIN
+	UPDATE `cabecera_nota_pedidos` SET `plazo`=plazo1,`forma_pago`=formapago2,`iva`=iva3,`descuento`=descuento4,`total`=total5 WHERE `id_cabecera_nota_pedidos`= idcab6;
+	set valor ='actualizacion con exito';
+    END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `actualizarCliente` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `actualizarCliente` */;
@@ -984,6 +998,23 @@ UPDATE fc_punto_venta SET `id_localidad_guayas`=id_localidad1, `nombre`=nombre_l
     END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `actualizarPrecioCompra` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `actualizarPrecioCompra` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarPrecioCompra`(IN id_producto1 BIGINT,IN precio_compra2 DOUBLE(5,2),IN precio_venta3 DOUBLE(5,2),in fecha4 datetime,in id_usu bigint,OUT valor1 TEXT )
+BEGIN
+	DECLARE id_pre INT;
+	INSERT INTO `precios`(`id_producto`,`precio_compra`,`precio_venta`,`estado`,`fecha_registro`,`id_usuario`) VALUES (id_producto1,precio_compra2,precio_venta3,'A',fecha4,id_usu);
+	set valor1='PRECIO AGREGADO';
+   -- SET id_pre =(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND`precio_compra`=precio_compra2 AND `precio_venta`= precio_venta3);
+    -- UPDATE `precios` SET estado='I' WHERE `id_precio` NOT IN (id_pre) AND `id_producto`=id_producto1;
+	-- SET valor1=(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND `precio_compra`= precio_compra2 AND`precio_venta`=precio_venta3);
+    END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `Actualizar_Tipo` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `Actualizar_Tipo` */;
@@ -1001,23 +1032,6 @@ set nra = (SELECT validarTipoProducto(nombre_f));
 	set salida ='DATO EXISTENTE';
 	end if;
 END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `actualizarPrecioCompra` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `actualizarPrecioCompra` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarPrecioCompra`(IN id_producto1 BIGINT,IN precio_compra2 DOUBLE(5,2),IN precio_venta3 DOUBLE(5,2),in fecha4 datetime,in id_usu bigint,OUT valor1 TEXT )
-BEGIN
-	DECLARE id_pre INT;
-	INSERT INTO `precios`(`id_producto`,`precio_compra`,`precio_venta`,`estado`,`fecha_registro`,`id_usuario`) VALUES (id_producto1,precio_compra2,precio_venta3,'A',fecha4,id_usu);
-	set valor1='PRECIO AGREGADO';
-   -- SET id_pre =(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND`precio_compra`=precio_compra2 AND `precio_venta`= precio_venta3);
-    -- UPDATE `precios` SET estado='I' WHERE `id_precio` NOT IN (id_pre) AND `id_producto`=id_producto1;
-	-- SET valor1=(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND `precio_compra`= precio_compra2 AND`precio_venta`=precio_venta3);
-    END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `bitacora_seguridad` */
