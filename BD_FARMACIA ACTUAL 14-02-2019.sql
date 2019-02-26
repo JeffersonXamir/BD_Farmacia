@@ -103,7 +103,7 @@ CREATE TABLE `cabecera_nota_pedidos` (
 
 /*Data for the table `cabecera_nota_pedidos` */
 
-insert  into `cabecera_nota_pedidos`(`id_cabecera_nota_pedidos`,`id_proveedor`,`id_usuario`,`fecha_creacion`,`estado`,`plazo`,`forma_pago`,`iva`,`descuento`,`total`) values (25,6,2,'2019-01-21 11:09:36','SI','6 Meses','Credito',40.84,26.46,2300.38),(26,7,2,'2019-01-21 11:10:09','SI','3 Meses','Credito',0,0,170.36),(27,5,2,'2019-01-21 11:10:58','SI','Inmediato','Contado',8.1,5.4,167.7),(28,14,2,'2019-01-21 11:13:09','SI','Inmediato','Contado',34.88,38.88,2264.2),(29,11,2,'2019-01-21 11:13:46','SI','Inmediato','Contado',34.88,38.88,2346.28),(30,13,2,'2019-01-21 11:16:43','SI','3 Meses','Credito',13.5,5.63,657.27),(31,15,2,'2019-01-23 18:27:21','SI','6 Meses','Contado',0,6.28,1698.24),(32,15,2,'2019-01-24 16:00:41','SI','9 Meses','Contado',20.97,26.8,1973.62),(33,8,2,'2019-01-29 17:20:46','SI','6 Meses','Contado',0,1.65,53.43),(34,5,2,'2019-01-29 17:21:47','SI','3 Meses','Contado',0,0,63.9),(35,11,2,'2019-01-30 00:35:57','SI','6 Meses','Contado',0,0.4,53.78),(36,16,2,'2019-01-30 09:24:24','SI','6 Meses','Contado',12.58,0,117.43),(37,16,2,'2019-01-31 15:29:24','SI','Inmediato','Contado',5.84,98.7,1600.84),(38,7,2,'2019-01-31 15:42:05','SI','9 Meses','Contado',1.79,39.48,1293.26),(39,7,2,'2019-02-05 23:47:00','SI','3 Meses','Contado',0,0,32.66),(40,7,2,'2019-02-06 10:47:03','SI','Inmediato','Contado',0,0,275.58),(41,14,2,'2019-02-06 13:08:19','SI','Inmediato','Contado',4,0.16,113.74),(42,15,2,'2019-02-06 13:45:34','SI','3 Meses','Contado',4,0.16,113.74),(43,15,2,'2019-02-06 13:47:10','SI','Inmediato','Contado',26.48,1.17,275.24),(44,5,2,'2019-02-06 13:51:24','SI','Inmediato','Contado',0,0,48.28),(45,13,2,'2019-02-06 14:24:08','SI','Inmediato','Contado',3.29,0,30.74),(46,6,2,'2019-02-06 14:28:28','SI','Inmediato','Contado',18.78,0,175.29),(47,13,2,'2019-02-06 14:33:01','SI','Inmediato','Contado',3.06,0,851.06),(48,8,2,'2019-02-06 15:04:44','SI','Inmediato','Contado',0,0,62.81),(49,15,2,'2019-02-06 03:11:27','SI','Inmediato','Contado',4.06,0,37.93),(50,16,2,'2019-02-07 01:20:14','NO','Inmediato','Contado',6.858,0,119.088),(51,14,2,'2019-02-08 16:42:23','SI','Inmediato','Contado',19.45,5.13,223.41),(52,15,2,'2019-02-08 17:33:58','SI','Inmediato','Contado',18.13,0,169.18),(53,14,2,'2019-02-09 16:29:25','SI','Inmediato','Contado',4.05,0,37.8),(54,15,2,'2019-02-09 16:32:33','SI','Inmediato','Contado',4.41,0,41.16),(55,11,2,'2019-02-09 16:35:28','SI','Inmediato','Contado',33.5076,0,312.7376),(56,8,2,'2019-02-09 16:54:56','NO','Inmediato','Contado',25.518,0,534.938),(57,16,2,'2019-02-09 19:58:18','SI','Inmediato','Contado',4.05,0,37.8),(58,10,2,'2019-02-09 20:00:40','NO','Inmediato','Contado',0.54,0,5.04),(59,15,2,'2019-02-09 20:09:11','NO','Inmediato','Contado',15.25,0,286.55),(60,11,2,'2019-02-09 20:14:01','NO','Inmediato','Contado',2.84,0,53.3),(61,14,2,'2019-02-09 22:46:59','SI','Inmediato','Contado',1.674,0,22.104),(62,13,2,'2019-02-09 22:51:17','SI','Inmediato','Contado',1.6092,0,15.0192),(63,15,2,'2019-02-09 23:18:18','SI','Inmediato','Contado',4.362,0,40.712),(64,11,2,'2019-02-10 00:06:19','SI','Inmediato','Contado',0,0,10.36),(65,8,2,'2019-02-10 00:10:53','SI','Inmediato','Contado',5.0544,0,47.1744),(66,15,2,'2019-02-10 00:25:45','SI','Inmediato','Contado',1.206,0.576,87.76),(67,13,2,'2019-02-11 17:32:11','SI','Inmediato','Contado',0,0,124.96),(68,15,2,'2019-02-11 20:26:52','SI','3 Meses','Contado',6.546,0,61.096),(69,15,2,'2019-02-11 20:30:11','SI','Inmediato','Contado',0,0,78.58),(70,11,2,'2019-02-12 00:47:20','SI','6 Meses','Contado',0,0,95),(71,10,2,'2019-02-12 00:52:17','SI','Inmediato','Contado',0,0,88.31),(72,10,2,'2019-02-12 01:24:11','SI','Inmediato','Contado',0,0,214.68),(73,6,2,'2019-02-12 01:32:51','SI','Inmediato','Contado',0,0,66.74),(74,13,2,'2019-02-12 17:55:59','SI','Inmediato','Contado',0.18,0,70.9),(75,6,2,'2019-02-19 17:43:25','SI','Inmediato','Contado',0,0,54.72),(76,8,2,'2019-02-19 23:39:00','SI','12 Meses','Contado',5.44,0,42.21);
+insert  into `cabecera_nota_pedidos`(`id_cabecera_nota_pedidos`,`id_proveedor`,`id_usuario`,`fecha_creacion`,`estado`,`plazo`,`forma_pago`,`iva`,`descuento`,`total`) values (25,6,2,'2019-01-21 11:09:36','SI','6 Meses','Credito',2.9999997,2.9999997,5.9999994),(26,7,2,'2019-01-21 11:10:09','SI','3 Meses','Credito',0,0,170.36),(27,5,2,'2019-01-21 11:10:58','SI','Inmediato','Contado',8.1,5.4,167.7),(28,14,2,'2019-01-21 11:13:09','SI','Inmediato','Contado',34.88,38.88,2264.2),(29,11,2,'2019-01-21 11:13:46','SI','Inmediato','Contado',34.88,38.88,2346.28),(30,13,2,'2019-01-21 11:16:43','SI','3 Meses','Credito',13.5,5.63,657.27),(31,15,2,'2019-01-23 18:27:21','SI','6 Meses','Contado',0,6.28,1698.24),(32,15,2,'2019-01-24 16:00:41','SI','9 Meses','Contado',20.97,26.8,1973.62),(33,8,2,'2019-01-29 17:20:46','SI','6 Meses','Contado',0,1.65,53.43),(34,5,2,'2019-01-29 17:21:47','SI','3 Meses','Contado',0,0,63.9),(35,11,2,'2019-01-30 00:35:57','SI','6 Meses','Contado',0,0.4,53.78),(36,16,2,'2019-01-30 09:24:24','SI','6 Meses','Contado',12.58,0,117.43),(37,16,2,'2019-01-31 15:29:24','SI','Inmediato','Contado',5.84,98.7,1600.84),(38,7,2,'2019-01-31 15:42:05','SI','9 Meses','Contado',1.79,39.48,1293.26),(39,7,2,'2019-02-05 23:47:00','SI','3 Meses','Contado',0,0,32.66),(40,7,2,'2019-02-06 10:47:03','SI','Inmediato','Contado',0,0,275.58),(41,14,2,'2019-02-06 13:08:19','SI','Inmediato','Contado',4,0.16,113.74),(42,15,2,'2019-02-06 13:45:34','SI','3 Meses','Contado',4,0.16,113.74),(43,15,2,'2019-02-06 13:47:10','SI','Inmediato','Contado',26.48,1.17,275.24),(44,5,2,'2019-02-06 13:51:24','SI','Inmediato','Contado',0,0,48.28),(45,13,2,'2019-02-06 14:24:08','SI','Inmediato','Contado',3.29,0,30.74),(46,6,2,'2019-02-06 14:28:28','SI','Inmediato','Contado',18.78,0,175.29),(47,13,2,'2019-02-06 14:33:01','SI','Inmediato','Contado',3.06,0,851.06),(48,8,2,'2019-02-06 15:04:44','SI','Inmediato','Contado',0,0,62.81),(49,15,2,'2019-02-06 03:11:27','SI','Inmediato','Contado',4.06,0,37.93),(50,16,2,'2019-02-07 01:20:14','NO','Inmediato','Contado',6.858,0,119.088),(51,14,2,'2019-02-08 16:42:23','SI','Inmediato','Contado',19.45,5.13,223.41),(52,15,2,'2019-02-08 17:33:58','SI','Inmediato','Contado',18.13,0,169.18),(53,14,2,'2019-02-09 16:29:25','SI','Inmediato','Contado',4.05,0,37.8),(54,15,2,'2019-02-09 16:32:33','SI','Inmediato','Contado',4.41,0,41.16),(55,11,2,'2019-02-09 16:35:28','SI','Inmediato','Contado',33.5076,0,312.7376),(56,8,2,'2019-02-09 16:54:56','NO','Inmediato','Contado',25.518,0,534.938),(57,16,2,'2019-02-09 19:58:18','SI','Inmediato','Contado',4.05,0,37.8),(58,10,2,'2019-02-09 20:00:40','NO','Inmediato','Contado',0.54,0,5.04),(59,15,2,'2019-02-09 20:09:11','NO','Inmediato','Contado',15.25,0,286.55),(60,11,2,'2019-02-09 20:14:01','NO','Inmediato','Contado',2.84,0,53.3),(61,14,2,'2019-02-09 22:46:59','SI','Inmediato','Contado',1.674,0,22.104),(62,13,2,'2019-02-09 22:51:17','SI','Inmediato','Contado',1.6092,0,15.0192),(63,15,2,'2019-02-09 23:18:18','SI','Inmediato','Contado',4.362,0,40.712),(64,11,2,'2019-02-10 00:06:19','SI','Inmediato','Contado',0,0,10.36),(65,8,2,'2019-02-10 00:10:53','SI','Inmediato','Contado',5.0544,0,47.1744),(66,15,2,'2019-02-10 00:25:45','SI','Inmediato','Contado',1.206,0.576,87.76),(67,13,2,'2019-02-11 17:32:11','SI','Inmediato','Contado',0,0,124.96),(68,15,2,'2019-02-11 20:26:52','SI','3 Meses','Contado',6.546,0,61.096),(69,15,2,'2019-02-11 20:30:11','SI','Inmediato','Contado',0,0,78.58),(70,11,2,'2019-02-12 00:47:20','SI','6 Meses','Contado',0,0,95),(71,10,2,'2019-02-12 00:52:17','SI','Inmediato','Contado',0,0,88.31),(72,10,2,'2019-02-12 01:24:11','SI','Inmediato','Contado',0,0,214.68),(73,6,2,'2019-02-12 01:32:51','SI','Inmediato','Contado',0,0,66.74),(74,13,2,'2019-02-12 17:55:59','SI','Inmediato','Contado',0.18,0,70.9),(75,6,2,'2019-02-19 17:43:25','SI','Inmediato','Contado',0,0,54.72),(76,8,2,'2019-02-19 23:39:00','SI','12 Meses','Contado',5.44,0,42.21);
 
 /*Table structure for table `clientes` */
 
@@ -180,11 +180,11 @@ CREATE TABLE `detalle_faltantes` (
   PRIMARY KEY (`id_detalle_faltantes`),
   KEY `id_producto` (`id_producto`),
   CONSTRAINT `fk_pro_detfal` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_productos`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 /*Data for the table `detalle_faltantes` */
 
-insert  into `detalle_faltantes`(`id_detalle_faltantes`,`id_producto`,`id_usuario`,`fecha_registro`,`cantidad`,`estado`) values (2,21,NULL,'2018-12-13 16:29:18',100,'OK'),(3,22,NULL,'2018-12-13 16:29:18',200,'OK'),(4,23,NULL,'2018-12-13 16:29:18',300,'OK'),(5,25,NULL,'2018-12-13 16:29:18',500,'OK'),(6,24,NULL,'2018-12-13 16:29:18',400,'OK'),(10,27,NULL,'2018-12-13 16:29:18',600,'OK'),(11,32,NULL,'2019-01-14 00:00:00',10,'OK'),(12,31,2,'2019-01-14 00:00:00',10,'OK'),(13,33,2,'2019-01-20 12:40:12',20,'OK');
+insert  into `detalle_faltantes`(`id_detalle_faltantes`,`id_producto`,`id_usuario`,`fecha_registro`,`cantidad`,`estado`) values (2,21,NULL,'2018-12-13 16:29:18',100,'OK'),(3,22,NULL,'2018-12-13 16:29:18',200,'OK'),(4,23,NULL,'2018-12-13 16:29:18',300,'OK'),(5,25,NULL,'2018-12-13 16:29:18',500,'OK'),(6,24,NULL,'2018-12-13 16:29:18',400,'OK'),(10,27,NULL,'2018-12-13 16:29:18',600,'OK'),(11,32,NULL,'2019-01-14 00:00:00',10,'OK'),(12,31,2,'2019-01-14 00:00:00',10,'OK'),(13,33,2,'2019-01-20 12:40:12',20,'OK'),(14,34,NULL,'2019-02-25 00:00:00',0,'NO'),(15,35,NULL,'2019-02-25 00:00:00',0,'NO');
 
 /*Table structure for table `detalle_nota_pedidos` */
 
@@ -524,11 +524,11 @@ CREATE TABLE `precios` (
   `id_usuario` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id_precio`),
   KEY `fk_precios_productos` (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
 
 /*Data for the table `precios` */
 
-insert  into `precios`(`id_precio`,`id_producto`,`precio_compra`,`precio_venta`,`estado`,`fecha_registro`,`id_usuario`) values (1,22,0.55,0.60,'I','0000-00-00 00:00:00',NULL),(2,22,0.70,0.80,'I','0000-00-00 00:00:00',NULL),(8,22,0.63,0.90,'I','2018-12-20 17:56:59',NULL),(13,22,0.65,0.95,'A','2018-12-20 19:24:12',2),(14,22,0.45,0.35,'I','2018-12-20 19:24:12',5),(16,22,0.59,0.97,'I','2018-12-14 00:57:18',2),(17,22,0.73,0.96,'I','2018-12-14 08:28:31',2),(18,30,15.60,32.62,'A','2018-12-18 03:27:01',2),(19,22,0.44,0.61,NULL,NULL,NULL),(20,28,0.63,1.24,'A','2019-01-03 02:12:54',2),(21,28,0.89,0.92,'I','2018-12-19 00:01:25',2),(22,28,0.96,0.97,'I','2018-12-20 00:49:40',2),(23,27,1.56,1.57,'I','2019-01-03 17:10:12',2),(24,27,1.42,1.78,'A','2019-01-03 17:10:29',2),(25,27,1.62,1.96,'A','2019-01-03 17:10:41',2),(26,23,1.92,2.22,'A','2018-12-20 01:25:44',2),(27,31,0.65,0.90,'A','2019-01-16 03:53:26',2),(28,31,0.90,0.96,'I',NULL,NULL),(29,31,0.63,0.79,'I','2019-01-03 17:11:01',2),(30,28,0.86,0.98,'I',NULL,NULL),(31,24,0.26,0.30,'I','2018-12-21 01:03:22',2),(32,24,0.60,0.61,'I',NULL,NULL),(33,24,0.56,0.57,'I','2018-12-21 01:15:00',2),(34,24,58.60,59.60,'I',NULL,NULL),(35,24,0.67,0.97,'A',NULL,NULL),(36,28,0.90,0.96,'I','2018-12-21 01:39:54',2),(37,31,0.67,0.65,'I','2018-12-21 11:55:28',2),(38,31,0.68,0.69,'I','2019-01-02 15:23:05',2),(39,32,2.79,2.87,'A','2018-12-21 11:10:45',2),(40,27,2.34,2.88,'A','2019-01-20 00:00:00',2),(41,27,23.50,24.67,'A','2019-01-20 00:00:00',2),(42,21,4.56,6.76,'A','2019-01-20 00:00:00',2),(43,30,4.67,6.89,'A','2019-01-20 03:46:15',2),(44,33,0.75,1.00,'A','2019-01-20 12:38:15',2);
+insert  into `precios`(`id_precio`,`id_producto`,`precio_compra`,`precio_venta`,`estado`,`fecha_registro`,`id_usuario`) values (1,22,0.55,0.60,'I','0000-00-00 00:00:00',NULL),(2,22,0.70,0.80,'I','0000-00-00 00:00:00',NULL),(8,22,0.63,0.90,'I','2018-12-20 17:56:59',NULL),(13,22,0.65,0.95,'A','2018-12-20 19:24:12',2),(14,22,0.45,0.35,'I','2018-12-20 19:24:12',5),(16,22,0.59,0.97,'I','2018-12-14 00:57:18',2),(17,22,0.73,0.96,'I','2018-12-14 08:28:31',2),(18,30,15.60,32.62,'A','2018-12-18 03:27:01',2),(19,22,0.44,0.61,NULL,NULL,NULL),(20,28,0.63,1.24,'A','2019-01-03 02:12:54',2),(21,28,0.89,0.92,'I','2018-12-19 00:01:25',2),(22,28,0.96,0.97,'I','2018-12-20 00:49:40',2),(23,27,1.56,1.57,'I','2019-01-03 17:10:12',2),(24,27,1.42,1.78,'A','2019-01-03 17:10:29',2),(25,27,1.62,1.96,'A','2019-01-03 17:10:41',2),(26,23,1.92,2.22,'A','2018-12-20 01:25:44',2),(27,31,0.65,0.90,'A','2019-01-16 03:53:26',2),(28,31,0.90,0.96,'I',NULL,NULL),(29,31,0.63,0.79,'I','2019-01-03 17:11:01',2),(30,28,0.86,0.98,'I',NULL,NULL),(31,24,0.26,0.30,'I','2018-12-21 01:03:22',2),(32,24,0.60,0.61,'I',NULL,NULL),(33,24,0.56,0.57,'I','2018-12-21 01:15:00',2),(34,24,58.60,59.60,'I',NULL,NULL),(35,24,0.67,0.97,'A',NULL,NULL),(36,28,0.90,0.96,'I','2018-12-21 01:39:54',2),(37,31,0.67,0.65,'I','2018-12-21 11:55:28',2),(38,31,0.68,0.69,'I','2019-01-02 15:23:05',2),(39,32,2.79,2.87,'A','2018-12-21 11:10:45',2),(40,27,2.34,2.88,'A','2019-01-20 00:00:00',2),(41,27,23.50,24.67,'A','2019-01-20 00:00:00',2),(42,21,4.56,6.76,'A','2019-01-20 00:00:00',2),(43,30,4.67,6.89,'A','2019-01-20 03:46:15',2),(44,33,0.75,1.00,'A','2019-01-20 12:38:15',2),(45,34,12.50,12.75,'A','2019-02-25 16:39:24',2),(46,35,8.90,9.00,'A','2019-02-25 16:58:10',2);
 
 /*Table structure for table `productos` */
 
@@ -546,7 +546,7 @@ CREATE TABLE `productos` (
   `id_marcas` bigint(20) NOT NULL,
   `estado` varchar(1) DEFAULT NULL,
   `id_usuario` bigint(20) NOT NULL,
-  `iva` varchar(5) NOT NULL,
+  `iva` varchar(15) NOT NULL,
   `cantidad_minima` bigint(20) NOT NULL,
   PRIMARY KEY (`id_productos`),
   KEY `fk_tipos_productos` (`id_tipo`),
@@ -557,11 +557,11 @@ CREATE TABLE `productos` (
   CONSTRAINT `fk_marcas_productos` FOREIGN KEY (`id_marcas`) REFERENCES `marcas` (`id_marcas`),
   CONSTRAINT `fk_medidas_productos` FOREIGN KEY (`id_medidas`) REFERENCES `medidas` (`id_medidas`),
   CONSTRAINT `fk_tipos_productos` FOREIGN KEY (`id_tipo`) REFERENCES `tipo` (`id_tipo`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
 
 /*Data for the table `productos` */
 
-insert  into `productos`(`id_productos`,`nombre`,`descripcion`,`fecha_registro`,`peso`,`id_tipo`,`id_medidas`,`id_envase`,`id_marcas`,`estado`,`id_usuario`,`iva`,`cantidad_minima`) values (21,'ASPIRINA','dolores de cabeza','2018-11-16',15.50,5,4,2,1,'A',1,'NO',15),(22,'AMOXICILINA','INFECCION','2018-11-16',10.20,5,5,2,2,'A',2,'NO',24),(23,'MEBOCAINA','MEBOCAINA','2018-11-21',1.26,6,1,1,1,'A',3,'NO',14),(24,'IBUPROFENO ','DOLORES DE CABEZA,ESTOMAGO,FIEBRE','2018-11-22',0.50,11,5,2,1,'A',7,'NO',7),(25,'LEMONFLU2','RESFRIADOS ','2018-11-30',10.00,7,5,2,1,'A',2,'NO',29),(27,'tucol','jarabe para la toz','2018-12-12',15.60,2,3,1,1,'A',3,'NO',14),(28,'GAMALATE','CONCENTRACION','2018-12-13',2.60,7,1,2,1,'A',2,'0.12',15),(29,'ZALEPLA','RELAJACION','2018-12-13',2.60,11,1,1,1,'I',3,'NO',14),(30,'AFRIN','PARA DESCONGESTIONAR LA NARIZ','2018-12-18',2.36,7,3,1,1,'A',5,'NO',19),(31,'VITAMINA C','VITAMINAS','2018-12-20',0.63,5,2,3,1,'A',2,'0.12',15),(32,'OMEPRASOL','INFECCIONES','2018-12-21',2.30,5,6,2,2,'A',2,'0.12',45),(33,'TRIPLE ACCION','PASTA DENTAL','2019-01-20',1.05,10,4,2,1,'A',2,'0.12',10);
+insert  into `productos`(`id_productos`,`nombre`,`descripcion`,`fecha_registro`,`peso`,`id_tipo`,`id_medidas`,`id_envase`,`id_marcas`,`estado`,`id_usuario`,`iva`,`cantidad_minima`) values (21,'ASPIRINA','dolores de cabeza','2018-11-16',15.50,5,4,2,1,'A',1,'NO',15),(22,'AMOXICILINA','INFECCION','2018-11-16',10.20,5,5,2,2,'A',2,'NO',24),(23,'MEBOCAINA','MEBOCAINA','2018-11-21',1.26,6,1,1,1,'A',3,'NO',14),(24,'IBUPROFENO ','DOLORES DE CABEZA,ESTOMAGO,FIEBRE','2018-11-22',0.50,11,5,2,1,'A',7,'NO',7),(25,'LEMONFLU2','RESFRIADOS ','2018-11-30',10.00,7,5,2,1,'A',2,'NO',29),(27,'tucol','jarabe para la toz','2018-12-12',15.60,2,3,1,1,'A',3,'NO',14),(28,'GAMALATE','CONCENTRACION','2018-12-13',2.60,7,1,2,1,'A',2,'0.12',15),(29,'ZALEPLA','RELAJACION','2018-12-13',2.60,11,1,1,1,'I',3,'NO',14),(30,'AFRIN','PARA DESCONGESTIONAR LA NARIZ','2018-12-18',2.36,7,3,1,1,'A',5,'NO',19),(31,'VITAMINA C','VITAMINAS','2018-12-20',0.63,5,2,3,1,'A',2,'0.12',15),(32,'OMEPRASOL','INFECCIONES','2018-12-21',2.30,5,6,2,2,'A',2,'0.12',45),(33,'TRIPLE ACCION','PASTA DENTAL','2019-01-20',1.05,10,4,2,1,'A',2,'0.12',10),(34,'ALCOHOL','LIMPIEZA CORPORAL','2019-02-25',12.00,7,3,2,1,'A',2,'',23),(35,'TERMOMETRO','FIEBRE','2019-02-25',0.23,5,4,1,1,'A',2,'0.12',34);
 
 /*Table structure for table `proveedor` */
 
@@ -1070,7 +1070,7 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `BuscarIDProductoNuevo`(IN nombre1 VARCHAR(45),IN descripcion1 VARCHAR(80),IN fecha_registro1 DATE,IN peso1 DOUBLE(7,2),IN id_tipo1 BIGINT(20),
-	IN id_medidas1 BIGINT(20),IN id_envase1 BIGINT(20),IN id_marcas1 BIGINT(20),IN id_usuario1 BIGINT,IN iva1 VARCHAR(2),IN cantidad_minima1 BIGINT, OUT valor1 TEXT)
+	IN id_medidas1 BIGINT(20),IN id_envase1 BIGINT(20),IN id_marcas1 BIGINT(20),IN id_usuario1 BIGINT,IN iva1 VARCHAR(15),IN cantidad_minima1 BIGINT, OUT valor1 TEXT)
 BEGIN
 	
 	SET valor1= (SELECT `id_productos` FROM `productos` WHERE `descripcion`=descripcion1 AND`fecha_registro`=fecha_registro1 AND`peso`=peso1 AND`id_tipo`=id_tipo1 AND
@@ -1455,30 +1455,6 @@ BEGIN
     END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `ingresarProducto` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `ingresarProducto` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ingresarProducto`(IN nombre1 VARCHAR(45),IN descripcion1 VARCHAR(80),IN fecha_registro1 DATE,IN peso1 DOUBLE(7,2),IN id_tipo1 BIGINT(20),
-	IN id_medidas1 BIGINT(20),IN id_envase1 BIGINT(20),IN id_marcas1 BIGINT(20),IN id_usuario1 BIGINT,IN iva1 VARCHAR(2),IN cantidad_minima1 BIGINT, OUT valor1 TEXT)
-BEGIN
-	DECLARE nr INT;
-	DECLARE id_pro INT;
-	IF (nombre1='' OR descripcion1=''OR fecha_registro1='' OR peso1='' OR id_tipo1='' OR id_medidas1='' OR id_envase1='' OR id_marcas1='') THEN
-	SET valor1 ='campos invalidos';
-	ELSE
-	INSERT INTO `productos` (`nombre`,`descripcion`,`fecha_registro`,`peso`,`id_tipo`,
-	`id_medidas`,`id_envase`,`id_marcas`,`estado`,`id_usuario`,`iva`,`cantidad_minima`)
-	VALUES(nombre1,descripcion1,fecha_registro1,peso1,id_tipo1,id_medidas1,id_envase1,id_marcas1,'A',id_usuario1,iva1,cantidad_minima1);
-	SET id_pro = (SELECT EncontrarID (nombre1,id_marcas1,id_medidas1,id_tipo1));
-	INSERT INTO `detalle_faltantes`(`id_producto`,`fecha_registro`,`cantidad`,`estado`) VALUES (id_pro,fecha_registro1,0,'NO');
-	SET valor1 ='exito';
-	END IF;
-    END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `iniciar_sesion` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `iniciar_sesion` */;
@@ -1538,6 +1514,57 @@ BEGIN
     END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `insertarClientes` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `insertarClientes` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarClientes`(
+in cedula text,
+in nombre text,
+in apellido text,
+in direccion text,
+in telefono text,
+in correo text,
+out msg text
+)
+BEGIN
+declare valor int;
+declare fecha_reg date;
+select now() into fecha_reg;
+select count(Cedula) into valor from Clientes where Cedula=cedula;
+ INSERT INTO Clientes 
+(Cedula, Nombre, Apellido, Direccion, Fecha_reg, Estado, str_telefono, str_correo)
+VALUES (cedula, nombre, apellido, direccion, fecha_reg, 'A', telefono, correo);
+set msg = 'Cliente guardado con éxito!!';
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `ingresarProducto` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `ingresarProducto` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ingresarProducto`(IN nombre1 VARCHAR(45),IN descripcion1 VARCHAR(80),IN fecha_registro1 DATE,IN peso1 DOUBLE(7,2),IN id_tipo1 BIGINT(20),
+	IN id_medidas1 BIGINT(20),IN id_envase1 BIGINT(20),IN id_marcas1 BIGINT(20),IN id_usuario1 BIGINT,IN iva1 VARCHAR(15),IN cantidad_minima1 BIGINT, OUT valor1 TEXT)
+BEGIN
+	DECLARE nr INT;
+	DECLARE id_pro INT;
+	IF (nombre1='' OR descripcion1=''OR fecha_registro1='' OR peso1='' OR id_tipo1='' OR id_medidas1='' OR id_envase1='' OR id_marcas1='') THEN
+	SET valor1 ='campos invalidos';
+	ELSE
+	INSERT INTO `productos` (`nombre`,`descripcion`,`fecha_registro`,`peso`,`id_tipo`,
+	`id_medidas`,`id_envase`,`id_marcas`,`estado`,`id_usuario`,`iva`,`cantidad_minima`)
+	VALUES(nombre1,descripcion1,fecha_registro1,peso1,id_tipo1,id_medidas1,id_envase1,id_marcas1,'A',id_usuario1,iva1,cantidad_minima1);
+	SET id_pro = (SELECT EncontrarID (nombre1,id_marcas1,id_medidas1,id_tipo1));
+	INSERT INTO `detalle_faltantes`(`id_producto`,`fecha_registro`,`cantidad`,`estado`) VALUES (id_pro,fecha_registro1,0,'NO');
+	SET valor1 ='exito';
+	END IF;
+    END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `ingresoDePrecios` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `ingresoDePrecios` */;
@@ -1587,33 +1614,6 @@ BEGIN
 	UPDATE `cabecera_nota_pedidos` SET estado='NO' WHERE `id_cabecera_nota_pedidos`= id_cab_ped11;
 	
     END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `insertarClientes` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `insertarClientes` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarClientes`(
-in cedula text,
-in nombre text,
-in apellido text,
-in direccion text,
-in telefono text,
-in correo text,
-out msg text
-)
-BEGIN
-declare valor int;
-declare fecha_reg date;
-select now() into fecha_reg;
-select count(Cedula) into valor from Clientes where Cedula=cedula;
- INSERT INTO Clientes 
-(Cedula, Nombre, Apellido, Direccion, Fecha_reg, Estado, str_telefono, str_correo)
-VALUES (cedula, nombre, apellido, direccion, fecha_reg, 'A', telefono, correo);
-set msg = 'Cliente guardado con éxito!!';
-END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `insertarCorreo` */
