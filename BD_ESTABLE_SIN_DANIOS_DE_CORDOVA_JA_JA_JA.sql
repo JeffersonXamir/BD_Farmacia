@@ -2416,6 +2416,15 @@ JOIN `proveedor_clase` cp ON cp.`id_proclase`=p.`id_proveedor_clase`
 WHERE cnp.estado= "SI"
 ORDER BY cnp.`fecha_creacion`;
 END IF;
+IF op=4 THEN
+SELECT cnp.`id_cabecera_nota_pedidos`,cnp.`id_proveedor`,p.`entidad` AS proveedor,p.`correo`,p.`id_proveedor_clase`,pc.`clase`,
+p.`direccion`,p.`cedula_ruc`,p.`representante`,p.`telefono`,cnp.`fecha_creacion`,cnp.`estado`,cnp.`iva`,cnp.`descuento`,cnp.`total`
+,cnp.`forma_pago`,cnp.`plazo`
+FROM `cabecera_nota_pedidos` cnp
+JOIN `proveedor` p ON p.`id_proveedor`= cnp.`id_proveedor`
+JOIN `proveedor_clase` pc ON pc.`id_proclase`= p.`id_proveedor_clase`
+WHERE cnp.estado= "EF";
+END IF;
 END */$$
 DELIMITER ;
 
