@@ -2977,7 +2977,7 @@ in accion text
 BEGIN
     case accion
     when 'buscar_codigo' then
-        SELECT  precios.id_precio AS 'control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
+        SELECT  precios.id_precio AS 'Control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
         medidas.nombre_medida AS 'Medida', envase.nombre AS 'Envase', marcas.nombre AS 'Marca', stock.cantidad AS 'Stock', 
         productos.iva AS 'Iva', precios.precio_venta  AS 'Precio de Venta'
         FROM precios 
@@ -2989,7 +2989,7 @@ BEGIN
         INNER JOIN stock ON stock.id_precio = precios.id_precio
         WHERE productos.id_productos = _buscar_producto AND precios.estado = 'A';
     when 'buscar_nombre' then
-        SELECT  precios.id_precio AS 'control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
+        SELECT  precios.id_precio AS 'Control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
         medidas.nombre_medida AS 'Medida', envase.nombre AS 'Envase', marcas.nombre AS 'Marca', stock.cantidad AS 'Stock', 
         productos.iva AS 'Iva', precios.precio_venta  AS 'Precio de Venta'
         FROM precios 
@@ -3001,7 +3001,7 @@ BEGIN
         INNER JOIN stock ON stock.id_precio = precios.id_precio
         where productos.nombre LIKE _buscar_producto and precios.estado = 'A';
     when 'buscar_tipo' then
-        SELECT  precios.id_precio AS 'control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
+        SELECT  precios.id_precio AS 'Control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
         medidas.nombre_medida AS 'Medida', envase.nombre AS 'Envase', marcas.nombre AS 'Marca', stock.cantidad AS 'Stock', 
         productos.iva AS 'Iva', precios.precio_venta  AS 'Precio de Venta'
         FROM precios 
@@ -3013,19 +3013,19 @@ BEGIN
         INNER JOIN stock ON stock.id_precio = precios.id_precio
         where tipo.nombre LIKE _buscar_producto and precios.estado = 'A';
     when 'buscar_medida' then
-        select productos.id_productos as 'Codigo', productos.nombre as 'Nombre del Producto', productos.descripcion as 'Descripcion', tipo.nombre as 'Tipo', 
-        medidas.nombre_medida as 'Medida', envase.nombre as 'Envase', marcas.nombre as 'Marca', stock.cantidad as 'Stock', 
-        productos.iva as 'Iva', precios.precio_venta  as 'Precio de Venta'
-        from precios 
-        inner join productos on  precios.id_producto = productos.id_productos 
-        inner join tipo on tipo.id_tipo = productos.id_tipo 
-        inner join medidas on medidas.id_medidas = productos.id_medidas
-        inner join envase on envase.id_envase = productos.id_envase
-        inner join marcas on marcas.id_marcas = productos.id_marcas
-        inner join stock on stock.id_precio = precios.id_precio
+        SELECT  precios.id_precio AS 'Control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
+        medidas.nombre_medida AS 'Medida', envase.nombre AS 'Envase', marcas.nombre AS 'Marca', stock.cantidad AS 'Stock', 
+        productos.iva AS 'Iva', precios.precio_venta  AS 'Precio de Venta'
+        FROM precios 
+        INNER JOIN productos ON  precios.id_producto = productos.id_productos 
+        INNER JOIN tipo ON tipo.id_tipo = productos.id_tipo 
+        INNER JOIN medidas ON medidas.id_medidas = productos.id_medidas
+        INNER JOIN envase ON envase.id_envase = productos.id_envase
+        INNER JOIN marcas ON marcas.id_marcas = productos.id_marcas
+        INNER JOIN stock ON stock.id_precio = precios.id_precio
         where medidas.nombre_medida LIKE _buscar_producto and precios.estado = 'A';
     when 'buscar_envase' then
-        SELECT  precios.id_precio AS 'control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
+        SELECT  precios.id_precio AS 'Control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
         medidas.nombre_medida AS 'Medida', envase.nombre AS 'Envase', marcas.nombre AS 'Marca', stock.cantidad AS 'Stock', 
         productos.iva AS 'Iva', precios.precio_venta  AS 'Precio de Venta'
         FROM precios 
@@ -3037,7 +3037,7 @@ BEGIN
         INNER JOIN stock ON stock.id_precio = precios.id_precio
         where envase.nombre LIKE _buscar_producto and precios.estado = 'A';
     when 'buscar_marca' then
-        SELECT  precios.id_precio AS 'control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
+        SELECT  precios.id_precio AS 'Control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
         medidas.nombre_medida AS 'Medida', envase.nombre AS 'Envase', marcas.nombre AS 'Marca', stock.cantidad AS 'Stock', 
         productos.iva AS 'Iva', precios.precio_venta  AS 'Precio de Venta'
         FROM precios 
