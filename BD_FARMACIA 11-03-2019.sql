@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.5-10.1.37-MariaDB : Database - moduloprueba
+MySQL - 5.7.25-log : Database - moduloprueba
 *********************************************************************
 */
 
@@ -1037,24 +1037,6 @@ select now() into fecha_reg;
 END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `ActualizarDetalleIndividualNotaPedido` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `ActualizarDetalleIndividualNotaPedido` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarDetalleIndividualNotaPedido`(in id_detalle_nota_pedidos1 BIGINT,
-in cantidad1 int,in descuento1 Double,in iva1 Double ,in total1 Double )
-BEGIN
-UPDATE `detalle_nota_pedidos` SET  
-cantidad = cantidad1,
-descuento = descuento1,
-iva = iva1,
-total = total1 
-WHERE id_detalle_nota_pedidos = id_detalle_nota_pedidos1;
-END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `ActualizarDetalleCompras` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `ActualizarDetalleCompras` */;
@@ -1104,6 +1086,24 @@ BEGIN
     END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `ActualizarDetalleIndividualNotaPedido` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `ActualizarDetalleIndividualNotaPedido` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarDetalleIndividualNotaPedido`(in id_detalle_nota_pedidos1 BIGINT,
+in cantidad1 int,in descuento1 Double,in iva1 Double ,in total1 Double )
+BEGIN
+UPDATE `detalle_nota_pedidos` SET  
+cantidad = cantidad1,
+descuento = descuento1,
+iva = iva1,
+total = total1 
+WHERE id_detalle_nota_pedidos = id_detalle_nota_pedidos1;
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `ActualizarDetalleNotaPedido` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `ActualizarDetalleNotaPedido` */;
@@ -1124,6 +1124,23 @@ SET valor ='Detalle Actualizado';
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `actualizarPrecioCompra` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `actualizarPrecioCompra` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarPrecioCompra`(IN id_producto1 BIGINT,IN precio_compra2 DOUBLE(5,2),IN precio_venta3 DOUBLE(5,2),in fecha4 datetime,in id_usu bigint,OUT valor1 TEXT )
+BEGIN
+	DECLARE id_pre INT;
+	INSERT INTO `precios`(`id_producto`,`precio_compra`,`precio_venta`,`estado`,`fecha_registro`,`id_usuario`) VALUES (id_producto1,precio_compra2,precio_venta3,'A',fecha4,id_usu);
+	set valor1='PRECIO AGREGADO';
+   -- SET id_pre =(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND`precio_compra`=precio_compra2 AND `precio_venta`= precio_venta3);
+    -- UPDATE `precios` SET estado='I' WHERE `id_precio` NOT IN (id_pre) AND `id_producto`=id_producto1;
+	-- SET valor1=(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND `precio_compra`= precio_compra2 AND`precio_venta`=precio_venta3);
+    END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `actualizarPrecioProducto` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `actualizarPrecioProducto` */;
@@ -1137,6 +1154,24 @@ BEGIN
     EXECUTE statement;                   -- Ejecutar query.
     DEALLOCATE PREPARE statement;        -- Eliminar query alojado en memoria.
     SET valor ='precio actualizado';
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `ActualizarStockVentas` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `ActualizarStockVentas` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarStockVentas`(
+in _id_control bigint,
+in _cantidad bigint
+)
+BEGIN
+UPDATE `moduloprueba`.`stock`
+SET 
+  `cantidad` = _cantidad
+WHERE `stock`.`id_precio` = _id_control;
 END */$$
 DELIMITER ;
 
@@ -1193,36 +1228,6 @@ set nra = (SELECT validarTipoProducto(nombre_f));
 END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `buscarIDCabeceraCompras` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `buscarIDCabeceraCompras` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `buscarIDCabeceraCompras`(IN descuento1 DECIMAL(10,7),
-IN iva1 DECIMAL(10,7),IN total1 DECIMAL(10,7),OUT valor TEXT)
-BEGIN
-	select `id_cabecera_compra` into valor from `cabecera_compra` where `descuento`= descuento1 and `iva`= iva1 and `total`= total1;
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `actualizarPrecioCompra` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `actualizarPrecioCompra` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarPrecioCompra`(IN id_producto1 BIGINT,IN precio_compra2 DOUBLE(5,2),IN precio_venta3 DOUBLE(5,2),in fecha4 datetime,in id_usu bigint,OUT valor1 TEXT )
-BEGIN
-	DECLARE id_pre INT;
-	INSERT INTO `precios`(`id_producto`,`precio_compra`,`precio_venta`,`estado`,`fecha_registro`,`id_usuario`) VALUES (id_producto1,precio_compra2,precio_venta3,'A',fecha4,id_usu);
-	set valor1='PRECIO AGREGADO';
-   -- SET id_pre =(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND`precio_compra`=precio_compra2 AND `precio_venta`= precio_venta3);
-    -- UPDATE `precios` SET estado='I' WHERE `id_precio` NOT IN (id_pre) AND `id_producto`=id_producto1;
-	-- SET valor1=(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND `precio_compra`= precio_compra2 AND`precio_venta`=precio_venta3);
-    END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `bitacora_seguridad` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `bitacora_seguridad` */;
@@ -1243,6 +1248,19 @@ BEGIN
     INSERT INTO fc_bitacora_seguridad(`user`,`password`,`ip_equipo`,`ip_publico`,`usuario_equipo`,`fecha_login`,`dir_ip_completa`,`Verficacion`)
     VALUES(user1,password1,  ip_equipo1, '100000000',usuario_equipo1, fecha_login1,dir_ip_completa1,'C' );
     END IF;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `buscarIDCabeceraCompras` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `buscarIDCabeceraCompras` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `buscarIDCabeceraCompras`(IN descuento1 DECIMAL(10,7),
+IN iva1 DECIMAL(10,7),IN total1 DECIMAL(10,7),OUT valor TEXT)
+BEGIN
+	select `id_cabecera_compra` into valor from `cabecera_compra` where `descuento`= descuento1 and `iva`= iva1 and `total`= total1;
     END */$$
 DELIMITER ;
 
@@ -1275,6 +1293,23 @@ BEGIN
 	`id_medidas`=id_medidas1 AND `id_envase`=id_envase1 AND `id_marcas`=id_marcas1 AND`estado`='A' AND `id_usuario`=id_usuario1 AND`iva`=iva1 AND `cantidad_minima`=cantidad_minima1);
 	
     END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `BuscarStockVentas` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `BuscarStockVentas` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `BuscarStockVentas`(
+in _id_cabecera_ventas bigint
+)
+BEGIN
+SELECT `detalle_venta`.`id_control` AS id_control,(`stock`.`cantidad`-`detalle_venta`.`cantidad`) AS cantidad
+FROM  `stock` INNER JOIN `detalle_venta`
+ON `stock`.`id_precio` = `detalle_venta`.`id_control`
+WHERE `detalle_venta`.`id_cabecera_venta` = _id_cabecera_ventas;
+END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `cambiarEstadoDevolucion` */
@@ -1651,6 +1686,76 @@ SET salida='Local acualizado correctamente';
     END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `fc_actualizar_usuario` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `fc_actualizar_usuario` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `fc_actualizar_usuario`(IN cedula1 TEXT, IN nombres1 TEXT, IN apellidos1 TEXT, IN telefono1 TEXT, IN convencional1 TEXT, IN correo1 TEXT, 
+/*IN ip_publica1 TEXT,*//* IN genero1 TEXT, IN discapacidad1 TEXT, IN porcentaje_discapacidad1 TEXT, */
+IN direccion1 TEXT,/* IN cargo1 TEXT, IN nombrepv1 TEXT,*/IN ip_equipo1 TEXT, IN usuario_equipo1 TEXT,IN dir_ip_completa1 TEXT, IN ruta_img1 TEXT, IN observacion1 TEXT,IN genero1 TEXT,IN cargo1 TEXT, IN password1 TEXT,IN sesion1 LONG,in estado1 text, OUT salida TEXT)
+BEGIN
+DECLARE v_cedula INT;
+DECLARE v_genero BIGINT;
+DECLARE v_rol BIGINT;
+DECLARE v_id_pv BIGINT;
+DECLARE v_estado BIGINT;
+DECLARE v_cedula_dos BIGINT;
+SELECT COUNT(`cedula`)INTO v_cedula FROM `fc_usuario` WHERE `cedula` = cedula1;
+SELECT `id_genero` INTO v_genero FROM `fc_genero` WHERE `genero` = genero1;
+SELECT `id_estado` INTO v_estado FROM `fc_estado_usuario` WHERE `estado`= estado1;
+SELECT `id_usuario` INTO v_cedula_dos FROM `fc_usuario` WHERE `cedula` = cedula1;
+	
+IF(v_cedula = 1)THEN 
+	
+	UPDATE `fc_usuario` SET `cedula` = cedula1,`nombres` = nombres1,`apellidos` = apellidos1,`telefono` =telefono1,
+	  `convencional` = convencional,`correo` = correo1,`password` = password1,`ruta_imagen` = ruta_img1, 
+	  `id_estado` = v_estado,`ip_equipo` = ip_equipo1,`ip_publica` = '2',
+	  `usuario_equipo` = usuario_equipo1,`dir_ip_completa` = dir_ip_completa1,`id_genero` = v_genero,`direccion` = direccion1 
+	WHERE `id_usuario` = v_cedula_dos;
+			
+	SELECT `id_rol` INTO v_rol FROM `fc_rol` WHERE `cargo` = cargo1; 
+		
+	UPDATE `fc_session` SET `id_rol` = v_rol,`observacion` = observacion1,`fecha_actualizacion` = now(),`id_punto_venta` = '1' 
+	WHERE `id_sesion` = sesion1;
+			
+	SET salida='Usuario actualizado'; 
+ELSE  
+	SET salida='El usuario no existe'; 
+END IF;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `fc_combos_ac_usuarios` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `fc_combos_ac_usuarios` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `fc_combos_ac_usuarios`(IN op BIGINT,IN id BIGINT, OUT valor TEXT)
+BEGIN
+    SET valor=''; 
+	IF op=1 THEN 
+		SELECT DISTINCT (`fc_rol`.`cargo`) INTO valor FROM `fc_rol` 
+		INNER JOIN `fc_session` ON `fc_rol`.`id_rol` = `fc_session`.`id_rol` 
+		WHERE `fc_session`.`id_rol` = id;
+	END IF;
+	
+	IF op=2 THEN 
+		SELECT DISTINCT (`fc_estado_usuario`.`estado`) INTO valor FROM `fc_estado_usuario` 
+		INNER JOIN `fc_usuario` ON `fc_usuario`.`id_estado` = `fc_estado_usuario`.`id_estado`  
+		WHERE `fc_usuario`.`id_estado` = id; 
+	END IF; 
+	
+	IF op=3 THEN 
+		SELECT DISTINCT (`fc_genero`.`genero`) INTO valor FROM `fc_genero` 
+		INNER JOIN `fc_usuario` ON `fc_usuario`.`id_genero` = `fc_genero`.`id_genero`  
+		WHERE `fc_usuario`.`id_genero` = id; 
+	END IF;
+    END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `fc_combo_discapacidad` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `fc_combo_discapacidad` */;
@@ -1749,76 +1854,6 @@ BEGIN
     END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `fc_actualizar_usuario` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `fc_actualizar_usuario` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `fc_actualizar_usuario`(IN cedula1 TEXT, IN nombres1 TEXT, IN apellidos1 TEXT, IN telefono1 TEXT, IN convencional1 TEXT, IN correo1 TEXT, 
-/*IN ip_publica1 TEXT,*//* IN genero1 TEXT, IN discapacidad1 TEXT, IN porcentaje_discapacidad1 TEXT, */
-IN direccion1 TEXT,/* IN cargo1 TEXT, IN nombrepv1 TEXT,*/IN ip_equipo1 TEXT, IN usuario_equipo1 TEXT,IN dir_ip_completa1 TEXT, IN ruta_img1 TEXT, IN observacion1 TEXT,IN genero1 TEXT,IN cargo1 TEXT, IN password1 TEXT,IN sesion1 LONG,in estado1 text, OUT salida TEXT)
-BEGIN
-DECLARE v_cedula INT;
-DECLARE v_genero BIGINT;
-DECLARE v_rol BIGINT;
-DECLARE v_id_pv BIGINT;
-DECLARE v_estado BIGINT;
-DECLARE v_cedula_dos BIGINT;
-SELECT COUNT(`cedula`)INTO v_cedula FROM `fc_usuario` WHERE `cedula` = cedula1;
-SELECT `id_genero` INTO v_genero FROM `fc_genero` WHERE `genero` = genero1;
-SELECT `id_estado` INTO v_estado FROM `fc_estado_usuario` WHERE `estado`= estado1;
-SELECT `id_usuario` INTO v_cedula_dos FROM `fc_usuario` WHERE `cedula` = cedula1;
-	
-IF(v_cedula = 1)THEN 
-	
-	UPDATE `fc_usuario` SET `cedula` = cedula1,`nombres` = nombres1,`apellidos` = apellidos1,`telefono` =telefono1,
-	  `convencional` = convencional,`correo` = correo1,`password` = password1,`ruta_imagen` = ruta_img1, 
-	  `id_estado` = v_estado,`ip_equipo` = ip_equipo1,`ip_publica` = '2',
-	  `usuario_equipo` = usuario_equipo1,`dir_ip_completa` = dir_ip_completa1,`id_genero` = v_genero,`direccion` = direccion1 
-	WHERE `id_usuario` = v_cedula_dos;
-			
-	SELECT `id_rol` INTO v_rol FROM `fc_rol` WHERE `cargo` = cargo1; 
-		
-	UPDATE `fc_session` SET `id_rol` = v_rol,`observacion` = observacion1,`fecha_actualizacion` = now(),`id_punto_venta` = '1' 
-	WHERE `id_sesion` = sesion1;
-			
-	SET salida='Usuario actualizado'; 
-ELSE  
-	SET salida='El usuario no existe'; 
-END IF;
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `fc_combos_ac_usuarios` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `fc_combos_ac_usuarios` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `fc_combos_ac_usuarios`(IN op BIGINT,IN id BIGINT, OUT valor TEXT)
-BEGIN
-    SET valor=''; 
-	IF op=1 THEN 
-		SELECT DISTINCT (`fc_rol`.`cargo`) INTO valor FROM `fc_rol` 
-		INNER JOIN `fc_session` ON `fc_rol`.`id_rol` = `fc_session`.`id_rol` 
-		WHERE `fc_session`.`id_rol` = id;
-	END IF;
-	
-	IF op=2 THEN 
-		SELECT DISTINCT (`fc_estado_usuario`.`estado`) INTO valor FROM `fc_estado_usuario` 
-		INNER JOIN `fc_usuario` ON `fc_usuario`.`id_estado` = `fc_estado_usuario`.`id_estado`  
-		WHERE `fc_usuario`.`id_estado` = id; 
-	END IF; 
-	
-	IF op=3 THEN 
-		SELECT DISTINCT (`fc_genero`.`genero`) INTO valor FROM `fc_genero` 
-		INNER JOIN `fc_usuario` ON `fc_usuario`.`id_genero` = `fc_genero`.`id_genero`  
-		WHERE `fc_usuario`.`id_genero` = id; 
-	END IF;
-    END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `fc_getComboVariosUsuario` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `fc_getComboVariosUsuario` */;
@@ -1907,86 +1942,6 @@ BEGIN
 	SELECT `fc_punto_venta`.`nombre`, `fc_punto_venta`.`direccion`, `fc_punto_venta`.`telefono_pv`,`fc_punto_venta`.`fecha_creacion`, 
 	`fc_punto_venta`.`fecha_actualizacion` FROM `fc_punto_venta`;
     END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `filtroProducto` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `filtroProducto` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `filtroProducto`(IN consu TEXT)
-BEGIN
-	SET @query = CONCAT(consu);
-    PREPARE statement FROM @query;       -- Preparar query.
-    EXECUTE statement;                   -- Ejecutar query.
-    DEALLOCATE PREPARE statement;        -- Eliminar query alojado en memoria.
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `getComboPrecios` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `getComboPrecios` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `getComboPrecios`(IN op BIGINT, IN id BIGINT,OUT valor DOUBLE(5,2))
-BEGIN
-	SET valor='';
-	IF op=1 THEN 
-	SELECT DISTINCT (p.`precio_compra`) INTO valor
-	FROM `precios` p
-	WHERE p.`id_precio`= id;
-	END IF;
-	IF op=2 THEN
-	SELECT DISTINCT (p.`precio_venta`) INTO valor
-	FROM `precios` p
-	WHERE p.`id_precio`= id;
-	END IF;
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `getLocalidadComboGuayas` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `getLocalidadComboGuayas` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `getLocalidadComboGuayas`(IN op BIGINT,IN id BIGINT, OUT valor TEXT)
-BEGIN
-    SET valor='';
-	IF op=1 THEN 
-	 SELECT DISTINCT (t.`localidad`) INTO valor
-	FROM `fc_punto_venta` p
-	JOIN `fc_localidad_guayas` t ON t.`id_localidad_guayas`= p.`id_localidad_guayas`
-	WHERE p.`id_punto_venta`= id;
-	END IF;
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `iniciar_sesion` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `iniciar_sesion` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `iniciar_sesion`(IN correo1 TEXT,IN password1 TEXT,IN ip_equipo1 TEXT, /*ip_publico1 text,*/ IN usuario_equipo1 TEXT, OUT salida TEXT)
-BEGIN
-DECLARE fecha_login1 DATETIME;
-DECLARE ip_publico1 TEXT;
-DECLARE valor INT;
-DECLARE id_usuario1 BIGINT;
-SET ip_publico1='100000';
-SELECT NOW() INTO fecha_login1; 
-SELECT COUNT(id_usuario) INTO valor FROM fc_usuario WHERE correo=correo1 AND PASSWORD=password1;
-SELECT id_usuario INTO id_usuario1 FROM fc_usuario WHERE correo=correo1 AND PASSWORD=password1;
-IF(valor=1) THEN 
-INSERT INTO fc_session(id_usuario, ip_equipo, ip_publico, usuario_equipo, fecha_login) 
-VALUES(id_usuario1, ip_equipo1, ip_publico1, usuario_equipo1, fecha_login1);
-SET salida= 'Bienvenido';
-ELSE SET salida='Usuario no existe';
-END IF;
-END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `fc_mostrar_usuario` */
@@ -2102,6 +2057,61 @@ VALUES ( id_usuario1,
     END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `filtroProducto` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `filtroProducto` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `filtroProducto`(IN consu TEXT)
+BEGIN
+	SET @query = CONCAT(consu);
+    PREPARE statement FROM @query;       -- Preparar query.
+    EXECUTE statement;                   -- Ejecutar query.
+    DEALLOCATE PREPARE statement;        -- Eliminar query alojado en memoria.
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `getComboPrecios` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `getComboPrecios` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `getComboPrecios`(IN op BIGINT, IN id BIGINT,OUT valor DOUBLE(5,2))
+BEGIN
+	SET valor='';
+	IF op=1 THEN 
+	SELECT DISTINCT (p.`precio_compra`) INTO valor
+	FROM `precios` p
+	WHERE p.`id_precio`= id;
+	END IF;
+	IF op=2 THEN
+	SELECT DISTINCT (p.`precio_venta`) INTO valor
+	FROM `precios` p
+	WHERE p.`id_precio`= id;
+	END IF;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `getLocalidadComboGuayas` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `getLocalidadComboGuayas` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `getLocalidadComboGuayas`(IN op BIGINT,IN id BIGINT, OUT valor TEXT)
+BEGIN
+    SET valor='';
+	IF op=1 THEN 
+	 SELECT DISTINCT (t.`localidad`) INTO valor
+	FROM `fc_punto_venta` p
+	JOIN `fc_localidad_guayas` t ON t.`id_localidad_guayas`= p.`id_localidad_guayas`
+	WHERE p.`id_punto_venta`= id;
+	END IF;
+    END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `getNombreComboProducto` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `getNombreComboProducto` */;
@@ -2158,67 +2168,6 @@ BEGIN
     END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `insertaBitacoraFaltantes` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `insertaBitacoraFaltantes` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertaBitacoraFaltantes`(IN id_detalle_faltantes1 BIGINT(20), 
-IN fecha_registro1 DATETIME,
-IN cantidad1 INT
-)
-BEGIN
-INSERT INTO `bitacora_faltantes` (`id_detalle_faltantes`,`fecha_registro`,`cantidad`)
-	VALUES(id_detalle_faltantes1,fecha_registro1,cantidad1);
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `insertarCabeceraNotaPedido` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `insertarCabeceraNotaPedido` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarCabeceraNotaPedido`(IN id_proveedor1 BIGINT,IN id_usuario2 BIGINT,IN fecha_creacion3 DATETIME,
-    IN plazo5 VARCHAR(45), IN forma_pago6 VARCHAR(45),IN iva7 DOUBLE, IN descuento8 DOUBLE,IN total9 DOUBLE, OUT valor TEXT)
-BEGIN
-	INSERT INTO `cabecera_nota_pedidos`(`id_proveedor`,`id_usuario`,`fecha_creacion`,`estado`,`plazo`,`forma_pago`,`iva`,`descuento`,`total`)
-	VALUES (id_proveedor1,id_usuario2,fecha_creacion3,'SI',plazo5,forma_pago6,iva7,descuento8,total9);
-	
-	SET valor =(SELECT `id_cabecera_nota_pedidos` FROM `cabecera_nota_pedidos` WHERE `id_proveedor`=id_proveedor1 AND `id_usuario`=id_usuario2 AND
-	`fecha_creacion`=fecha_creacion3 AND `estado`='SI' AND `plazo`= plazo5 AND `forma_pago`=forma_pago6 AND `iva`=iva7 AND 
-	`descuento`=descuento8 AND `total`= total9);
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `insertarClientes` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `insertarClientes` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarClientes`(
-in cedula text,
-in nombre text,
-in apellido text,
-in direccion text,
-in telefono text,
-in correo text,
-out msg text
-)
-BEGIN
-declare valor int;
-declare fecha_reg date;
-select now() into fecha_reg;
-select count(Cedula) into valor from Clientes where Cedula=cedula;
- INSERT INTO Clientes 
-(Cedula, Nombre, Apellido, Direccion, Fecha_reg, Estado, str_telefono, str_correo)
-VALUES (cedula, nombre, apellido, direccion, fecha_reg, 'A', telefono, correo);
-set msg = 'Cliente guardado con éxito!!';
-END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `ingresarProducto` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `ingresarProducto` */;
@@ -2270,6 +2219,47 @@ BEGIN
     END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `iniciar_sesion` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `iniciar_sesion` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `iniciar_sesion`(IN correo1 TEXT,IN password1 TEXT,IN ip_equipo1 TEXT, /*ip_publico1 text,*/ IN usuario_equipo1 TEXT, OUT salida TEXT)
+BEGIN
+DECLARE fecha_login1 DATETIME;
+DECLARE ip_publico1 TEXT;
+DECLARE valor INT;
+DECLARE id_usuario1 BIGINT;
+SET ip_publico1='100000';
+SELECT NOW() INTO fecha_login1; 
+SELECT COUNT(id_usuario) INTO valor FROM fc_usuario WHERE correo=correo1 AND PASSWORD=password1;
+SELECT id_usuario INTO id_usuario1 FROM fc_usuario WHERE correo=correo1 AND PASSWORD=password1;
+IF(valor=1) THEN 
+INSERT INTO fc_session(id_usuario, ip_equipo, ip_publico, usuario_equipo, fecha_login) 
+VALUES(id_usuario1, ip_equipo1, ip_publico1, usuario_equipo1, fecha_login1);
+SET salida= 'Bienvenido';
+ELSE SET salida='Usuario no existe';
+END IF;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `insertaBitacoraFaltantes` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `insertaBitacoraFaltantes` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertaBitacoraFaltantes`(IN id_detalle_faltantes1 BIGINT(20), 
+IN fecha_registro1 DATETIME,
+IN cantidad1 INT
+)
+BEGIN
+INSERT INTO `bitacora_faltantes` (`id_detalle_faltantes`,`fecha_registro`,`cantidad`)
+	VALUES(id_detalle_faltantes1,fecha_registro1,cantidad1);
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `insertarCabceraCompras` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `insertarCabceraCompras` */;
@@ -2291,6 +2281,24 @@ BEGIN
 	
 	UPDATE `cabecera_nota_pedidos` SET estado='EF',`iva`= iva8,`descuento`= descuento9,`total`= total10 WHERE `id_cabecera_nota_pedidos`= id_cab_ped11;
 	
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `insertarCabeceraNotaPedido` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `insertarCabeceraNotaPedido` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarCabeceraNotaPedido`(IN id_proveedor1 BIGINT,IN id_usuario2 BIGINT,IN fecha_creacion3 DATETIME,
+    IN plazo5 VARCHAR(45), IN forma_pago6 VARCHAR(45),IN iva7 DOUBLE, IN descuento8 DOUBLE,IN total9 DOUBLE, OUT valor TEXT)
+BEGIN
+	INSERT INTO `cabecera_nota_pedidos`(`id_proveedor`,`id_usuario`,`fecha_creacion`,`estado`,`plazo`,`forma_pago`,`iva`,`descuento`,`total`)
+	VALUES (id_proveedor1,id_usuario2,fecha_creacion3,'SI',plazo5,forma_pago6,iva7,descuento8,total9);
+	
+	SET valor =(SELECT `id_cabecera_nota_pedidos` FROM `cabecera_nota_pedidos` WHERE `id_proveedor`=id_proveedor1 AND `id_usuario`=id_usuario2 AND
+	`fecha_creacion`=fecha_creacion3 AND `estado`='SI' AND `plazo`= plazo5 AND `forma_pago`=forma_pago6 AND `iva`=iva7 AND 
+	`descuento`=descuento8 AND `total`= total9);
     END */$$
 DELIMITER ;
 
@@ -2323,6 +2331,33 @@ BEGIN
     insert into `cabecera_venta`(num_venta,fecha_creacion,id_cliente, id_usuario,id_sucursal,tipo_pago,tipo_venta,Subtotal_con_iva,Subtotal_sin_iva,iva_total,descuento_total,total,estado)
     values(_num_venta,_fecha_creacion,_id_cliente,_id_usuario,_id_sucursal,_tipo_pago,_tipo_venta,_Subtotal_con_iva,_Subtotal_sin_iva,_iva_total,_descuento_total,_total,_estado);
     set valor = (select id from cabecera_venta where id_usuario=_id_usuario  and num_venta = _num_venta and fecha_creacion = _fecha_creacion );
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `insertarClientes` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `insertarClientes` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarClientes`(
+in cedula text,
+in nombre text,
+in apellido text,
+in direccion text,
+in telefono text,
+in correo text,
+out msg text
+)
+BEGIN
+declare valor int;
+declare fecha_reg date;
+select now() into fecha_reg;
+select count(Cedula) into valor from Clientes where Cedula=cedula;
+ INSERT INTO Clientes 
+(Cedula, Nombre, Apellido, Direccion, Fecha_reg, Estado, str_telefono, str_correo)
+VALUES (cedula, nombre, apellido, direccion, fecha_reg, 'A', telefono, correo);
+set msg = 'Cliente guardado con éxito!!';
 END */$$
 DELIMITER ;
 
@@ -2722,30 +2757,6 @@ select * from Clientes order by Nombre;
 END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `listarComboEnvasePro` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `listarComboEnvasePro` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarComboEnvasePro`()
-BEGIN
-	SELECT `id_envase`,`nombre` FROM`envase` where estado='A' ORDER BY nombre;
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `listarComboIva` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `listarComboIva` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarComboIva`()
-BEGIN
-    SELECT `id_iva`,`iva`,`fecha`,`id_usuario`,`est` FROM `iva` WHERE est = 'A';
-    END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `ListarClientesVentas` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `ListarClientesVentas` */;
@@ -2795,6 +2806,30 @@ BEGIN
         where clientes.str_correo LIKE _buscar_cliente and clientes.Estado = 'A';
     end case;
 END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `listarComboEnvasePro` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `listarComboEnvasePro` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarComboEnvasePro`()
+BEGIN
+	SELECT `id_envase`,`nombre` FROM`envase` where estado='A' ORDER BY nombre;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `listarComboIva` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `listarComboIva` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarComboIva`()
+BEGIN
+    SELECT `id_iva`,`iva`,`fecha`,`id_usuario`,`est` FROM `iva` WHERE est = 'A';
+    END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `listarComboMarcaPro` */
@@ -2874,89 +2909,6 @@ end if ;
 END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `listarJoinProductos` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `listarJoinProductos` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarJoinProductos`(in op int)
-BEGIN
-if op >0 then
-SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre as MARCA,
-p.id_productos,p.nombre,p.descripcion
-FROM productos p
-JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
-join marcas m ON m.id_marcas=p.id_marcas
-where df.estado = 'NO';
-else
-SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre AS MARCA,
-p.id_productos,p.nombre,p.descripcion
-FROM productos p
-JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
-join marcas m ON m.id_marcas=p.id_marcas;
-end if;
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `listarLaboratorio` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `listarLaboratorio` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarLaboratorio`()
-BEGIN
-select * from laboratorio order by Nombre;
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `listarPuntoVenta` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `listarPuntoVenta` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarPuntoVenta`()
-BEGIN
-	SELECT pv.id_punto_venta, pv.nombre, lg.localidad, pv.direccion,  pv.observacion FROM fc_localidad_guayas lg, fc_punto_venta pv WHERE lg.id_localidad_guayas= pv.id_localidad_guayas;
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `listarTelefono` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `listarTelefono` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarTelefono`(in cedula1 text)
-BEGIN
-select * from Telefono where Cedula = cedula1;
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `modificarProductos` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `modificarProductos` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarProductos`(nombre1 VARCHAR(45),IN descripcion1 VARCHAR(80),IN peso1 DOUBLE(7,2),
-    IN id_tipo1 BIGINT(20),IN id_medidas1 BIGINT(20),IN id_envase1 BIGINT(20),IN id_marcas1 BIGINT(20),IN id_productos1 BIGINT(20),
-    IN id_usuario1 BIGINT, IN iva1 VARCHAR(2), IN cantidad_minima1 BIGINT, OUT valor TEXT)
-BEGIN
-    IF (nombre1='' OR descripcion1='' OR peso1='' OR id_tipo1='' OR id_medidas1='' OR id_envase1='' OR id_marcas1=''
-    OR id_usuario1='' OR iva1='' OR cantidad_minima1='')THEN
-    SET valor = 'campos invalidos';
-    ELSE 
-	UPDATE productos SET nombre = nombre1,descripcion = descripcion1,peso=peso1 ,id_tipo= id_tipo1,
-	`id_medidas`= id_medidas1,`id_envase`=id_envase1,`id_marcas`=id_marcas1,`id_usuario`=id_usuario1,
-	`iva`=iva1,`cantidad_minima`=cantidad_minima1 WHERE id_productos =id_productos1;
-    SET valor = 'Producto actualizado';
-    END IF;
-    END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `listarfaltantesEnNota` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `listarfaltantesEnNota` */;
@@ -2995,6 +2947,31 @@ END IF ;
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `listarJoinProductos` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `listarJoinProductos` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarJoinProductos`(in op int)
+BEGIN
+if op >0 then
+SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre as MARCA,
+p.id_productos,p.nombre,p.descripcion
+FROM productos p
+JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
+join marcas m ON m.id_marcas=p.id_marcas
+where df.estado = 'NO';
+else
+SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre AS MARCA,
+p.id_productos,p.nombre,p.descripcion
+FROM productos p
+JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
+join marcas m ON m.id_marcas=p.id_marcas;
+end if;
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `listarJoinProductosFaltantes` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `listarJoinProductosFaltantes` */;
@@ -3017,6 +2994,18 @@ FROM productos p
 JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
 join marcas m ON m.id_marcas=p.id_marcas;
 end if;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `listarLaboratorio` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `listarLaboratorio` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarLaboratorio`()
+BEGIN
+select * from laboratorio order by Nombre;
 END */$$
 DELIMITER ;
 
@@ -3077,56 +3066,6 @@ BEGIN
 	WHERE pre.`estado` ='A' AND pro.`estado`='A'
 	ORDER BY pro.`id_productos` ASC;
      end if;
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `mostrar_iva` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `mostrar_iva` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_iva`()
-BEGIN
-SELECT * FROM iva WHERE est = 'A';
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `registrar_usuario` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `registrar_usuario` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `registrar_usuario`()
-BEGIN
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `Tipo_Producto` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `Tipo_Producto` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Tipo_Producto`()
-BEGIN
-select tipo.id_tipo, tipo.nombre from moduloprueba.tipo where estado = 'A' order by tipo.id_tipo;
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `universal_sentences` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `universal_sentences` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `universal_sentences`(IN consu TEXT)
-BEGIN
-    SET @query = CONCAT(consu);
-    PREPARE statement FROM @query;       -- Preparar query.
-    EXECUTE statement;                   -- Ejecutar query.
-    DEALLOCATE PREPARE statement;        -- Eliminar query alojado en memoria.
     END */$$
 DELIMITER ;
 
@@ -3244,6 +3183,18 @@ END IF;
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `listarPuntoVenta` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `listarPuntoVenta` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarPuntoVenta`()
+BEGIN
+	SELECT pv.id_punto_venta, pv.nombre, lg.localidad, pv.direccion,  pv.observacion FROM fc_localidad_guayas lg, fc_punto_venta pv WHERE lg.id_localidad_guayas= pv.id_localidad_guayas;
+    END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `ListarRegistroDeNotas` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `ListarRegistroDeNotas` */;
@@ -3342,6 +3293,52 @@ END IF;
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `listarTelefono` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `listarTelefono` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarTelefono`(in cedula1 text)
+BEGIN
+select * from Telefono where Cedula = cedula1;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `modificarProductos` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `modificarProductos` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarProductos`(nombre1 VARCHAR(45),IN descripcion1 VARCHAR(80),IN peso1 DOUBLE(7,2),
+    IN id_tipo1 BIGINT(20),IN id_medidas1 BIGINT(20),IN id_envase1 BIGINT(20),IN id_marcas1 BIGINT(20),IN id_productos1 BIGINT(20),
+    IN id_usuario1 BIGINT, IN iva1 VARCHAR(2), IN cantidad_minima1 BIGINT, OUT valor TEXT)
+BEGIN
+    IF (nombre1='' OR descripcion1='' OR peso1='' OR id_tipo1='' OR id_medidas1='' OR id_envase1='' OR id_marcas1=''
+    OR id_usuario1='' OR iva1='' OR cantidad_minima1='')THEN
+    SET valor = 'campos invalidos';
+    ELSE 
+	UPDATE productos SET nombre = nombre1,descripcion = descripcion1,peso=peso1 ,id_tipo= id_tipo1,
+	`id_medidas`= id_medidas1,`id_envase`=id_envase1,`id_marcas`=id_marcas1,`id_usuario`=id_usuario1,
+	`iva`=iva1,`cantidad_minima`=cantidad_minima1 WHERE id_productos =id_productos1;
+    SET valor = 'Producto actualizado';
+    END IF;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `mostrar_iva` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `mostrar_iva` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_iva`()
+BEGIN
+SELECT * FROM iva WHERE est = 'A';
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `mostrar_usuario` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `mostrar_usuario` */;
@@ -3419,6 +3416,44 @@ ELSE
 SET salida='Usuario ya existente';
 END IF;
 END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `registrar_usuario` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `registrar_usuario` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `registrar_usuario`()
+BEGIN
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `Tipo_Producto` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Tipo_Producto` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Tipo_Producto`()
+BEGIN
+select tipo.id_tipo, tipo.nombre from moduloprueba.tipo where estado = 'A' order by tipo.id_tipo;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `universal_sentences` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `universal_sentences` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `universal_sentences`(IN consu TEXT)
+BEGIN
+    SET @query = CONCAT(consu);
+    PREPARE statement FROM @query;       -- Preparar query.
+    EXECUTE statement;                   -- Ejecutar query.
+    DEALLOCATE PREPARE statement;        -- Eliminar query alojado en memoria.
+    END */$$
 DELIMITER ;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
