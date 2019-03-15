@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.5-10.1.37-MariaDB : Database - moduloprueba
+MySQL - 5.7.25-log : Database - moduloprueba
 *********************************************************************
 */
 
@@ -123,6 +123,7 @@ CREATE TABLE `cabecera_venta` (
   `iva_total` decimal(10,7) NOT NULL,
   `descuento_total` decimal(10,7) NOT NULL,
   `total` decimal(10,7) NOT NULL,
+  `utilidad` decimal(10,7) NOT NULL,
   `estado` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_id_cliente` (`id_cliente`),
@@ -981,24 +982,6 @@ select now() into fecha_reg;
 END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `ActualizarDetalleIndividualNotaPedido` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `ActualizarDetalleIndividualNotaPedido` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarDetalleIndividualNotaPedido`(in id_detalle_nota_pedidos1 BIGINT,
-in cantidad1 int,in descuento1 Double,in iva1 Double ,in total1 Double )
-BEGIN
-UPDATE `detalle_nota_pedidos` SET  
-cantidad = cantidad1,
-descuento = descuento1,
-iva = iva1,
-total = total1 
-WHERE id_detalle_nota_pedidos = id_detalle_nota_pedidos1;
-END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `ActualizarDetalleCompras` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `ActualizarDetalleCompras` */;
@@ -1048,6 +1031,24 @@ BEGIN
     END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `ActualizarDetalleIndividualNotaPedido` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `ActualizarDetalleIndividualNotaPedido` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarDetalleIndividualNotaPedido`(in id_detalle_nota_pedidos1 BIGINT,
+in cantidad1 int,in descuento1 Double,in iva1 Double ,in total1 Double )
+BEGIN
+UPDATE `detalle_nota_pedidos` SET  
+cantidad = cantidad1,
+descuento = descuento1,
+iva = iva1,
+total = total1 
+WHERE id_detalle_nota_pedidos = id_detalle_nota_pedidos1;
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `ActualizarDetalleNotaPedido` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `ActualizarDetalleNotaPedido` */;
@@ -1066,6 +1067,23 @@ total = total1,
 WHERE id_detalle_nota_pedidos = id_detalle_nota_pedidos1;
 SET valor ='Detalle Actualizado';
 END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `actualizarPrecioCompra` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `actualizarPrecioCompra` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarPrecioCompra`(IN id_producto1 BIGINT,IN precio_compra2 DOUBLE(5,2),IN precio_venta3 DOUBLE(5,2),in fecha4 datetime,in id_usu bigint,OUT valor1 TEXT )
+BEGIN
+	DECLARE id_pre INT;
+	INSERT INTO `precios`(`id_producto`,`precio_compra`,`precio_venta`,`estado`,`fecha_registro`,`id_usuario`) VALUES (id_producto1,precio_compra2,precio_venta3,'A',fecha4,id_usu);
+	set valor1='PRECIO AGREGADO';
+   -- SET id_pre =(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND`precio_compra`=precio_compra2 AND `precio_venta`= precio_venta3);
+    -- UPDATE `precios` SET estado='I' WHERE `id_precio` NOT IN (id_pre) AND `id_producto`=id_producto1;
+	-- SET valor1=(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND `precio_compra`= precio_compra2 AND`precio_venta`=precio_venta3);
+    END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `actualizarPrecioProducto` */
@@ -1153,23 +1171,6 @@ set nra = (SELECT validarTipoProducto(nombre_f));
 	set salida ='DATO EXISTENTE';
 	end if;
 END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `actualizarPrecioCompra` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `actualizarPrecioCompra` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarPrecioCompra`(IN id_producto1 BIGINT,IN precio_compra2 DOUBLE(5,2),IN precio_venta3 DOUBLE(5,2),in fecha4 datetime,in id_usu bigint,OUT valor1 TEXT )
-BEGIN
-	DECLARE id_pre INT;
-	INSERT INTO `precios`(`id_producto`,`precio_compra`,`precio_venta`,`estado`,`fecha_registro`,`id_usuario`) VALUES (id_producto1,precio_compra2,precio_venta3,'A',fecha4,id_usu);
-	set valor1='PRECIO AGREGADO';
-   -- SET id_pre =(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND`precio_compra`=precio_compra2 AND `precio_venta`= precio_venta3);
-    -- UPDATE `precios` SET estado='I' WHERE `id_precio` NOT IN (id_pre) AND `id_producto`=id_producto1;
-	-- SET valor1=(SELECT `id_precio` FROM `precios` WHERE `id_producto`=id_producto1 AND `precio_compra`= precio_compra2 AND`precio_venta`=precio_venta3);
-    END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `bitacora_seguridad` */
@@ -1656,42 +1657,6 @@ SET salida='Local acualizado correctamente';
     END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `fc_combo_discapacidad` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `fc_combo_discapacidad` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `fc_combo_discapacidad`()
-BEGIN
-	SELECT `discapacidad` FROM `fc_discapacidad`;
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `fc_combo_genero` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `fc_combo_genero` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `fc_combo_genero`()
-BEGIN
-	SELECT `id_genero`,`genero` FROM `fc_genero`;
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `fc_combo_porcentaje` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `fc_combo_porcentaje` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `fc_combo_porcentaje`()
-BEGIN
-	SELECT `porcentaje` FROM `fc_porcentaje_discapacidad`;
-    END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `fc_actualizar_usuario` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `fc_actualizar_usuario` */;
@@ -1759,6 +1724,42 @@ BEGIN
 		INNER JOIN `fc_usuario` ON `fc_usuario`.`id_genero` = `fc_genero`.`id_genero`  
 		WHERE `fc_usuario`.`id_genero` = id; 
 	END IF;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `fc_combo_discapacidad` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `fc_combo_discapacidad` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `fc_combo_discapacidad`()
+BEGIN
+	SELECT `discapacidad` FROM `fc_discapacidad`;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `fc_combo_genero` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `fc_combo_genero` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `fc_combo_genero`()
+BEGIN
+	SELECT `id_genero`,`genero` FROM `fc_genero`;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `fc_combo_porcentaje` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `fc_combo_porcentaje` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `fc_combo_porcentaje`()
+BEGIN
+	SELECT `porcentaje` FROM `fc_porcentaje_discapacidad`;
     END */$$
 DELIMITER ;
 
@@ -1842,99 +1843,6 @@ SELECT `fc_session`.`id_sesion`, `fc_usuario`.`fecha_registro`, `fc_usuario`.`ce
 	INNER JOIN `fc_genero` ON `fc_genero`.`id_genero` = `fc_usuario`.`id_genero` 
 	INNER JOIN `fc_estado_usuario` ON `fc_estado_usuario`.`id_estado` = `fc_usuario`.`id_estado` 
 	WHERE `fc_usuario`.`apellidos` LIKE concat('',valor,'%'); 
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `fc_mostrar_local` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `fc_mostrar_local` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `fc_mostrar_local`()
-BEGIN
-	SELECT `fc_punto_venta`.`nombre`, `fc_punto_venta`.`direccion`, `fc_punto_venta`.`telefono_pv`,`fc_punto_venta`.`fecha_creacion`, 
-	`fc_punto_venta`.`fecha_actualizacion` FROM `fc_punto_venta`;
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `fc_ruc_local` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `fc_ruc_local` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `fc_ruc_local`(in valor text, out salida text)
-BEGIN
-declare v_id int;
-select count(`id_punto_venta`) into v_id from `fc_punto_venta` where `ruc_local` = valor; 
-if(v_id = 0)then 
-	UPDATE `fc_punto_venta`
-	SET`ruc_local` = valor 
-	WHERE `id_punto_venta` = 1;
-	SET salida = 'Ruc agregado correctamente';
-end if;    
-	IF(v_id = 0)THEN     
-	UPDATE `fc_punto_venta`
-	SET`ruc_local` = valor 
-	WHERE `id_punto_venta` = 1;
-	set salida = 'Ruc actualizado';
-END IF;    
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `filtroProducto` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `filtroProducto` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `filtroProducto`(IN consu TEXT)
-BEGIN
-	SET @query = CONCAT(consu);
-    PREPARE statement FROM @query;       -- Preparar query.
-    EXECUTE statement;                   -- Ejecutar query.
-    DEALLOCATE PREPARE statement;        -- Eliminar query alojado en memoria.
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `getComboPrecios` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `getComboPrecios` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `getComboPrecios`(IN op BIGINT, IN id BIGINT,OUT valor DOUBLE(5,2))
-BEGIN
-	SET valor='';
-	IF op=1 THEN 
-	SELECT DISTINCT (p.`precio_compra`) INTO valor
-	FROM `precios` p
-	WHERE p.`id_precio`= id;
-	END IF;
-	IF op=2 THEN
-	SELECT DISTINCT (p.`precio_venta`) INTO valor
-	FROM `precios` p
-	WHERE p.`id_precio`= id;
-	END IF;
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `getLocalidadComboGuayas` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `getLocalidadComboGuayas` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `getLocalidadComboGuayas`(IN op BIGINT,IN id BIGINT, OUT valor TEXT)
-BEGIN
-    SET valor='';
-	IF op=1 THEN 
-	 SELECT DISTINCT (t.`localidad`) INTO valor
-	FROM `fc_punto_venta` p
-	JOIN `fc_localidad_guayas` t ON t.`id_localidad_guayas`= p.`id_localidad_guayas`
-	WHERE p.`id_punto_venta`= id;
-	END IF;
     END */$$
 DELIMITER ;
 
@@ -2075,47 +1983,6 @@ BEGIN
     END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `iniciar_sesion` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `iniciar_sesion` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `iniciar_sesion`(IN correo1 TEXT,IN password1 TEXT,IN ip_equipo1 TEXT, /*ip_publico1 text,*/ IN usuario_equipo1 TEXT, OUT salida TEXT)
-BEGIN
-DECLARE fecha_login1 DATETIME;
-DECLARE ip_publico1 TEXT;
-DECLARE valor INT;
-DECLARE id_usuario1 BIGINT;
-SET ip_publico1='100000';
-SELECT NOW() INTO fecha_login1; 
-SELECT COUNT(id_usuario) INTO valor FROM fc_usuario WHERE correo=correo1 AND PASSWORD=password1;
-SELECT id_usuario INTO id_usuario1 FROM fc_usuario WHERE correo=correo1 AND PASSWORD=password1;
-IF(valor=1) THEN 
-INSERT INTO fc_session(id_usuario, ip_equipo, ip_publico, usuario_equipo, fecha_login) 
-VALUES(id_usuario1, ip_equipo1, ip_publico1, usuario_equipo1, fecha_login1);
-SET salida= 'Bienvenido';
-ELSE SET salida='Usuario no existe';
-END IF;
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `insertaBitacoraFaltantes` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `insertaBitacoraFaltantes` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertaBitacoraFaltantes`(IN id_detalle_faltantes1 BIGINT(20), 
-IN fecha_registro1 DATETIME,
-IN cantidad1 INT
-)
-BEGIN
-INSERT INTO `bitacora_faltantes` (`id_detalle_faltantes`,`fecha_registro`,`cantidad`)
-	VALUES(id_detalle_faltantes1,fecha_registro1,cantidad1);
-END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `fc_login_bitacora` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `fc_login_bitacora` */;
@@ -2137,6 +2004,19 @@ BEGIN
     INSERT INTO fc_bitacora_seguridad(`user`,`password`,`ip_equipo`,`ip_publico`,`usuario_equipo`,`fecha_login`,`dir_ip_completa`,`Verficacion`)
     VALUES(user1,password1,  ip_equipo1, '100000000',usuario_equipo1, fecha_login1,dir_ip_completa1,'C' );
     END IF;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `fc_mostrar_local` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `fc_mostrar_local` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `fc_mostrar_local`()
+BEGIN
+	SELECT `fc_punto_venta`.`nombre`, `fc_punto_venta`.`direccion`, `fc_punto_venta`.`telefono_pv`,`fc_punto_venta`.`fecha_creacion`, 
+	`fc_punto_venta`.`fecha_actualizacion` FROM `fc_punto_venta`;
     END */$$
 DELIMITER ;
 
@@ -2254,107 +2134,84 @@ VALUES ( id_usuario1,
     END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `insertarCabeceraNotaPedido` */
+/* Procedure structure for procedure `fc_ruc_local` */
 
-/*!50003 DROP PROCEDURE IF EXISTS  `insertarCabeceraNotaPedido` */;
+/*!50003 DROP PROCEDURE IF EXISTS  `fc_ruc_local` */;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarCabeceraNotaPedido`(IN id_proveedor1 BIGINT,IN id_usuario2 BIGINT,IN fecha_creacion3 DATETIME,
-    IN plazo5 VARCHAR(45), IN forma_pago6 VARCHAR(45),IN iva7 DOUBLE, IN descuento8 DOUBLE,IN total9 DOUBLE, OUT valor TEXT)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `fc_ruc_local`(in valor text, out salida text)
 BEGIN
-	INSERT INTO `cabecera_nota_pedidos`(`id_proveedor`,`id_usuario`,`fecha_creacion`,`estado`,`plazo`,`forma_pago`,`iva`,`descuento`,`total`)
-	VALUES (id_proveedor1,id_usuario2,fecha_creacion3,'SI',plazo5,forma_pago6,iva7,descuento8,total9);
-	
-	SET valor =(SELECT `id_cabecera_nota_pedidos` FROM `cabecera_nota_pedidos` WHERE `id_proveedor`=id_proveedor1 AND `id_usuario`=id_usuario2 AND
-	`fecha_creacion`=fecha_creacion3 AND `estado`='SI' AND `plazo`= plazo5 AND `forma_pago`=forma_pago6 AND `iva`=iva7 AND 
-	`descuento`=descuento8 AND `total`= total9);
+declare v_id int;
+select count(`id_punto_venta`) into v_id from `fc_punto_venta` where `ruc_local` = valor; 
+if(v_id = 0)then 
+	UPDATE `fc_punto_venta`
+	SET`ruc_local` = valor 
+	WHERE `id_punto_venta` = 1;
+	SET salida = 'Ruc agregado correctamente';
+end if;    
+	IF(v_id = 0)THEN     
+	UPDATE `fc_punto_venta`
+	SET`ruc_local` = valor 
+	WHERE `id_punto_venta` = 1;
+	set salida = 'Ruc actualizado';
+END IF;    
     END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `insertarClientes` */
+/* Procedure structure for procedure `filtroProducto` */
 
-/*!50003 DROP PROCEDURE IF EXISTS  `insertarClientes` */;
+/*!50003 DROP PROCEDURE IF EXISTS  `filtroProducto` */;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarClientes`(
-in cedula text,
-in nombre text,
-in apellido text,
-in direccion text,
-in telefono text,
-in correo text,
-out msg text
-)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `filtroProducto`(IN consu TEXT)
 BEGIN
-declare valor int;
-declare fecha_reg date;
-select now() into fecha_reg;
-select count(Cedula) into valor from Clientes where Cedula=cedula;
- INSERT INTO Clientes 
-(Cedula, Nombre, Apellido, Direccion, Fecha_reg, Estado, str_telefono, str_correo)
-VALUES (cedula, nombre, apellido, direccion, fecha_reg, 'A', telefono, correo);
-set msg = 'Cliente guardado con éxito!!';
-END */$$
+	SET @query = CONCAT(consu);
+    PREPARE statement FROM @query;       -- Preparar query.
+    EXECUTE statement;                   -- Ejecutar query.
+    DEALLOCATE PREPARE statement;        -- Eliminar query alojado en memoria.
+    END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `insertarCorreo` */
+/* Procedure structure for procedure `getComboPrecios` */
 
-/*!50003 DROP PROCEDURE IF EXISTS  `insertarCorreo` */;
+/*!50003 DROP PROCEDURE IF EXISTS  `getComboPrecios` */;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarCorreo`( 
-IN tipo_correo1 INT ,
-IN correo TEXT,
-IN cedula1 TEXT 
-)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `getComboPrecios`(IN op BIGINT, IN id BIGINT,OUT valor DOUBLE(5,2))
 BEGIN
-INSERT INTO proveedor_mail(id_tipo_correo, mail, cedula_ruc)
-VALUES ( tipo_correo1, correo,cedula1);
-END */$$
+	SET valor='';
+	IF op=1 THEN 
+	SELECT DISTINCT (p.`precio_compra`) INTO valor
+	FROM `precios` p
+	WHERE p.`id_precio`= id;
+	END IF;
+	IF op=2 THEN
+	SELECT DISTINCT (p.`precio_venta`) INTO valor
+	FROM `precios` p
+	WHERE p.`id_precio`= id;
+	END IF;
+    END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `insertarCorreoCliente` */
+/* Procedure structure for procedure `getLocalidadComboGuayas` */
 
-/*!50003 DROP PROCEDURE IF EXISTS  `insertarCorreoCliente` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarCorreoCliente`( 
-IN cedula1 TEXT, 
-IN correo TEXT,
-OUT msg TEXT)
-BEGIN
- 
-INSERT INTO Correo ( Correo, Cedula)
-VALUES ( correo, cedula1);
-SET msg = 'Correo guardado';
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `InsertarDetalleVentas` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `InsertarDetalleVentas` */;
+/*!50003 DROP PROCEDURE IF EXISTS  `getLocalidadComboGuayas` */;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarDetalleVentas`(
-    in _id_cabecera_venta BIGINT,
-    in _id_control BIGINT,
-    in _precio decimal(10,7),
-    in _cantidad bigint,
-    in _iva decimal(10,7),
-    in _descuento decimal(10,7),
-    out valor text
-)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `getLocalidadComboGuayas`(IN op BIGINT,IN id BIGINT, OUT valor TEXT)
 BEGIN
-    set valor='';
-    insert into `detalle_venta`(id_cabecera_venta,id_control,precio,cantidad,iva,descuento)
-    values(_id_cabecera_venta,_id_control,_precio,_cantidad,_iva,_descuento);
-    set valor = (select id from detalle_venta where id_cabecera_venta =_id_cabecera_venta  and id_control = _id_control and cantidad = _cantidad);
-END */$$
+    SET valor='';
+	IF op=1 THEN 
+	 SELECT DISTINCT (t.`localidad`) INTO valor
+	FROM `fc_punto_venta` p
+	JOIN `fc_localidad_guayas` t ON t.`id_localidad_guayas`= p.`id_localidad_guayas`
+	WHERE p.`id_punto_venta`= id;
+	END IF;
+    END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `getNombreComboProducto` */
@@ -2464,6 +2321,47 @@ BEGIN
     END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `iniciar_sesion` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `iniciar_sesion` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `iniciar_sesion`(IN correo1 TEXT,IN password1 TEXT,IN ip_equipo1 TEXT, /*ip_publico1 text,*/ IN usuario_equipo1 TEXT, OUT salida TEXT)
+BEGIN
+DECLARE fecha_login1 DATETIME;
+DECLARE ip_publico1 TEXT;
+DECLARE valor INT;
+DECLARE id_usuario1 BIGINT;
+SET ip_publico1='100000';
+SELECT NOW() INTO fecha_login1; 
+SELECT COUNT(id_usuario) INTO valor FROM fc_usuario WHERE correo=correo1 AND PASSWORD=password1;
+SELECT id_usuario INTO id_usuario1 FROM fc_usuario WHERE correo=correo1 AND PASSWORD=password1;
+IF(valor=1) THEN 
+INSERT INTO fc_session(id_usuario, ip_equipo, ip_publico, usuario_equipo, fecha_login) 
+VALUES(id_usuario1, ip_equipo1, ip_publico1, usuario_equipo1, fecha_login1);
+SET salida= 'Bienvenido';
+ELSE SET salida='Usuario no existe';
+END IF;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `insertaBitacoraFaltantes` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `insertaBitacoraFaltantes` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertaBitacoraFaltantes`(IN id_detalle_faltantes1 BIGINT(20), 
+IN fecha_registro1 DATETIME,
+IN cantidad1 INT
+)
+BEGIN
+INSERT INTO `bitacora_faltantes` (`id_detalle_faltantes`,`fecha_registro`,`cantidad`)
+	VALUES(id_detalle_faltantes1,fecha_registro1,cantidad1);
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `insertarCabceraCompras` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `insertarCabceraCompras` */;
@@ -2488,6 +2386,24 @@ BEGIN
     END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `insertarCabeceraNotaPedido` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `insertarCabeceraNotaPedido` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarCabeceraNotaPedido`(IN id_proveedor1 BIGINT,IN id_usuario2 BIGINT,IN fecha_creacion3 DATETIME,
+    IN plazo5 VARCHAR(45), IN forma_pago6 VARCHAR(45),IN iva7 DOUBLE, IN descuento8 DOUBLE,IN total9 DOUBLE, OUT valor TEXT)
+BEGIN
+	INSERT INTO `cabecera_nota_pedidos`(`id_proveedor`,`id_usuario`,`fecha_creacion`,`estado`,`plazo`,`forma_pago`,`iva`,`descuento`,`total`)
+	VALUES (id_proveedor1,id_usuario2,fecha_creacion3,'SI',plazo5,forma_pago6,iva7,descuento8,total9);
+	
+	SET valor =(SELECT `id_cabecera_nota_pedidos` FROM `cabecera_nota_pedidos` WHERE `id_proveedor`=id_proveedor1 AND `id_usuario`=id_usuario2 AND
+	`fecha_creacion`=fecha_creacion3 AND `estado`='SI' AND `plazo`= plazo5 AND `forma_pago`=forma_pago6 AND `iva`=iva7 AND 
+	`descuento`=descuento8 AND `total`= total9);
+    END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `InsertarCabeceraVentas` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `InsertarCabeceraVentas` */;
@@ -2506,6 +2422,7 @@ DELIMITER $$
     in _iva_total decimal(10,5),
     in _descuento_total decimal(19,5),
     in _total decimal(10,5),
+    in _utilidad decimal(10,5),
     in _estado varchar(10),
     out valor text
 )
@@ -2514,9 +2431,152 @@ BEGIN
     declare _fecha_creacion datetime;
     set _fecha_creacion = now();
     set valor='';
-    insert into `cabecera_venta`(num_venta,fecha_creacion,id_cliente, id_usuario,id_sucursal,tipo_pago,tipo_venta,Subtotal_con_iva,Subtotal_sin_iva,iva_total,descuento_total,total,estado)
-    values(_num_venta,_fecha_creacion,_id_cliente,_id_usuario,_id_sucursal,_tipo_pago,_tipo_venta,_Subtotal_con_iva,_Subtotal_sin_iva,_iva_total,_descuento_total,_total,_estado);
+    insert into `cabecera_venta`(num_venta,fecha_creacion,id_cliente, id_usuario,id_sucursal,tipo_pago,tipo_venta,Subtotal_con_iva,Subtotal_sin_iva,iva_total,descuento_total,total,utilidad,estado)
+    values(_num_venta,_fecha_creacion,_id_cliente,_id_usuario,_id_sucursal,_tipo_pago,_tipo_venta,_Subtotal_con_iva,_Subtotal_sin_iva,_iva_total,_descuento_total,_total,_utilidad,_estado);
     set valor = (select id from cabecera_venta where id_usuario=_id_usuario  and num_venta = _num_venta and fecha_creacion = _fecha_creacion );
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `insertarClientes` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `insertarClientes` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarClientes`(
+in cedula text,
+in nombre text,
+in apellido text,
+in direccion text,
+in telefono text,
+in correo text,
+out msg text
+)
+BEGIN
+declare valor int;
+declare fecha_reg date;
+select now() into fecha_reg;
+select count(Cedula) into valor from Clientes where Cedula=cedula;
+ INSERT INTO Clientes 
+(Cedula, Nombre, Apellido, Direccion, Fecha_reg, Estado, str_telefono, str_correo)
+VALUES (cedula, nombre, apellido, direccion, fecha_reg, 'A', telefono, correo);
+set msg = 'Cliente guardado con éxito!!';
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `insertarCorreo` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `insertarCorreo` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarCorreo`( 
+IN tipo_correo1 INT ,
+IN correo TEXT,
+IN cedula1 TEXT 
+)
+BEGIN
+INSERT INTO proveedor_mail(id_tipo_correo, mail, cedula_ruc)
+VALUES ( tipo_correo1, correo,cedula1);
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `insertarCorreoCliente` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `insertarCorreoCliente` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarCorreoCliente`( 
+IN cedula1 TEXT, 
+IN correo TEXT,
+OUT msg TEXT)
+BEGIN
+ 
+INSERT INTO Correo ( Correo, Cedula)
+VALUES ( correo, cedula1);
+SET msg = 'Correo guardado';
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `insertarDetalleCompras` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `insertarDetalleCompras` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarDetalleCompras`(in id_cabecera_compra1 bigint,in id_precio2 bigint,
+in cantidad3 bigint,in precio4 decimal(10,7),in descuento5 DECIMAL(10,7),in iva6 DECIMAL(10,7),in total7 DECIMAL(10,7),in bono8 bigint)
+BEGIN
+	declare id_preciox bigint;
+	Declare cantidadx bigint;
+	declare cant bigint;
+	Declare cantcomp Bigint;
+	Declare id_productox bigint;
+	declare cant_faltante bigint; 
+	
+	insert into `detalle_compra`(`id_cabecera_compra`,`id_precio`,`cantidad`,`precio`,`descuento`,`iva`,`total`,bono)
+	values (id_cabecera_compra1,id_precio2,cantidad3,precio4,descuento5,iva6,total7,bono8);
+	
+	#set id_precio=(SELECT `id_precio` FROM `stock` WHERE `id_precio`=id_precio2);
+	SELECT `id_precio` INTO  id_preciox  FROM `stock` WHERE `id_precio`=id_precio2;
+	
+	if(id_preciox = id_precio2)then
+	SET cantidadx=(SELECT `cantidad` FROM `stock` WHERE `id_precio`=id_precio2);
+	SET cant =(cantidadx + cantidad3);
+	UPDATE `stock` SET `cantidad` = cant WHERE `id_precio` = id_precio2;
+	else
+	INSERT INTO `stock`(`cantidad`,`id_precio`)VALUES(cantidad3,id_precio2);
+	end if;
+	
+	SELECT pw.`id_producto` into id_productox FROM precios pw WHERE pw.`id_precio`= id_precio2;
+	
+	SELECT `cantidad` into cantcomp FROM `detalle_faltantes` WHERE `id_producto`= id_productox;
+	
+	set cant_faltante =(cantcomp-cantidad3);
+	IF(cant_faltante<0)then 
+	UPDATE `detalle_faltantes` SET `cantidad` = '0'  WHERE `id_producto` = id_productox;
+	else
+	UPDATE `detalle_faltantes` SET `cantidad` =  cant_faltante WHERE `id_producto` = id_productox;
+	end if;
+	-- "INSERT INTO `detalle_compra`(`id_cabecera_compra`,`id_precio`,`cantidad`,`precio`,`descuento`,`iva`,`total`,bono)
+	-- VALUES(" + id_cab + "," + lista3.get(i).getId_precio() + "," + lista3.get(i).getCantidad().toString() + ","
+        -- + lista3.get(i).getPrecio().toString() + "," + lista3.get(i).getDescuento().toString() + ","+ lista3.get(i).getIva().toString() + "," 
+        -- + lista3.get(i).getTotal().toString() + "," + lista3.get(i).getBono().toString() + ");");
+	
+	-- id_precio = crud.buscarIDPrecioEnStock("SELECT `id_precio` FROM `stock` WHERE `id_precio`=" + lista3.get(i).getId_precio().toString());
+	-- INSERT INTO `stock` (`cantidad`,`id_precio`)VALUES(" + lista3.get(i).getCantidad().toString() + "," + lista3.get(i).getId_precio().toString() + ");
+	-- "SELECT `cantidad` FROM `stock` WHERE `id_precio`=" + lista3.get(i).getId_precio() + ";");
+	-- UPDATE `stock` SET `cantidad` = " + cantidadx + " WHERE `id_precio` = " + lista3.get(i).getId_precio() + ";");
+	
+  --            System.out.println("Cantidad existente"+CantidadComp);
+    --           System.out.println("Cantidad "+Integer.valueOf(lista3.get(i).getCantidad().toString()));
+      --          CantidadComp = CantidadComp - Integer.valueOf(lista3.get(i).getCantidad().toString());
+        --        System.out.println("Cantidad Restada de Faltantes"+CantidadComp);
+          -- crud.UpdateCantidadFaltantes("UPDATE `detalle_faltantes` SET `cantidad` = " + CantidadComp + " WHERE `id_producto` = "+lista3.get(i).getId_producto()+";");
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `InsertarDetalleVentas` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `InsertarDetalleVentas` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarDetalleVentas`(
+    in _id_cabecera_venta BIGINT,
+    in _id_control BIGINT,
+    in _precio decimal(10,7),
+    in _cantidad bigint,
+    in _iva decimal(10,7),
+    in _descuento decimal(10,7),
+    out valor text
+)
+BEGIN
+    set valor='';
+    insert into `detalle_venta`(id_cabecera_venta,id_control,precio,cantidad,iva,descuento)
+    values(_id_cabecera_venta,_id_control,_precio,_cantidad,_iva,_descuento);
+    set valor = (select id from detalle_venta where id_cabecera_venta =_id_cabecera_venta  and id_control = _id_control and cantidad = _cantidad);
 END */$$
 DELIMITER ;
 
@@ -2612,64 +2672,6 @@ BEGIN
 	SET valor1 ='ya existe';
 	END IF;
 	END IF;
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `insertarDetalleCompras` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `insertarDetalleCompras` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarDetalleCompras`(in id_cabecera_compra1 bigint,in id_precio2 bigint,
-in cantidad3 bigint,in precio4 decimal(10,7),in descuento5 DECIMAL(10,7),in iva6 DECIMAL(10,7),in total7 DECIMAL(10,7),in bono8 bigint)
-BEGIN
-	declare id_preciox bigint;
-	Declare cantidadx bigint;
-	declare cant bigint;
-	Declare cantcomp Bigint;
-	Declare id_productox bigint;
-	declare cant_faltante bigint; 
-	
-	insert into `detalle_compra`(`id_cabecera_compra`,`id_precio`,`cantidad`,`precio`,`descuento`,`iva`,`total`,bono)
-	values (id_cabecera_compra1,id_precio2,cantidad3,precio4,descuento5,iva6,total7,bono8);
-	
-	#set id_precio=(SELECT `id_precio` FROM `stock` WHERE `id_precio`=id_precio2);
-	SELECT `id_precio` INTO  id_preciox  FROM `stock` WHERE `id_precio`=id_precio2;
-	
-	if(id_preciox = id_precio2)then
-	SET cantidadx=(SELECT `cantidad` FROM `stock` WHERE `id_precio`=id_precio2);
-	SET cant =(cantidadx + cantidad3);
-	UPDATE `stock` SET `cantidad` = cant WHERE `id_precio` = id_precio2;
-	else
-	INSERT INTO `stock`(`cantidad`,`id_precio`)VALUES(cantidad3,id_precio2);
-	end if;
-	
-	SELECT pw.`id_producto` into id_productox FROM precios pw WHERE pw.`id_precio`= id_precio2;
-	
-	SELECT `cantidad` into cantcomp FROM `detalle_faltantes` WHERE `id_producto`= id_productox;
-	
-	set cant_faltante =(cantcomp-cantidad3);
-	IF(cant_faltante<0)then 
-	UPDATE `detalle_faltantes` SET `cantidad` = '0'  WHERE `id_producto` = id_productox;
-	else
-	UPDATE `detalle_faltantes` SET `cantidad` =  cant_faltante WHERE `id_producto` = id_productox;
-	end if;
-	-- "INSERT INTO `detalle_compra`(`id_cabecera_compra`,`id_precio`,`cantidad`,`precio`,`descuento`,`iva`,`total`,bono)
-	-- VALUES(" + id_cab + "," + lista3.get(i).getId_precio() + "," + lista3.get(i).getCantidad().toString() + ","
-        -- + lista3.get(i).getPrecio().toString() + "," + lista3.get(i).getDescuento().toString() + ","+ lista3.get(i).getIva().toString() + "," 
-        -- + lista3.get(i).getTotal().toString() + "," + lista3.get(i).getBono().toString() + ");");
-	
-	-- id_precio = crud.buscarIDPrecioEnStock("SELECT `id_precio` FROM `stock` WHERE `id_precio`=" + lista3.get(i).getId_precio().toString());
-	-- INSERT INTO `stock` (`cantidad`,`id_precio`)VALUES(" + lista3.get(i).getCantidad().toString() + "," + lista3.get(i).getId_precio().toString() + ");
-	-- "SELECT `cantidad` FROM `stock` WHERE `id_precio`=" + lista3.get(i).getId_precio() + ";");
-	-- UPDATE `stock` SET `cantidad` = " + cantidadx + " WHERE `id_precio` = " + lista3.get(i).getId_precio() + ";");
-	
-  --            System.out.println("Cantidad existente"+CantidadComp);
-    --           System.out.println("Cantidad "+Integer.valueOf(lista3.get(i).getCantidad().toString()));
-      --          CantidadComp = CantidadComp - Integer.valueOf(lista3.get(i).getCantidad().toString());
-        --        System.out.println("Cantidad Restada de Faltantes"+CantidadComp);
-          -- crud.UpdateCantidadFaltantes("UPDATE `detalle_faltantes` SET `cantidad` = " + CantidadComp + " WHERE `id_producto` = "+lista3.get(i).getId_producto()+";");
     END */$$
 DELIMITER ;
 
@@ -2870,37 +2872,42 @@ in accion text
 )
 BEGIN
     case accion
-    when 'buscar_codigo' then
+    when 'todo' then
+        SELECT clientes.id_Clientes AS  Codigo,clientes.Cedula AS Cedula,clientes.Nombre AS Nombre, clientes.Apellido AS Apellido, clientes.Direccion AS Direccion,
+        clientes.str_telefono AS Telefono, clientes.str_correo AS Correo 
+        from clientes 
+        where clientes.Estado = 'A';
+    when 'codigo' then
         SELECT clientes.id_Clientes AS  Codigo,clientes.Cedula AS Cedula,clientes.Nombre AS Nombre, clientes.Apellido AS Apellido, clientes.Direccion AS Direccion,
         clientes.str_telefono AS Telefono, clientes.str_correo AS Correo 
         from clientes 
         where clientes.id_Clientes = _buscar_cliente and clientes.Estado = 'A';
-    when 'buscar_cedula' then
+    when 'cedula' then
         SELECT clientes.id_Clientes AS  Codigo,clientes.Cedula AS Cedula,clientes.Nombre AS Nombre, clientes.Apellido AS Apellido, clientes.Direccion AS Direccion,
         clientes.str_telefono AS Telefono, clientes.str_correo AS Correo 
         from clientes 
         where clientes.Cedula LIKE _buscar_cliente and clientes.Estado = 'A';
-    when 'buscar_nombre' then
+    when 'nombre' then
         SELECT clientes.id_Clientes AS  Codigo,clientes.Cedula AS Cedula,clientes.Nombre AS Nombre, clientes.Apellido AS Apellido, clientes.Direccion AS Direccion,
         clientes.str_telefono AS Telefono, clientes.str_correo AS Correo 
         from clientes 
         where clientes.Nombre LIKE _buscar_cliente and clientes.Estado = 'A';
-    when 'buscar_apellido' then
+    when 'apellido' then
         SELECT clientes.id_Clientes AS  Codigo,clientes.Cedula AS Cedula,clientes.Nombre AS Nombre, clientes.Apellido AS Apellido, clientes.Direccion AS Direccion,
         clientes.str_telefono AS Telefono, clientes.str_correo AS Correo 
         from clientes 
         where clientes.Apellido LIKE _buscar_cliente and clientes.Estado = 'A';
-    when 'buscar_direccion' then
+    when 'direccion' then
         SELECT clientes.id_Clientes AS  Codigo,clientes.Cedula AS Cedula,clientes.Nombre AS Nombre, clientes.Apellido AS Apellido, clientes.Direccion AS Direccion,
         clientes.str_telefono AS Telefono, clientes.str_correo AS Correo 
         from clientes 
         where clientes.Direccion LIKE _buscar_cliente and clientes.Estado = 'A';
-    when 'buscar_telefono' then
+    when 'telefono' then
         SELECT clientes.id_Clientes AS  Codigo,clientes.Cedula AS Cedula,clientes.Nombre AS Nombre, clientes.Apellido AS Apellido, clientes.Direccion AS Direccion,
         clientes.str_telefono AS Telefono, clientes.str_correo AS Correo 
         from clientes 
         where clientes.str_telefono LIKE _buscar_cliente and clientes.Estado = 'A';
-    when 'buscar_correo' then
+    when 'correo' then
         SELECT clientes.id_Clientes AS  Codigo,clientes.Cedula AS Cedula,clientes.Nombre AS Nombre, clientes.Apellido AS Apellido, clientes.Direccion AS Direccion,
         clientes.str_telefono AS Telefono, clientes.str_correo AS Correo 
         from clientes 
@@ -3010,89 +3017,6 @@ end if ;
 END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `listarJoinProductos` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `listarJoinProductos` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarJoinProductos`(in op int)
-BEGIN
-if op >0 then
-SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre as MARCA,
-p.id_productos,p.nombre,p.descripcion
-FROM productos p
-JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
-join marcas m ON m.id_marcas=p.id_marcas
-where df.estado = 'NO';
-else
-SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre AS MARCA,
-p.id_productos,p.nombre,p.descripcion
-FROM productos p
-JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
-join marcas m ON m.id_marcas=p.id_marcas;
-end if;
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `listarLaboratorio` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `listarLaboratorio` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarLaboratorio`()
-BEGIN
-select * from laboratorio order by Nombre;
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `listarPuntoVenta` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `listarPuntoVenta` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarPuntoVenta`()
-BEGIN
-	SELECT pv.id_punto_venta, pv.nombre, lg.localidad, pv.direccion,  pv.observacion FROM fc_localidad_guayas lg, fc_punto_venta pv WHERE lg.id_localidad_guayas= pv.id_localidad_guayas;
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `listarTelefono` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `listarTelefono` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarTelefono`(in cedula1 text)
-BEGIN
-select * from Telefono where Cedula = cedula1;
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `modificarProductos` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `modificarProductos` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarProductos`(nombre1 VARCHAR(45),IN descripcion1 VARCHAR(80),IN peso1 DOUBLE(7,2),
-    IN id_tipo1 BIGINT(20),IN id_medidas1 BIGINT(20),IN id_envase1 BIGINT(20),IN id_marcas1 BIGINT(20),IN id_productos1 BIGINT(20),
-    IN id_usuario1 BIGINT, IN iva1 VARCHAR(2), IN cantidad_minima1 BIGINT, OUT valor TEXT)
-BEGIN
-    IF (nombre1='' OR descripcion1='' OR peso1='' OR id_tipo1='' OR id_medidas1='' OR id_envase1='' OR id_marcas1=''
-    OR id_usuario1='' OR iva1='' OR cantidad_minima1='')THEN
-    SET valor = 'campos invalidos';
-    ELSE 
-	UPDATE productos SET nombre = nombre1,descripcion = descripcion1,peso=peso1 ,id_tipo= id_tipo1,
-	`id_medidas`= id_medidas1,`id_envase`=id_envase1,`id_marcas`=id_marcas1,`id_usuario`=id_usuario1,
-	`iva`=iva1,`cantidad_minima`=cantidad_minima1 WHERE id_productos =id_productos1;
-    SET valor = 'Producto actualizado';
-    END IF;
-    END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `listarfaltantesEnNota` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `listarfaltantesEnNota` */;
@@ -3131,6 +3055,31 @@ END IF ;
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `listarJoinProductos` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `listarJoinProductos` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarJoinProductos`(in op int)
+BEGIN
+if op >0 then
+SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre as MARCA,
+p.id_productos,p.nombre,p.descripcion
+FROM productos p
+JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
+join marcas m ON m.id_marcas=p.id_marcas
+where df.estado = 'NO';
+else
+SELECT df.id_detalle_faltantes,df.fecha_registro,df.cantidad,df.estado,m.id_marcas,m.nombre AS MARCA,
+p.id_productos,p.nombre,p.descripcion
+FROM productos p
+JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
+join marcas m ON m.id_marcas=p.id_marcas;
+end if;
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `listarJoinProductosFaltantes` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `listarJoinProductosFaltantes` */;
@@ -3153,6 +3102,18 @@ FROM productos p
 JOIN detalle_faltantes  df ON df.id_producto=p.id_productos
 join marcas m ON m.id_marcas=p.id_marcas;
 end if;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `listarLaboratorio` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `listarLaboratorio` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarLaboratorio`()
+BEGIN
+select * from laboratorio order by Nombre;
 END */$$
 DELIMITER ;
 
@@ -3227,56 +3188,6 @@ BEGIN
     END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `mostrar_iva` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `mostrar_iva` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_iva`()
-BEGIN
-SELECT * FROM iva WHERE est = 'A';
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `registrar_usuario` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `registrar_usuario` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `registrar_usuario`()
-BEGIN
-    END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `Tipo_Producto` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `Tipo_Producto` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Tipo_Producto`()
-BEGIN
-select tipo.id_tipo, tipo.nombre from moduloprueba.tipo where estado = 'A' order by tipo.id_tipo;
-END */$$
-DELIMITER ;
-
-/* Procedure structure for procedure `universal_sentences` */
-
-/*!50003 DROP PROCEDURE IF EXISTS  `universal_sentences` */;
-
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `universal_sentences`(IN consu TEXT)
-BEGIN
-    SET @query = CONCAT(consu);
-    PREPARE statement FROM @query;       -- Preparar query.
-    EXECUTE statement;                   -- Ejecutar query.
-    DEALLOCATE PREPARE statement;        -- Eliminar query alojado en memoria.
-    END */$$
-DELIMITER ;
-
 /* Procedure structure for procedure `ListarProductosVentas` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `ListarProductosVentas` */;
@@ -3284,15 +3195,15 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ListarProductosVentas`(
-in _buscar_producto text,
-in accion text
+IN _buscar_producto TEXT,
+IN accion TEXT
 )
 BEGIN
-    case accion
-    when 'buscar_codigo' then
-        SELECT  precios.id_precio AS 'Control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
+    CASE accion
+    WHEN 'todo' THEN
+	SELECT  precios.id_precio AS 'Control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
         medidas.nombre_medida AS 'Medida', envase.nombre AS 'Envase', marcas.nombre AS 'Marca', stock.cantidad AS 'Stock', 
-        productos.iva AS 'Iva', precios.precio_venta  AS 'Precio de Venta'
+        productos.iva AS 'Iva', precios.precio_venta  AS 'Precio de Venta', precios.`precio_compra` AS 'Precio de Compra'
         FROM precios 
         INNER JOIN productos ON  precios.id_producto = productos.id_productos 
         INNER JOIN tipo ON tipo.id_tipo = productos.id_tipo 
@@ -3300,11 +3211,12 @@ BEGIN
         INNER JOIN envase ON envase.id_envase = productos.id_envase
         INNER JOIN marcas ON marcas.id_marcas = productos.id_marcas
         INNER JOIN stock ON stock.id_precio = precios.id_precio
-        WHERE productos.id_productos = _buscar_producto AND precios.estado = 'A';
-    when 'buscar_nombre' then
-        SELECT  precios.id_precio AS 'Control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
+        WHERE stock.`cantidad` > 0 AND precios.estado = 'A'
+        ORDER BY `productos`.`nombre`  ASC;
+    WHEN 'codigo' THEN
+	SELECT  precios.id_precio AS 'Control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
         medidas.nombre_medida AS 'Medida', envase.nombre AS 'Envase', marcas.nombre AS 'Marca', stock.cantidad AS 'Stock', 
-        productos.iva AS 'Iva', precios.precio_venta  AS 'Precio de Venta'
+        productos.iva AS 'Iva', precios.precio_venta  AS 'Precio de Venta', precios.`precio_compra` AS 'Precio de Compra'
         FROM precios 
         INNER JOIN productos ON  precios.id_producto = productos.id_productos 
         INNER JOIN tipo ON tipo.id_tipo = productos.id_tipo 
@@ -3312,11 +3224,12 @@ BEGIN
         INNER JOIN envase ON envase.id_envase = productos.id_envase
         INNER JOIN marcas ON marcas.id_marcas = productos.id_marcas
         INNER JOIN stock ON stock.id_precio = precios.id_precio
-        where productos.nombre LIKE _buscar_producto and precios.estado = 'A';
-    when 'buscar_tipo' then
-        SELECT  precios.id_precio AS 'Control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
+        WHERE productos.id_productos = _buscar_producto AND precios.estado = 'A' AND stock.`cantidad` > 0
+        ORDER BY `productos`.`nombre`  ASC;
+    WHEN 'nombre' THEN
+	SELECT  precios.id_precio AS 'Control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
         medidas.nombre_medida AS 'Medida', envase.nombre AS 'Envase', marcas.nombre AS 'Marca', stock.cantidad AS 'Stock', 
-        productos.iva AS 'Iva', precios.precio_venta  AS 'Precio de Venta'
+        productos.iva AS 'Iva', precios.precio_venta  AS 'Precio de Venta', precios.`precio_compra` AS 'Precio de Compra'
         FROM precios 
         INNER JOIN productos ON  precios.id_producto = productos.id_productos 
         INNER JOIN tipo ON tipo.id_tipo = productos.id_tipo 
@@ -3324,11 +3237,12 @@ BEGIN
         INNER JOIN envase ON envase.id_envase = productos.id_envase
         INNER JOIN marcas ON marcas.id_marcas = productos.id_marcas
         INNER JOIN stock ON stock.id_precio = precios.id_precio
-        where tipo.nombre LIKE _buscar_producto and precios.estado = 'A';
-    when 'buscar_medida' then
-        SELECT  precios.id_precio AS 'Control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
+        WHERE productos.nombre LIKE _buscar_producto AND precios.estado = 'A' AND stock.`cantidad` > 0
+        ORDER BY `productos`.`nombre`  ASC;
+    WHEN 'tipo' THEN
+	SELECT  precios.id_precio AS 'Control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
         medidas.nombre_medida AS 'Medida', envase.nombre AS 'Envase', marcas.nombre AS 'Marca', stock.cantidad AS 'Stock', 
-        productos.iva AS 'Iva', precios.precio_venta  AS 'Precio de Venta'
+        productos.iva AS 'Iva', precios.precio_venta  AS 'Precio de Venta', precios.`precio_compra` AS 'Precio de Compra'
         FROM precios 
         INNER JOIN productos ON  precios.id_producto = productos.id_productos 
         INNER JOIN tipo ON tipo.id_tipo = productos.id_tipo 
@@ -3336,11 +3250,12 @@ BEGIN
         INNER JOIN envase ON envase.id_envase = productos.id_envase
         INNER JOIN marcas ON marcas.id_marcas = productos.id_marcas
         INNER JOIN stock ON stock.id_precio = precios.id_precio
-        where medidas.nombre_medida LIKE _buscar_producto and precios.estado = 'A';
-    when 'buscar_envase' then
-        SELECT  precios.id_precio AS 'Control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
+        WHERE tipo.nombre LIKE _buscar_producto AND precios.estado = 'A' AND stock.`cantidad` > 0
+		ORDER BY `productos`.`nombre`  ASC;
+    WHEN 'medida' THEN
+	SELECT  precios.id_precio AS 'Control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
         medidas.nombre_medida AS 'Medida', envase.nombre AS 'Envase', marcas.nombre AS 'Marca', stock.cantidad AS 'Stock', 
-        productos.iva AS 'Iva', precios.precio_venta  AS 'Precio de Venta'
+        productos.iva AS 'Iva', precios.precio_venta  AS 'Precio de Venta', precios.`precio_compra` AS 'Precio de Compra'
         FROM precios 
         INNER JOIN productos ON  precios.id_producto = productos.id_productos 
         INNER JOIN tipo ON tipo.id_tipo = productos.id_tipo 
@@ -3348,11 +3263,12 @@ BEGIN
         INNER JOIN envase ON envase.id_envase = productos.id_envase
         INNER JOIN marcas ON marcas.id_marcas = productos.id_marcas
         INNER JOIN stock ON stock.id_precio = precios.id_precio
-        where envase.nombre LIKE _buscar_producto and precios.estado = 'A';
-    when 'buscar_marca' then
-        SELECT  precios.id_precio AS 'Control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
+        WHERE medidas.nombre_medida LIKE _buscar_producto AND precios.estado = 'A' AND stock.`cantidad` > 0
+        ORDER BY `productos`.`nombre`  ASC;
+    WHEN 'envase' THEN
+	SELECT  precios.id_precio AS 'Control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
         medidas.nombre_medida AS 'Medida', envase.nombre AS 'Envase', marcas.nombre AS 'Marca', stock.cantidad AS 'Stock', 
-        productos.iva AS 'Iva', precios.precio_venta  AS 'Precio de Venta'
+        productos.iva AS 'Iva', precios.precio_venta  AS 'Precio de Venta', precios.`precio_compra` AS 'Precio de Compra'
         FROM precios 
         INNER JOIN productos ON  precios.id_producto = productos.id_productos 
         INNER JOIN tipo ON tipo.id_tipo = productos.id_tipo 
@@ -3360,9 +3276,22 @@ BEGIN
         INNER JOIN envase ON envase.id_envase = productos.id_envase
         INNER JOIN marcas ON marcas.id_marcas = productos.id_marcas
         INNER JOIN stock ON stock.id_precio = precios.id_precio
-        where marcas.nombre LIKE _buscar_producto and precios.estado = 'A';
-    
-    end case;
+        WHERE envase.nombre LIKE _buscar_producto AND precios.estado = 'A' AND stock.`cantidad` > 0 
+		ORDER BY `productos`.`nombre`  ASC;
+    WHEN 'marca' THEN
+	SELECT  precios.id_precio AS 'Control', productos.id_productos AS 'Codigo', productos.nombre AS 'Nombre del Producto', productos.descripcion AS 'Descripcion', tipo.nombre AS 'Tipo', 
+        medidas.nombre_medida AS 'Medida', envase.nombre AS 'Envase', marcas.nombre AS 'Marca', stock.cantidad AS 'Stock', 
+        productos.iva AS 'Iva', precios.precio_venta  AS 'Precio de Venta', precios.`precio_compra` AS 'Precio de Compra'
+        FROM precios 
+        INNER JOIN productos ON  precios.id_producto = productos.id_productos 
+        INNER JOIN tipo ON tipo.id_tipo = productos.id_tipo 
+        INNER JOIN medidas ON medidas.id_medidas = productos.id_medidas
+        INNER JOIN envase ON envase.id_envase = productos.id_envase
+        INNER JOIN marcas ON marcas.id_marcas = productos.id_marcas
+        INNER JOIN stock ON stock.id_precio = precios.id_precio
+        WHERE marcas.nombre LIKE _buscar_producto AND precios.estado = 'A' AND stock.`cantidad` > 0
+        ORDER BY `productos`.`nombre`  ASC;
+    END CASE;
 END */$$
 DELIMITER ;
 
@@ -3389,6 +3318,18 @@ JOIN `proveedor_clase` pc ON pc.`id_proclase`=p.`id_proveedor_clase`
 WHERE p.`estado` = 'I';
 END IF;
 END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `listarPuntoVenta` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `listarPuntoVenta` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarPuntoVenta`()
+BEGIN
+	SELECT pv.id_punto_venta, pv.nombre, lg.localidad, pv.direccion,  pv.observacion FROM fc_localidad_guayas lg, fc_punto_venta pv WHERE lg.id_localidad_guayas= pv.id_localidad_guayas;
+    END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `ListarRegistroDeNotas` */
@@ -3489,6 +3430,52 @@ END IF;
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `listarTelefono` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `listarTelefono` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `listarTelefono`(in cedula1 text)
+BEGIN
+select * from Telefono where Cedula = cedula1;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `modificarProductos` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `modificarProductos` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarProductos`(nombre1 VARCHAR(45),IN descripcion1 VARCHAR(80),IN peso1 DOUBLE(7,2),
+    IN id_tipo1 BIGINT(20),IN id_medidas1 BIGINT(20),IN id_envase1 BIGINT(20),IN id_marcas1 BIGINT(20),IN id_productos1 BIGINT(20),
+    IN id_usuario1 BIGINT, IN iva1 VARCHAR(2), IN cantidad_minima1 BIGINT, OUT valor TEXT)
+BEGIN
+    IF (nombre1='' OR descripcion1='' OR peso1='' OR id_tipo1='' OR id_medidas1='' OR id_envase1='' OR id_marcas1=''
+    OR id_usuario1='' OR iva1='' OR cantidad_minima1='')THEN
+    SET valor = 'campos invalidos';
+    ELSE 
+	UPDATE productos SET nombre = nombre1,descripcion = descripcion1,peso=peso1 ,id_tipo= id_tipo1,
+	`id_medidas`= id_medidas1,`id_envase`=id_envase1,`id_marcas`=id_marcas1,`id_usuario`=id_usuario1,
+	`iva`=iva1,`cantidad_minima`=cantidad_minima1 WHERE id_productos =id_productos1;
+    SET valor = 'Producto actualizado';
+    END IF;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `mostrar_iva` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `mostrar_iva` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_iva`()
+BEGIN
+SELECT * FROM iva WHERE est = 'A';
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `mostrar_usuario` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `mostrar_usuario` */;
@@ -3566,6 +3553,44 @@ ELSE
 SET salida='Usuario ya existente';
 END IF;
 END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `registrar_usuario` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `registrar_usuario` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `registrar_usuario`()
+BEGIN
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `Tipo_Producto` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `Tipo_Producto` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `Tipo_Producto`()
+BEGIN
+select tipo.id_tipo, tipo.nombre from moduloprueba.tipo where estado = 'A' order by tipo.id_tipo;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `universal_sentences` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `universal_sentences` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `universal_sentences`(IN consu TEXT)
+BEGIN
+    SET @query = CONCAT(consu);
+    PREPARE statement FROM @query;       -- Preparar query.
+    EXECUTE statement;                   -- Ejecutar query.
+    DEALLOCATE PREPARE statement;        -- Eliminar query alojado en memoria.
+    END */$$
 DELIMITER ;
 
 /*Table structure for table `faltantes_previo` */
